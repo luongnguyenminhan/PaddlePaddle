@@ -16,8 +16,8 @@ import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 import mod.mainwindow
 
-from paddleclas.deploy.utils import config, logger
-from paddleclas.deploy.python.predict_rec import RecPredictor
+from deploy.utils import config, logger
+from deploy.python.predict_rec import RecPredictor
 from fastapi import FastAPI
 import uvicorn
 import numpy as np

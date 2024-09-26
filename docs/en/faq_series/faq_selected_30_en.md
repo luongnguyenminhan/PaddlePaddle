@@ -280,7 +280,7 @@ Loss:
 > >
 
 - Q: How to train with Automatic Mixed Precision (AMP) during training?
-- A: You can refer to [ResNet50_amp_O1.yaml](../../../ppcls/configs/ImageNet/ResNet/ResNet50_amp_O1.yaml). Specifically, if you want your configuration file to support automatic mixed precision during model training, you can add the following information to the file.
+- A: You can refer to [ResNet50_amp_O1.yaml](../../../ppcl/configs/ImageNet/ResNet/ResNet50_amp_O1.yaml). Specifically, if you want your configuration file to support automatic mixed precision during model training, you can add the following information to the file.
 
 ```
 # mixed precision training

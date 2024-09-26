@@ -45,19 +45,19 @@ The Backbone part adopts [PP-LCNetV2_base](../models/PP-LCNetV2_en.md), which is
 
 #### 3.2 Neck
 
-We use [BN Neck](../../../ppcls/arch/gears/bnneck.py) to standardize each dimension of the features extracted by Backbone, reducing difficulty of optimizing metric learning loss and identification  loss simultaneously.
+We use [BN Neck](../../../ppcl/arch/gears/bnneck.py) to standardize each dimension of the features extracted by Backbone, reducing difficulty of optimizing metric learning loss and identification  loss simultaneously.
 
 #### 3.3 Head
 
-We use [FC Layer](../../../ppcls/arch/gears/fc.py) as the classification head to convert features into logits for classification loss.
+We use [FC Layer](../../../ppcl/arch/gears/fc.py) as the classification head to convert features into logits for classification loss.
 
 #### 3.4 Loss
 
-We use [Cross entropy loss](../../../ppcls/loss/celoss.py) and [TripletAngularMarginLoss](../../../ppcls/loss/tripletangularmarginloss.py), and we improved the original TripletLoss(TriHard Loss), replacing the optimization objective from L2 Euclidean space to cosine space, adding a hard distance constraint between anchor and positive/negtive, so the generalization ability of the model is improved. For detailed configuration files, see [GeneralRecognitionV2_PPLCNetV2_base.yaml](../../../ppcls/configs/GeneralRecognitionV2/GeneralRecognitionV2_PPLCNetV2_base.yaml#L63-77).
+We use [Cross entropy loss](../../../ppcl/loss/celoss.py) and [TripletAngularMarginLoss](../../../ppcl/loss/tripletangularmarginloss.py), and we improved the original TripletLoss(TriHard Loss), replacing the optimization objective from L2 Euclidean space to cosine space, adding a hard distance constraint between anchor and positive/negtive, so the generalization ability of the model is improved. For detailed configuration files, see [GeneralRecognitionV2_PPLCNetV2_base.yaml](../../../ppcl/configs/GeneralRecognitionV2/GeneralRecognitionV2_PPLCNetV2_base.yaml#L63-77).
 
 #### 3.5 Data Augmentation
 
-We consider that the object may rotate to a certain extent and can not maintain an upright state in real scenes, so we add an appropriate [random rotation](../../../ppcls/configs/GeneralRecognitionV2/GeneralRecognitionV2_PPLCNetV2_base.yaml#L117) in the data augmentation to improve the retrieval performance in real scenes.
+We consider that the object may rotate to a certain extent and can not maintain an upright state in real scenes, so we add an appropriate [random rotation](../../../ppcl/configs/GeneralRecognitionV2/GeneralRecognitionV2_PPLCNetV2_base.yaml#L117) in the data augmentation to improve the retrieval performance in real scenes.
 
 <a name="4"></a>
 
@@ -164,14 +164,14 @@ Model training mainly includes the starting training and restoring training from
   ```shell
   export CUDA_VISIBLE_DEVICES=0
   python3.7 tools/train.py \
-  -c ./ppcls/configs/GeneralRecognitionV2/GeneralRecognitionV2_PPLCNetV2_base.yaml
+  -c ./ppcl/configs/GeneralRecognitionV2/GeneralRecognitionV2_PPLCNetV2_base.yaml
   ```
 - Single machine multi-card training
   ```shell
   export CUDA_VISIBLE_DEVICES=0,1,2,3
   python3.7 -m paddle.distributed.launch --gpus="0,1,2,3" \
   tools/train.py \
-  -c ./ppcls/configs/GeneralRecognitionV2/GeneralRecognitionV2_PPLCNetV2_base.yaml
+  -c ./ppcl/configs/GeneralRecognitionV2/GeneralRecognitionV2_PPLCNetV2_base.yaml
   ```
 **Notice:**
 The online evaluation method is used by default in the configuration file. If you want to speed up the training, you can turn off the online evaluation function, just add `-o Global.eval_during_train=False` after the above scripts.
@@ -182,7 +182,7 @@ After training, the final model files `latest.pdparams`, `best_model.pdarams` an
   ```shell
   export CUDA_VISIBLE_DEVICES=0
   python3.7 tools/train.py \
-  -c ./ppcls/configs/GeneralRecognitionV2/GeneralRecognitionV2_PPLCNetV2_base.yaml \
+  -c ./ppcl/configs/GeneralRecognitionV2/GeneralRecognitionV2_PPLCNetV2_base.yaml \
   -o Global.checkpoints="output/RecModel/latest"
   ```
 - Single-machine multi-card checkpoint recovery training
@@ -190,7 +190,7 @@ After training, the final model files `latest.pdparams`, `best_model.pdarams` an
   export CUDA_VISIBLE_DEVICES=0,1,2,3
   python3.7 -m paddle.distributed.launch --gpus="0,1,2,3" \
   tools/train.py \
-  -c ./ppcls/configs/GeneralRecognitionV2/GeneralRecognitionV2_PPLCNetV2_base.yaml \
+  -c ./ppcl/configs/GeneralRecognitionV2/GeneralRecognitionV2_PPLCNetV2_base.yaml \
   -o Global.checkpoints="output/RecModel/latest"
   ```
 
@@ -204,7 +204,7 @@ In addition to the online evaluation of the model during training, the evaluatio
   ```shell
   export CUDA_VISIBLE_DEVICES=0
   python3.7 tools/eval.py \
-  -c ./ppcls/configs/GeneralRecognitionV2/GeneralRecognitionV2_PPLCNetV2_base.yaml \
+  -c ./ppcl/configs/GeneralRecognitionV2/GeneralRecognitionV2_PPLCNetV2_base.yaml \
   -o Global.pretrained_model="output/RecModel/best_model"
   ```
 
@@ -213,7 +213,7 @@ In addition to the online evaluation of the model during training, the evaluatio
   export CUDA_VISIBLE_DEVICES=0,1,2,3
   python3.7 -m paddle.distributed.launch --gpus="0,1,2,3" \
   tools/eval.py \
-  -c ./ppcls/configs/GeneralRecognitionV2/GeneralRecognitionV2_PPLCNetV2_base.yaml \
+  -c ./ppcl/configs/GeneralRecognitionV2/GeneralRecognitionV2_PPLCNetV2_base.yaml \
   -o Global.pretrained_model="output/RecModel/best_model"
   ```
 **Note:** Multi Card Evaluation is recommended. This method can quickly obtain the metric cross all the data by using multi-card parallel computing, which can speed up the evaluation.
@@ -229,7 +229,7 @@ The inference process consists of two steps: 1) Export the inference model; 2) M
 First, you need to convert the `*.pdparams` model file into inference format. The conversion script is as follows.
 ```shell
 python3.7 tools/export_model.py \
--c ./ppcls/configs/GeneralRecognitionV2/GeneralRecognitionV2_PPLCNetV2_base.yaml \
+-c ./ppcl/configs/GeneralRecognitionV2/GeneralRecognitionV2_PPLCNetV2_base.yaml \
 -o Global.pretrained_model="output/RecModel/best_model"
 ```
 The generated inference model is located in the `PaddleClas/inference` directory by default, which contains three files, `inference.pdmodel`, `inference.pdiparams`, `inference.pdiparams.info`.

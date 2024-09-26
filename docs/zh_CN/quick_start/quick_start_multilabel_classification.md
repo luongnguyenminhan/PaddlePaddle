@@ -45,7 +45,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
     tools/train.py \
-        -c ./ppcls/configs/quick_start/professional/MobileNetV1_multilabel.yaml
+        -c ./ppcl/configs/quick_start/professional/MobileNetV1_multilabel.yaml
 ```
 
 训练 10 epoch 之后，验证集最好的正确率应该在 0.95 左右。
@@ -60,7 +60,7 @@ python3 -m paddle.distributed.launch \
 
 ```bash
 python3 tools/eval.py \
-    -c ./ppcls/configs/quick_start/professional/MobileNetV1_multilabel.yaml \
+    -c ./ppcl/configs/quick_start/professional/MobileNetV1_multilabel.yaml \
     -o Arch.pretrained="./output/MobileNetV1/best_model"
 ```
 
@@ -69,7 +69,7 @@ python3 tools/eval.py \
 
 ```bash
 python3 tools/infer.py \
-    -c ./ppcls/configs/quick_start/professional/MobileNetV1_multilabel.yaml \
+    -c ./ppcl/configs/quick_start/professional/MobileNetV1_multilabel.yaml \
     -o Arch.pretrained="./output/MobileNetV1/best_model"
 ```
 
@@ -86,7 +86,7 @@ python3 tools/infer.py \
 
 ```bash
 python3 tools/export_model.py \
-    -c ./ppcls/configs/quick_start/professional/MobileNetV1_multilabel.yaml \
+    -c ./ppcl/configs/quick_start/professional/MobileNetV1_multilabel.yaml \
     -o Arch.pretrained="./output/MobileNetV1/best_model"
 ```
 inference model 的路径默认在当前路径下 `./inference`

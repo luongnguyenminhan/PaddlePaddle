@@ -136,14 +136,14 @@ When adopting multiple models for inference, it is recommended to first export t
 
 **A**：
 
-- For single-image augmentation, you can refer to [Single-image based data augmentation script](../../../ppcls/data/preprocess/ops). Learning from the data operator  ` ResizeImage ` or `CropImage` to create a new class, and then implement the corresponding augmentation method in `__call__`.
-- For a batch image, you can refer to the [batch data-based data augmentation script](../../../ppcls/data/preprocess/batch_ops). Learning from the data operator `MixupOperator` or `CutmixOperator` to create a new class, and then implement the corresponding augmentation method in `__call__`.
+- For single-image augmentation, you can refer to [Single-image based data augmentation script](../../../ppcl/data/preprocess/ops). Learning from the data operator  ` ResizeImage ` or `CropImage` to create a new class, and then implement the corresponding augmentation method in `__call__`.
+- For a batch image, you can refer to the [batch data-based data augmentation script](../../../ppcl/data/preprocess/batch_ops). Learning from the data operator `MixupOperator` or `CutmixOperator` to create a new class, and then implement the corresponding augmentation method in `__call__`.
 
 ## Q3.5: How to further accelerate the model training?
 
 **A**：
 
-- You can adopt auto-mixed precision training, which can gain a significantly faster speed with almost zero precision loss. Take ResNet50 as an example, the configuration file of auto-mixed precision training in PaddleClas can be found at: [ResNet50_amp_O1.yml](../../../ppcls/configs/ImageNet/ResNet/ResNet50_amp_O1.yaml). The main step is to add the following lines to the standard configuration file.
+- You can adopt auto-mixed precision training, which can gain a significantly faster speed with almost zero precision loss. Take ResNet50 as an example, the configuration file of auto-mixed precision training in PaddleClas can be found at: [ResNet50_amp_O1.yml](../../../ppcl/configs/ImageNet/ResNet/ResNet50_amp_O1.yaml). The main step is to add the following lines to the standard configuration file.
 
 ```
 # mixed precision training

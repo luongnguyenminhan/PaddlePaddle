@@ -244,7 +244,7 @@ The dynamic graph version of the model is saved in the form of a dictionary to f
 The specific implementation is as follows:
 
 ```python
-def save_model(program, model_path, epoch_id, prefix='ppcls'):
+def save_model(program, model_path, epoch_id, prefix='ppcl'):
     model_path = os.path.join(model_path, str(epoch_id))
     _mkdir_if_not_exist(model_path)
     model_prefix = os.path.join(model_path, prefix)

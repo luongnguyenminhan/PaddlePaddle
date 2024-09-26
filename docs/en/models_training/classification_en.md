@@ -60,7 +60,7 @@ The prepared training data is preprocessed and then passed through the image cla
 
 ### 2.1 Data Preprocessing
 
-The quality and quantity of data often determine the performance of a model. In the field of image classification, data includes images and labels. In most cases, labeled data is scarce, so the amount of data is difficult to reach the level of saturation of the model. In order to enable the model to learn more image features, a lot of image transformation or data augmentation is required before the image enters the model, so as to ensure the diversity of input image data and ensure that the model has better generalization capabilities. PaddleClas provides standard image transformation for training ImageNet-1k, and also provides 8 data augmentation methods. For related codes, please refer to [data preprocess](../../../ppcls/data/preprocess)，The configuration file refer to [Data Augmentation Configuration File](../../../ppcls/configs/ImageNet/DataAugment). For related algorithms, please refer to [data augment algorithms](../algorithm_introduction/DataAugmentation_en.md).
+The quality and quantity of data often determine the performance of a model. In the field of image classification, data includes images and labels. In most cases, labeled data is scarce, so the amount of data is difficult to reach the level of saturation of the model. In order to enable the model to learn more image features, a lot of image transformation or data augmentation is required before the image enters the model, so as to ensure the diversity of input image data and ensure that the model has better generalization capabilities. PaddleClas provides standard image transformation for training ImageNet-1k, and also provides 8 data augmentation methods. For related codes, please refer to [data preprocess](../../../ppcl/data/preprocess)，The configuration file refer to [Data Augmentation Configuration File](../../../ppcl/configs/ImageNet/DataAugment). For related algorithms, please refer to [data augment algorithms](../algorithm_introduction/DataAugmentation_en.md).
 
 <a name="2.2"></a>
 
@@ -113,7 +113,7 @@ After preparing the configuration file, The training process can be started in t
 
 ```shell
 python3 tools/train.py \
-    -c ./ppcls/configs/quick_start/MobileNetV3_large_x1_0.yaml \
+    -c ./ppcl/configs/quick_start/MobileNetV3_large_x1_0.yaml \
     -o Arch.pretrained=False \
     -o Global.device=gpu
 ```
@@ -154,7 +154,7 @@ After correcting config file, you can load pretrained model  weight to finetune.
 
 ```shell
 python3 tools/train.py \
-    -c ./ppcls/configs/quick_start/MobileNetV3_large_x1_0.yaml \
+    -c ./ppcl/configs/quick_start/MobileNetV3_large_x1_0.yaml \
     -o Arch.pretrained=True \
     -o Global.device=gpu
 ```
@@ -171,7 +171,7 @@ If the training process is terminated for some reasons, you can also load the ch
 
 ```shell
 python3 tools/train.py \
-    -c ./ppcls/configs/quick_start/MobileNetV3_large_x1_0.yaml \
+    -c ./ppcl/configs/quick_start/MobileNetV3_large_x1_0.yaml \
     -o Global.checkpoints="./output/MobileNetV3_large_x1_0/epoch_5" \
     -o Global.device=gpu
 ```
@@ -204,7 +204,7 @@ The model evaluation process can be started as follows.
 
 ```shell
 python3 tools/eval.py \
-    -c ./ppcls/configs/quick_start/MobileNetV3_large_x1_0.yaml \
+    -c ./ppcl/configs/quick_start/MobileNetV3_large_x1_0.yaml \
     -o Global.pretrained_model=./output/MobileNetV3_large_x1_0/best_model
 ```
 
@@ -238,7 +238,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
     tools/train.py \
-        -c ./ppcls/configs/quick_start/MobileNetV3_large_x1_0.yaml
+        -c ./ppcl/configs/quick_start/MobileNetV3_large_x1_0.yaml
 ```
 
 The format of output log information is the same as above, see [3.1.1 Model training](#3.1.1) for details.
@@ -254,7 +254,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
     tools/train.py \
-        -c ./ppcls/configs/quick_start/MobileNetV3_large_x1_0.yaml \
+        -c ./ppcl/configs/quick_start/MobileNetV3_large_x1_0.yaml \
         -o Arch.pretrained=True
 ```
 
@@ -273,7 +273,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
     tools/train.py \
-        -c ./ppcls/configs/quick_start/MobileNetV3_large_x1_0.yaml \
+        -c ./ppcl/configs/quick_start/MobileNetV3_large_x1_0.yaml \
         -o Global.checkpoints="./output/MobileNetV3_large_x1_0/epoch_5" \
         -o Global.device=gpu
 ```
@@ -290,7 +290,7 @@ The model evaluation process can be started as follows.
 export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch \
     tools/eval.py \
-        -c ./ppcls/configs/quick_start/MobileNetV3_large_x1_0.yaml \
+        -c ./ppcl/configs/quick_start/MobileNetV3_large_x1_0.yaml \
         -o Global.pretrained_model=./output/MobileNetV3_large_x1_0/best_model
 ```
 
@@ -322,7 +322,7 @@ By exporting the inference model，PaddlePaddle supports inference using predict
 
 ```shell
 python3 tools/export_model.py \
-    -c ./ppcls/configs/quick_start/MobileNetV3_large_x1_0.yaml \
+    -c ./ppcl/configs/quick_start/MobileNetV3_large_x1_0.yaml \
     -o Global.pretrained_model=output/MobileNetV3_large_x1_0/best_model
 ```
 

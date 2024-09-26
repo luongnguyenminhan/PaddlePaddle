@@ -54,7 +54,7 @@ CIFAR-10 数据集由 10 个类的 60000 个彩色图像组成，图像分辨率
 <a name="2.1"></a>
 ### 2.1 数据及其预处理
 
-数据的质量及数量往往可以决定一个模型的好坏。在图像分类领域，数据包括图像及标签。在大部分情形下，带有标签的数据比较匮乏，所以数量很难达到使模型饱和的程度，为了可以使模型学习更多的图像特征，图像数据在进入模型之前要经过很多图像变换或者数据增强，来保证输入图像数据的多样性，从而保证模型有更好的泛化能力。PaddleClas 提供了训练 ImageNet-1k 的标准图像变换，也提供了多种数据增强的方法，相关代码可以查看[数据处理](../../../../ppcls/data/preprocess)，配置文件可以参考[数据增强配置文件](../../../../ppcls/configs/ImageNet/DataAugment)，相关数据增强算法详见[增强介绍文档](../../algorithm_introduction/data_augmentation.md)。
+数据的质量及数量往往可以决定一个模型的好坏。在图像分类领域，数据包括图像及标签。在大部分情形下，带有标签的数据比较匮乏，所以数量很难达到使模型饱和的程度，为了可以使模型学习更多的图像特征，图像数据在进入模型之前要经过很多图像变换或者数据增强，来保证输入图像数据的多样性，从而保证模型有更好的泛化能力。PaddleClas 提供了训练 ImageNet-1k 的标准图像变换，也提供了多种数据增强的方法，相关代码可以查看[数据处理](../../../../ppcl/data/preprocess)，配置文件可以参考[数据增强配置文件](../../../../ppcl/configs/ImageNet/DataAugment)，相关数据增强算法详见[增强介绍文档](../../algorithm_introduction/data_augmentation.md)。
 
 <a name="2.2"></a>
 
@@ -191,7 +191,7 @@ python3 tools/train.py \
 
 ```bash
 python3 tools/eval.py \
-    -c ./ppcls/configs/quick_start/MobileNetV3_large_x1_0.yaml \
+    -c ./ppcl/configs/quick_start/MobileNetV3_large_x1_0.yaml \
     -o Global.pretrained_model=./output/MobileNetV3_large_x1_0/best_model
 ```
 
@@ -222,7 +222,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
     tools/train.py \
-        -c ./ppcls/configs/quick_start/MobileNetV3_large_x1_0.yaml
+        -c ./ppcl/configs/quick_start/MobileNetV3_large_x1_0.yaml
 ```
 
 输出日志信息的格式同上，详见 [3.1.1 模型训练](#3.1.1)。
@@ -237,7 +237,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
     tools/train.py \
-        -c ./ppcls/configs/quick_start/MobileNetV3_large_x1_0.yaml \
+        -c ./ppcl/configs/quick_start/MobileNetV3_large_x1_0.yaml \
         -o Arch.pretrained=True
 ```
 
@@ -274,7 +274,7 @@ python3 -m paddle.distributed.launch \
 export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch \
     tools/eval.py \
-        -c ./ppcls/configs/quick_start/MobileNetV3_large_x1_0.yaml \
+        -c ./ppcl/configs/quick_start/MobileNetV3_large_x1_0.yaml \
         -o Global.pretrained_model=./output/MobileNetV3_large_x1_0/best_model
 ```
 
@@ -306,7 +306,7 @@ python3 tools/infer.py \
 
 ```bash
 python3 tools/export_model.py \
-    -c ./ppcls/configs/quick_start/MobileNetV3_large_x1_0.yaml \
+    -c ./ppcl/configs/quick_start/MobileNetV3_large_x1_0.yaml \
     -o Global.pretrained_model=output/MobileNetV3_large_x1_0/best_model
 ```
 

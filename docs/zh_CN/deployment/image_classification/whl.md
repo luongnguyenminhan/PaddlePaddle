@@ -242,7 +242,7 @@ class_id<space>class_name<\n>
 * Python
 ```python
 from paddleclas import PaddleClas
-clas = PaddleClas(model_name='ResNet50', class_id_map_file='./ppcls/utils/imagenet1k_label_list.txt')
+clas = PaddleClas(model_name='ResNet50', class_id_map_file='./ppcl/utils/imagenet1k_label_list.txt')
 infer_imgs = 'docs/images/deployment/whl_demo.jpg'
 result=clas.predict(infer_imgs)
 print(next(result))
@@ -250,5 +250,5 @@ print(next(result))
 
 * CLI
 ```bash
-paddleclas --model_name='ResNet50' --infer_imgs='docs/images/deployment/whl_demo.jpg' --class_id_map_file='./ppcls/utils/imagenet1k_label_list.txt'
+paddleclas --model_name='ResNet50' --infer_imgs='docs/images/deployment/whl_demo.jpg' --class_id_map_file='./ppcl/utils/imagenet1k_label_list.txt'
 ```

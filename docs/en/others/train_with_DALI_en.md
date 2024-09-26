@@ -43,7 +43,7 @@ Paddleclas supports training with DALI. Since DALI only supports GPU training, `
 # set the GPUs that can be seen
 export CUDA_VISIBLE_DEVICES="0"
 
-python ppcls/train.py -c ppcls/configs/ImageNet/ResNet/ResNet50.yaml -o Global.use_dali=True
+python ppcl/train.py -c ppcl/configs/ImageNet/ResNet/ResNet50.yaml -o Global.use_dali=True
 ```
 
 And you can train with muti-GPUs:
@@ -57,8 +57,8 @@ export FLAGS_fraction_of_gpu_memory_to_use=0.80
 
 python -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
-    ppcls/train.py \
-        -c ./ppcls/configs/ImageNet/ResNet/ResNet50.yaml \
+    ppcl/train.py \
+        -c ./ppcl/configs/ImageNet/ResNet/ResNet50.yaml \
         -o Global.use_dali=True
 ```
 
@@ -74,6 +74,6 @@ export FLAGS_fraction_of_gpu_memory_to_use=0.8
 
 python -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
-    ppcls/train.py \
-    -c ./ppcls/configs/ImageNet/ResNet/ResNet50_fp16_dygraph.yaml
+    ppcl/train.py \
+    -c ./ppcl/configs/ImageNet/ResNet/ResNet50_fp16_dygraph.yaml
 ```

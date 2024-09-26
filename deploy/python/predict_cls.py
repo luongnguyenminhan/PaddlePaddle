@@ -16,11 +16,11 @@ import os
 import cv2
 import numpy as np
 
-from paddleclas.deploy.utils import logger, config
-from paddleclas.deploy.utils.predictor import Predictor
-from paddleclas.deploy.utils.get_image_list import get_image_list
-from paddleclas.deploy.python.preprocess import create_operators
-from paddleclas.deploy.python.postprocess import build_postprocess
+from deploy.utils import logger, config
+from deploy.utils.predictor import Predictor
+from deploy.utils.get_image_list import get_image_list
+from deploy.python.preprocess import create_operators
+from deploy.python.postprocess import build_postprocess
 
 
 class ClsPredictor(Predictor):

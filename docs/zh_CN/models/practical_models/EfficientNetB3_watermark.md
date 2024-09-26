@@ -98,7 +98,7 @@ Paddle Inference 是飞桨的原生推理库， 作用于服务器端和云端�
 
 ```bash
 python3 tools/export_model.py \
-    -c ./ppcls/configs/practical_models/EfficientNetB3_watermark.yaml \
+    -c ./ppcl/configs/practical_models/EfficientNetB3_watermark.yaml \
     -o Global.save_inference_dir=deploy/models/EfficientNetB3_watermark_infer
 ```
 执行完该脚本后会在 `deploy/models/` 下生成 `EfficientNetB3_watermark_infer` 文件夹，`models` 文件夹下应有如下文件结构：

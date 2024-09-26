@@ -21,13 +21,13 @@ The feature graph is the feature representation of the input image in the convol
 
 ## 2. Prepare Work
 
-The first step is to select the model to be studied, here we choose ResNet50. Copy the model networking code [resnet.py](../../../ppcls/arch/backbone/legendary_models/resnet.py) to [directory](../../../ppcls/utils/feature_maps_visualization/) and download the [ResNet50 pre-training model](https://paddle-imagenet-models-name.bj.bcebos.com/dygraph/ResNet50_pretrained.pdparams) or follow the command below.
+The first step is to select the model to be studied, here we choose ResNet50. Copy the model networking code [resnet.py](../../../ppcl/arch/backbone/legendary_models/resnet.py) to [directory](../../../ppcl/utils/feature_maps_visualization/) and download the [ResNet50 pre-training model](https://paddle-imagenet-models-name.bj.bcebos.com/dygraph/ResNet50_pretrained.pdparams) or follow the command below.
 
 ```bash
 wget https://paddle-imagenet-models-name.bj.bcebos.com/dygraph/ResNet50_pretrained.pdparams
 ```
 
-For other pre-training models and codes of network structure, please download [model library](../../../ppcls/arch/backbone/) and [pre-training models](../algorithm_introduction/ImageNet_models_en.md).
+For other pre-training models and codes of network structure, please download [model library](../../../ppcl/arch/backbone/) and [pre-training models](../algorithm_introduction/ImageNet_models_en.md).
 
 <a name='3'></a>
 
@@ -53,7 +53,7 @@ Specify the feature graph to be visualized in the forward function of ResNet50
         return x, fm
 ```
 
-Then modify the code [fm_vis.py](../../../ppcls/utils/feature_maps_visualization/fm_vis.py) to import `ResNet50`，instantiating the  `net` object:
+Then modify the code [fm_vis.py](../../../ppcl/utils/feature_maps_visualization/fm_vis.py) to import `ResNet50`，instantiating the  `net` object:
 
 ```
 from resnet import ResNet50

@@ -138,7 +138,7 @@ When using Paddle Inference for model inference, the loaded model type is the in
 - To export the weights of the feature extraction model, you can refer to the following commands:
   ```shell
   python3.7 tools/export_model.py \
-  -c ./ppcls/configs/GeneralRecognitionV2/GeneralRecognitionV2_PPLCNetV2_base.yaml \
+  -c ./ppcl/configs/GeneralRecognitionV2/GeneralRecognitionV2_PPLCNetV2_base.yaml \
   -o Global.pretrained_model="https://paddle-imagenet-models-name.bj.bcebos.com/dygraph/rec/models/pretrain/PPShiTuV2/general_PPLCNetV2_base_pretrained_v1.0.pdparams" \
   -o Global.save_inference_dir=deploy/models/GeneralRecognitionV2_PPLCNetV2_base`
   ```

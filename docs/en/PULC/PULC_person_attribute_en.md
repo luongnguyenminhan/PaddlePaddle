@@ -131,7 +131,7 @@ print(next(result))
 [{'attributes': ['Male', 'Age18-60', 'Back', 'Glasses: False', 'Hat: False', 'HoldObjectsInFront: False', 'Backpack', 'Upper: LongSleeve UpperPlaid', 'Lower:  Trousers', 'No boots'], 'output': [0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1], 'filename': 'pulc_demo_imgs/person_attribute/090004.jpg'}]
 ```
 
-**Note**: The `output` value index 0 means whether to wear a hat, index value 1 means whether to wear glasses, index value 2-7 means top style, index value means bottom style, index value 14 means whether to wear boots, index value 15-17 means the type of bag on the back, index value 18 means whether the front is holding something, index value 19-21 means age, index value 22 means gender, and index value 23-25 means direction. For details, see [code](../../../ppcls/data/postprocess/attr_rec.py#L84). Specifically, person attribute include the following types:
+**Note**: The `output` value index 0 means whether to wear a hat, index value 1 means whether to wear glasses, index value 2-7 means top style, index value means bottom style, index value 14 means whether to wear boots, index value 15-17 means the type of bag on the back, index value 18 means whether the front is holding something, index value 19-21 means age, index value 22 means gender, and index value 23-25 means direction. For details, see [code](../../../ppcl/data/postprocess/attr_rec.py#L84). Specifically, person attribute include the following types:
 
 ```
 - Gender: Male Female
@@ -233,7 +233,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
     tools/train.py \
-        -c ./ppcls/configs/PULC/person_attribute/PPLCNet_x1_0.yaml
+        -c ./ppcl/configs/PULC/person_attribute/PPLCNet_x1_0.yaml
 ```
 
 The best metric for the validation set is around `77.71%` (the dataset is small and generally fluctuates around 0.3%).
@@ -247,7 +247,7 @@ After training, you can use the following commands to evaluate the model.
 
 ```bash
 python3 tools/eval.py \
-    -c ./ppcls/configs/PULC/person_attribute/PPLCNet_x1_0.yaml \
+    -c ./ppcl/configs/PULC/person_attribute/PPLCNet_x1_0.yaml \
     -o Global.pretrained_model="output/PPLCNet_x1_0/best_model"
 ```
 
@@ -300,7 +300,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
     tools/train.py \
-        -c ./ppcls/configs/PULC/person_attribute/PPLCNet_x1_0.yaml \
+        -c ./ppcl/configs/PULC/person_attribute/PPLCNet_x1_0.yaml \
         -o Arch.name=ResNet101_vd
 ```
 
@@ -317,7 +317,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
     tools/train.py \
-        -c ./ppcls/configs/PULC/person_attribute/PPLCNet_x1_0_Distillation.yaml \
+        -c ./ppcl/configs/PULC/person_attribute/PPLCNet_x1_0_Distillation.yaml \
         -o Arch.models.0.Teacher.pretrained=output/ResNet101_vd/best_model
 ```
 
@@ -351,7 +351,7 @@ The command about exporting Paddle Inference Model is as follow:
 
 ```bash
 python3 tools/export_model.py \
-    -c ./ppcls/configs/PULC/person_attribute/PPLCNet_x1_0.yaml \
+    -c ./ppcl/configs/PULC/person_attribute/PPLCNet_x1_0.yaml \
     -o Global.pretrained_model=output/DistillationModel/best_model_student \
     -o Global.save_inference_dir=deploy/models/PPLCNet_x1_0_person_attribute_infer
 ```

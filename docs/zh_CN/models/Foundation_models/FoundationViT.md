@@ -16,14 +16,15 @@
 以模型 `CLIP_vit_base_patch16_224`为例，使用该模型以及对应的预训练权重进行特征提取的代码如下：
 
 ```python
-from ppcls.utils import config
-from ppcls.arch import build_model
+from ppcl.utils import config
+from ppcl.arch import build_model
 import paddle
-pretrained = './paddle_weights/CLIP_vit_base_patch16_224.pdparams' # path to pretrained weight
+
+pretrained = './paddle_weights/CLIP_vit_base_patch16_224.pdparams'  # path to pretrained weight
 cfg = {"Arch": {"name": "CLIP_vit_base_patch16_224"}}
 model = build_model(cfg, mode="train")
 model.set_state_dict(paddle.load(pretrained))
-inputs = paddle.randn((1,3,224,224))  # create input
+inputs = paddle.randn((1, 3, 224, 224))  # create input
 output = model(inputs)  # the output of model embeding
 ```
 

@@ -27,8 +27,8 @@ sys.path.append(os.path.abspath(os.path.join(__dir__, '../')))
 import paddle
 import paddle.nn as nn
 
-from ppcls.utils import config
-from ppcls.engine.engine import Engine
+from ppcl.utils import config
+from ppcl.engine.engine import Engine
 
 if __name__ == "__main__":
     args = config.parse_args()

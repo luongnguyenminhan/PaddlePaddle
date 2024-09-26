@@ -38,7 +38,7 @@ wget -P ./cls_pretrain/ https://paddle-imagenet-models-name.bj.bcebos.com/dygrap
 
 ```shell
 python tools/export_model.py \
-    -c ./ppcls/configs/ImageNet/ResNet/ResNet50_vd.yaml \
+    -c ./ppcl/configs/ImageNet/ResNet/ResNet50_vd.yaml \
     -o Global.pretrained_model=./cls_pretrain/ResNet50_vd_pretrained \
     -o Global.save_inference_dir=./deploy/models/class_ResNet50_vd_ImageNet_infer
 ```
@@ -67,7 +67,7 @@ wget -P ./product_pretrain/ https://paddle-imagenet-models-name.bj.bcebos.com/dy
 
 ```shell
 python3 tools/export_model.py \
-    -c ./ppcls/configs/Products/ResNet50_vd_Aliproduct.yaml \
+    -c ./ppcl/configs/Products/ResNet50_vd_Aliproduct.yaml \
     -o Global.pretrained_model=./product_pretrain/product_ResNet50_vd_Aliproduct_v1.0_pretrained \
     -o Global.save_inference_dir=./deploy/models/product_ResNet50_vd_aliproduct_v1.0_infer
 ```

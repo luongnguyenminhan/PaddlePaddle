@@ -154,8 +154,8 @@ Performance on ImageNet1k is shown below.
 
 | Strategy | Backbone | Config | Top-1 acc | Download Link |
 | --- | --- | --- | --- | --- |
-| baseline | PPLCNet_x2_5 | [PPLCNet_x2_5.yaml](../../../ppcls/configs/ImageNet/PPLCNet/PPLCNet_x2_5.yaml) | 74.93% | - |
-| DML | PPLCNet_x2_5 | [PPLCNet_x2_5_dml.yaml](../../../ppcls/configs/ImageNet/Distillation/PPLCNet_x2_5_dml.yaml) | 76.68%(**+1.75%**) | - |
+| baseline | PPLCNet_x2_5 | [PPLCNet_x2_5.yaml](../../../ppcl/configs/ImageNet/PPLCNet/PPLCNet_x2_5.yaml) | 74.93% | - |
+| DML | PPLCNet_x2_5 | [PPLCNet_x2_5_dml.yaml](../../../ppcl/configs/ImageNet/Distillation/PPLCNet_x2_5_dml.yaml) | 76.68%(**+1.75%**) | - |
 
 
 * Note: Complete PPLCNet_x2_5 The model have been trained for 360 epochs. For comparison, both baseline and DML have been trained for 100 epochs. Therefore, the accuracy is lower than the model (76.60%) opened on the official website.
@@ -212,8 +212,8 @@ Performance on ImageNet1k is shown below.
 
 | Strategy | Backbone | Config | Top-1 acc | Download Link |
 | --- | --- | --- | --- | --- |
-| baseline | PPLCNet_x2_5 | [PPLCNet_x2_5.yaml](../../../ppcls/configs/ImageNet/PPLCNet/PPLCNet_x2_5.yaml) | 74.93% | - |
-| UDML | PPLCNet_x2_5 | [PPLCNet_x2_5_dml.yaml](../../../ppcls/configs/ImageNet/Distillation/PPLCNet_x2_5_udml.yaml) | 76.74%(**+1.81%**) | - |
+| baseline | PPLCNet_x2_5 | [PPLCNet_x2_5.yaml](../../../ppcl/configs/ImageNet/PPLCNet/PPLCNet_x2_5.yaml) | 74.93% | - |
+| UDML | PPLCNet_x2_5 | [PPLCNet_x2_5_dml.yaml](../../../ppcl/configs/ImageNet/Distillation/PPLCNet_x2_5_udml.yaml) | 76.74%(**+1.81%**) | - |
 
 
 ##### 1.2.3.2 Configuration of UDML
@@ -291,8 +291,8 @@ Performance on ImageNet1k is shown below.
 
 | Strategy | Backbone | Config | Top-1 acc | Download Link |
 | --- | --- | --- | --- | --- |
-| baseline | ResNet18 | [ResNet18.yaml](../../../ppcls/configs/ImageNet/ResNet/ResNet18.yaml) | 70.8% | - |
-| AFD | ResNet18 | [resnet34_distill_resnet18_afd.yaml](../../../ppcls/configs/ImageNet/Distillation/resnet34_distill_resnet18_afd.yaml) | 71.68%(**+0.88%**) | - |
+| baseline | ResNet18 | [ResNet18.yaml](../../../ppcl/configs/ImageNet/ResNet/ResNet18.yaml) | 70.8% | - |
+| AFD | ResNet18 | [resnet34_distill_resnet18_afd.yaml](../../../ppcl/configs/ImageNet/Distillation/resnet34_distill_resnet18_afd.yaml) | 71.68%(**+0.88%**) | - |
 
 Note: In order to keep alignment with the training configuration in the paper, the number of training iterations is set to be 100 epochs, so the baseline accuracy is lower than the open source model accuracy in PaddleClas (71.0%).
 
@@ -405,8 +405,8 @@ Performance on ImageNet1k is shown below.
 
 | Strategy | Backbone | Config | Top-1 acc | Download Link |
 | --- | --- | --- | --- | --- |
-| baseline | ResNet18 | [ResNet18.yaml](../../../ppcls/configs/ImageNet/ResNet/ResNet18.yaml) | 70.8% | - |
-| DKD | ResNet18 | [resnet34_distill_resnet18_dkd.yaml](../../../ppcls/configs/ImageNet/Distillation/resnet34_distill_resnet18_dkd.yaml) | 72.59%(**+1.79%**) | - |
+| baseline | ResNet18 | [ResNet18.yaml](../../../ppcl/configs/ImageNet/ResNet/ResNet18.yaml) | 70.8% | - |
+| DKD | ResNet18 | [resnet34_distill_resnet18_dkd.yaml](../../../ppcl/configs/ImageNet/Distillation/resnet34_distill_resnet18_dkd.yaml) | 72.59%(**+1.79%**) | - |
 
 
 ##### 1.2.5.2 Configuration of DKD
@@ -473,8 +473,8 @@ Performance on ImageNet1k is shown below.
 
 | Strategy | Backbone | Config | Top-1 acc | Download Link |
 | --- | --- | --- | --- | --- |
-| baseline | ResNet18 | [ResNet18.yaml](../../../ppcls/configs/ImageNet/ResNet/ResNet18.yaml) | 70.8% | - |
-| DIST | ResNet18 | [resnet34_distill_resnet18_dist.yaml](../../../ppcls/configs/ImageNet/Distillation/resnet34_distill_resnet18_dist.yaml) | 71.99%(**+1.19%**) | - |
+| baseline | ResNet18 | [ResNet18.yaml](../../../ppcl/configs/ImageNet/ResNet/ResNet18.yaml) | 70.8% | - |
+| DIST | ResNet18 | [resnet34_distill_resnet18_dist.yaml](../../../ppcl/configs/ImageNet/Distillation/resnet34_distill_resnet18_dist.yaml) | 71.99%(**+1.19%**) | - |
 
 
 ##### 1.2.6.2 Configuration of DIST
@@ -539,8 +539,8 @@ Performance on ImageNet1k is shown below.
 
 | Strategy | Backbone | Config | Top-1 acc | Download Link |
 | --- | --- | --- | --- | --- |
-| baseline | ResNet18 | [ResNet18.yaml](../../../ppcls/configs/ImageNet/ResNet/ResNet18.yaml) | 70.8% | - |
-| MGD | ResNet18 | [resnet34_distill_resnet18_mgd.yaml](../../../ppcls/configs/ImageNet/Distillation/resnet34_distill_resnet18_mgd.yaml) | 71.86%(**+1.06%**) | - |
+| baseline | ResNet18 | [ResNet18.yaml](../../../ppcl/configs/ImageNet/ResNet/ResNet18.yaml) | 70.8% | - |
+| MGD | ResNet18 | [resnet34_distill_resnet18_mgd.yaml](../../../ppcl/configs/ImageNet/Distillation/resnet34_distill_resnet18_mgd.yaml) | 71.86%(**+1.06%**) | - |
 
 
 ##### 1.2.7.2 Configuration of MGD
@@ -611,8 +611,8 @@ Performance on ImageNet1k is shown below.
 
 | Strategy | Backbone | Config | Top-1 acc | Download Link |
 | --- | --- | --- | --- | --- |
-| baseline | ResNet18 | [ResNet18.yaml](../../../ppcls/configs/ImageNet/ResNet/ResNet18.yaml) | 70.8% | - |
-| WSL | ResNet18 | [resnet34_distill_resnet18_wsl.yaml](../../../ppcls/configs/ImageNet/Distillation/resnet34_distill_resnet18_wsl.yaml) | 72.23%(**+1.43%**) | - |
+| baseline | ResNet18 | [ResNet18.yaml](../../../ppcl/configs/ImageNet/ResNet/ResNet18.yaml) | 70.8% | - |
+| WSL | ResNet18 | [resnet34_distill_resnet18_wsl.yaml](../../../ppcl/configs/ImageNet/Distillation/resnet34_distill_resnet18_wsl.yaml) | 72.23%(**+1.43%**) | - |
 
 
 ##### 1.2.8.2 Configuration of WSL
@@ -678,8 +678,8 @@ Performance on ImageNet1k is shown below.
 
 | Strategy | Backbone | Config | Top-1 acc | Download Link |
 | --- | --- | --- | --- | --- |
-| baseline | ResNet18 | [ResNet18.yaml](../../../ppcls/configs/ImageNet/ResNet/ResNet18.yaml) | 70.8% | - |
-| SKD | ResNet18 | [resnet34_distill_resnet18_skd.yaml](../../../ppcls/configs/ImageNet/Distillation/resnet34_distill_resnet18_skd.yaml) | 72.84%(**+2.04%**) | - |
+| baseline | ResNet18 | [ResNet18.yaml](../../../ppcl/configs/ImageNet/ResNet/ResNet18.yaml) | 70.8% | - |
+| SKD | ResNet18 | [resnet34_distill_resnet18_skd.yaml](../../../ppcl/configs/ImageNet/Distillation/resnet34_distill_resnet18_skd.yaml) | 72.84%(**+2.04%**) | - |
 
 
 ##### 1.2.9.2 Configuration of SKD
@@ -744,8 +744,8 @@ Performance on ImageNet1k is shown below.
 
 | Strategy | Backbone | Config | Top-1 acc | Download Link |
 | --- | --- | --- | --- | --- |
-| baseline | ResNet18 | [ResNet18.yaml](../../../ppcls/configs/ImageNet/ResNet/ResNet18.yaml) | 70.8% | - |
-| PEFD | ResNet18 | [resnet34_distill_resnet18_pefd.yaml](../../../ppcls/configs/ImageNet/Distillation/resnet34_distill_resnet18_pefd.yaml) | 72.23%(**+1.43%**) | - |
+| baseline | ResNet18 | [ResNet18.yaml](../../../ppcl/configs/ImageNet/ResNet/ResNet18.yaml) | 70.8% | - |
+| PEFD | ResNet18 | [resnet34_distill_resnet18_pefd.yaml](../../../ppcl/configs/ImageNet/Distillation/resnet34_distill_resnet18_pefd.yaml) | 72.23%(**+1.43%**) | - |
 
 
 ##### 1.2.10.2 Configuration of PEFD
@@ -855,7 +855,7 @@ cat train_list.txt train_list_unlabel.txt > train_list_all.txt
 ### 2.3 Model Training
 
 
-In this section, the process of model training, evaluation and prediction of knowledge distillation algorithm will be introduced using the SSLD knowledge distillation algorithm as an example. The configuration file is [PPLCNet_x2_5_ssld.yaml](../../../ppcls/configs/ImageNet/Distillation/PPLCNet_x2_5_ssld.yaml). You can use the following command to complete the model training.
+In this section, the process of model training, evaluation and prediction of knowledge distillation algorithm will be introduced using the SSLD knowledge distillation algorithm as an example. The configuration file is [PPLCNet_x2_5_ssld.yaml](../../../ppcl/configs/ImageNet/Distillation/PPLCNet_x2_5_ssld.yaml). You can use the following command to complete the model training.
 
 
 ```shell
@@ -863,7 +863,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
     tools/train.py \
-        -c ppcls/configs/ImageNet/Distillation/PPLCNet_x2_5_ssld.yaml
+        -c ppcl/configs/ImageNet/Distillation/PPLCNet_x2_5_ssld.yaml
 ```
 
 <a name="2.4"></a>
@@ -874,7 +874,7 @@ After training the model, the following command can be used to evaluate the perf
 
 ```bash
 python3 tools/eval.py \
-    -c ppcls/configs/ImageNet/Distillation/PPLCNet_x2_5_ssld.yaml \
+    -c ppcl/configs/ImageNet/Distillation/PPLCNet_x2_5_ssld.yaml \
     -o Global.pretrained_model=output/DistillationModel/best_model
 ```
 
@@ -917,7 +917,7 @@ The model needs to be exported before inference. For models obtained from knowle
 
 ```shell
 python3 tools/export_model.py \
-    -c ppcls/configs/ImageNet/Distillation/PPLCNet_x2_5_ssld.yaml \
+    -c ppcl/configs/ImageNet/Distillation/PPLCNet_x2_5_ssld.yaml \
     -o Global.pretrained_model=./output/DistillationModel/best_model \
     -o Arch.infer_model_name=Student
 ```

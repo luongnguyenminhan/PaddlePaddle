@@ -270,7 +270,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
     tools/train.py \
-        -c ppcls/configs/ImageNet/PPLCNet/PPLCNet_x1_0.yaml
+        -c ppcl/configs/ImageNet/PPLCNet/PPLCNet_x1_0.yaml
 ```
 
 
@@ -292,7 +292,7 @@ After training, you can use the following commands to evaluate the model.
 
 ```bash
 python3 tools/eval.py \
-    -c ppcls/configs/ImageNet/PPLCNet/PPLCNet_x1_0.yaml \
+    -c ppcl/configs/ImageNet/PPLCNet/PPLCNet_x1_0.yaml \
     -o Global.pretrained_model=output/PPLCNet_x1_0/best_model
 ```
 Among the above command, the argument `-o Global.pretrained_model="output/PPLCNet_x1_0/best_model"` specify the path of the best model weight file. You can specify other path if needed.
@@ -347,7 +347,7 @@ The command about exporting Paddle Inference Model is as follow:
 
 ```bash
 python3 tools/export_model.py \
-    -c ppcls/configs/ImageNet/PPLCNet/PPLCNet_x1_0.yaml \
+    -c ppcl/configs/ImageNet/PPLCNet/PPLCNet_x1_0.yaml \
     -o Global.pretrained_model=output/PPLCNet_x1_0/best_model \
     -o Global.save_inference_dir=deploy/models/PPLCNet_x1_0_infer
 ```

@@ -67,7 +67,7 @@ The training command is as follow:
 If using GPU, change the `cpu` to `gpu` in the following command.
 
 ```bash
-python3.7 tools/train.py -c ppcls/configs/slim/ResNet50_vd_quantization.yaml -o Global.device=cpu
+python3.7 tools/train.py -c ppcl/configs/slim/ResNet50_vd_quantization.yaml -o Global.device=cpu
 ```
 
 The description of `yaml` file can be found  in this [doc](../../docs/en/tutorials/config_en.md). To get better accuracy, the `pretrained model`is used in `yaml`.
@@ -81,7 +81,7 @@ python3.7 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
       tools/train.py \
       -m train \
-      -c ppcls/configs/slim/ResNet50_vd_quantization.yaml
+      -c ppcl/configs/slim/ResNet50_vd_quantization.yaml
 ```
 
 ##### 3.1.2 Offline quantization
@@ -107,7 +107,7 @@ If run successfully, the directory `quant_post_static_model` is generated in `Gl
 If using GPU, change the `cpu` to `gpu` in the following command.
 
 ```bash
-python3.7 tools/train.py -c ppcls/configs/slim/ResNet50_vd_prune.yaml -o Global.device=cpu
+python3.7 tools/train.py -c ppcl/configs/slim/ResNet50_vd_prune.yaml -o Global.device=cpu
 ```
 
 - Distributed training
@@ -117,7 +117,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3.7 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
       tools/train.py \
-      -c ppcls/configs/slim/ResNet50_vd_prune.yaml
+      -c ppcl/configs/slim/ResNet50_vd_prune.yaml
 ```
 
 
@@ -128,7 +128,7 @@ After getting the compressed model, we can export it as inference model for pred
 
 ```bash
 python3.7 tools/export_model.py \
-    -c ppcls/configs/slim/ResNet50_vd_prune.yaml \
+    -c ppcl/configs/slim/ResNet50_vd_prune.yaml \
     -o Global.pretrained_model=./output/ResNet50_vd/best_model
     -o Global.save_inference_dir=./inference
 ```

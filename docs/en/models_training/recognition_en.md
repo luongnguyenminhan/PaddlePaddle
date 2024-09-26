@@ -149,13 +149,13 @@ Once you have prepared the configuration file, you can start training the image 
 ```shell
 # Single GPU
 python3 tools/train.py \
-    -c ./ppcls/configs/quick_start/MobileNetV1_retrieval.yaml \
+    -c ./ppcl/configs/quick_start/MobileNetV1_retrieval.yaml \
     -o Arch.Backbone.pretrained=True \
     -o Global.device=gpu
 # Multi GPU
 export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch tools/train.py \
-    -c ./ppcls/configs/quick_start/MobileNetV1_retrieval.yaml \
+    -c ./ppcl/configs/quick_start/MobileNetV1_retrieval.yaml \
     -o Arch.Backbone.pretrained=True \
     -o Global.device=gpu
 ```
@@ -178,7 +178,7 @@ Run the above commands to check the output log, an example is as follows:
 
 The Backbone here is MobileNetV1, if you want to use other backbone, you can rewrite the parameter `Arch.Backbone.name`, for example by adding `-o Arch.Backbone.name={other Backbone}` to the command. In addition, as the input dimension of the `Neck` section differs between models, replacing a Backbone may require rewriting the input size here in a similar way to replacing the Backbone's name.
 
-In the Training Loss section, [CELoss](../../../ppcls/loss/celoss.py) and [TripletLossV2](../../../ppcls/loss/triplet.py) are used here with the following configuration files:
+In the Training Loss section, [CELoss](../../../ppcl/loss/celoss.py) and [TripletLossV2](../../../ppcl/loss/triplet.py) are used here with the following configuration files:
 
 ```
 Loss:
@@ -190,7 +190,7 @@ Loss:
         margin: 0.5
 ```
 
-The final total Loss is a weighted sum of all Losses, where weight defines the weight of a particular Loss in the final total. If you want to replace other Losses, you can also change the Loss field in the configuration file, for the currently supported Losses please refer to [Loss](../../../ppcls/loss).
+The final total Loss is a weighted sum of all Losses, where weight defines the weight of a particular Loss in the final total. If you want to replace other Losses, you can also change the Loss field in the configuration file, for the currently supported Losses please refer to [Loss](../../../ppcl/loss).
 
 <a name="2.2.2"></a>  
 
@@ -201,13 +201,13 @@ If the training task is terminated for some reasons, it can be recovered by load
 ```shell
 # Single card
 python3 tools/train.py \
-    -c ./ppcls/configs/quick_start/MobileNetV1_retrieval.yaml \
+    -c ./ppcl/configs/quick_start/MobileNetV1_retrieval.yaml \
     -o Global.checkpoints="./output/RecModel/epoch_5" \
     -o Global.device=gpu
 # Multi card
 export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch tools/train.py \
-    -c ./ppcls/configs/quick_start/MobileNetV1_retrieval.yaml \
+    -c ./ppcl/configs/quick_start/MobileNetV1_retrieval.yaml \
     -o Global.checkpoints="./output/RecModel/epoch_5" \
     -o Global.device=gpu
 ```
@@ -241,12 +241,12 @@ Model evaluation can be carried out with the following commands.
 ```shell
 # Single card
 python3 tools/eval.py \
-    -c ./ppcls/configs/quick_start/MobileNetV1_retrieval.yaml \
+    -c ./ppcl/configs/quick_start/MobileNetV1_retrieval.yaml \
     -o Global.pretrained_model=./output/RecModel/best_model
 # Multi card
 export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch tools/eval.py \
-    -c ./ppcls/configs/quick_start/MobileNetV1_retrieval.yaml \
+    -c ./ppcl/configs/quick_start/MobileNetV1_retrieval.yaml \
     -o Global.pretrained_model=./output/RecModel/best_model
 ```
 
@@ -256,7 +256,7 @@ Some of the configurable evaluation parameters are introduced as follows.
 
 - `Arch.name`：the name of the model
 - `Global.pretrained_model`：path to the pre-trained model file of the model to be evaluated, unlike `Global.Backbone.pretrained`,  the pre-trained model is the weight of the whole model instead of the Backbone only. When it is time to do model evaluation, the weights of the whole model need to be loaded.
-- `Metric.Eval`：the metric to be evaluated, by default evaluates recall@1, recall@5, mAP. when you are not going to evaluate a metric, you can remove the corresponding trial marker from the configuration file; when you want to add a certain evaluation metric, you can also refer to [Metric](../../../ppcls/metric/metrics.py) section to add the relevant metric to the configuration file `Metric.Eval`.
+- `Metric.Eval`：the metric to be evaluated, by default evaluates recall@1, recall@5, mAP. when you are not going to evaluate a metric, you can remove the corresponding trial marker from the configuration file; when you want to add a certain evaluation metric, you can also refer to [Metric](../../../ppcl/metric/metrics.py) section to add the relevant metric to the configuration file `Metric.Eval`.
 
 **Note：**
 
@@ -271,7 +271,7 @@ By exporting the inference model, PaddlePaddle supports the transformation of th
 
 ```shell
 python3 tools/export_model.py \
-    -c ./ppcls/configs/quick_start/MobileNetV1_retrieval.yaml \
+    -c ./ppcl/configs/quick_start/MobileNetV1_retrieval.yaml \
     -o Global.pretrained_model=output/RecModel/best_model \
     -o Global.save_inference_dir=./inference
 ```

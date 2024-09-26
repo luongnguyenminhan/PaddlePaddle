@@ -29,14 +29,14 @@ PP-ShiTu特征提取模型二值特征模型，配置文件位于`ppcls/configs/
 ```shell
 # 单卡 GPU
 python3.7 tools/train.py \
--c ./ppcls/configs/GeneralRecognition/GeneralRecognition_PPLCNet_x2_5_binary.yaml \
+-c ./ppcl/configs/GeneralRecognition/GeneralRecognition_PPLCNet_x2_5_binary.yaml \
 -o Arch.Backbone.pretrained=True \
 -o Global.device=gpu
 
 # 多卡 GPU
 export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3.7 -m paddle.distributed.launch tools/train.py \
--c ppcls/configs/GeneralRecognition/GeneralRecognition_PPLCNet_x2_5_binary.yaml \
+-c ppcl/configs/GeneralRecognition/GeneralRecognition_PPLCNet_x2_5_binary.yaml \
 -o Arch.Backbone.pretrained=True \
 -o Global.device=gpu
 ```

@@ -210,7 +210,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
     tools/train.py \
-    -c ./ppcls/configs/PULC/safety_helmet/PPLCNet_x1_0.yaml
+    -c ./ppcl/configs/PULC/safety_helmet/PPLCNet_x1_0.yaml
 ```
 
 The best metric of validation data is between `0.985` and `0.993`. There would be fluctuations because the data size is small.
@@ -229,7 +229,7 @@ After training, you can use the following commands to evaluate the model.
 
 ```bash
 python3 tools/eval.py \
-    -c ./ppcls/configs/PULC/safety_helmet/PPLCNet_x1_0.yaml \
+    -c ./ppcl/configs/PULC/safety_helmet/PPLCNet_x1_0.yaml \
     -o Global.pretrained_model=output/PPLCNet_x1_0/best_model
 ```
 
@@ -280,7 +280,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
     tools/train.py \
-    -c ./ppcls/configs/PULC/safety_helmet/PPLCNet_x1_0_distillation.yaml
+    -c ./ppcl/configs/PULC/safety_helmet/PPLCNet_x1_0_distillation.yaml
 ```
 
 The best metric is between `0.990` and `0.993`. The best student model weight would be saved in file `output/DistillationModel/best_model_student.pdparams`.
@@ -313,7 +313,7 @@ The command about exporting Paddle Inference Model is as follow:
 
 ```bash
 python3 tools/export_model.py \
-    -c ./ppcls/configs/PULC/safety_helmet/PPLCNet_x1_0.yaml \
+    -c ./ppcl/configs/PULC/safety_helmet/PPLCNet_x1_0.yaml \
     -o Global.pretrained_model=output/DistillationModel/best_model_student \
     -o Global.save_inference_dir=deploy/models/PPLCNet_x1_0_safety_helmet_infer
 ```

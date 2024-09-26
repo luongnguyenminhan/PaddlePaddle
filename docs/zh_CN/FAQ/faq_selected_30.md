@@ -233,7 +233,7 @@ Loss:
 * A: 如果希望使用 TensorRT 进行模型预测推理的话，需要安装或是自己编译带 TensorRT 的 PaddlePaddle，Linux、Windows、macOS 系统的用户下载安装可以参考参考[下载预测库](https://paddleinference.paddlepaddle.org.cn/user_guides/download_lib.html)，如果没有符合您所需要的版本，则需要本地编译安装，编译方法可以参考[源码编译](https://paddleinference.paddlepaddle.org.cn/user_guides/source_compile.html)。
 >>
 * Q: 怎样在训练的时候使用自动混合精度(Automatic Mixed Precision, AMP)训练呢？
-* A: 可以参考 [ResNet50_amp_O1.yaml](../../../ppcls/configs/ImageNet/ResNet/ResNet50_amp_O1.yaml) 这个配置文件；具体地，如果希望自己的配置文件在模型训练的时候也支持自动混合精度，可以在配置文件中添加下面的配置信息。
+* A: 可以参考 [ResNet50_amp_O1.yaml](../../../ppcl/configs/ImageNet/ResNet/ResNet50_amp_O1.yaml) 这个配置文件；具体地，如果希望自己的配置文件在模型训练的时候也支持自动混合精度，可以在配置文件中添加下面的配置信息。
 
 ```yaml
 # mixed precision training

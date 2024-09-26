@@ -221,7 +221,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
     tools/train.py \
-        -c ppcls/configs/ImageNet/PPHGNet/PPHGNet_small.yaml
+        -c ppcl/configs/ImageNet/PPHGNet/PPHGNet_small.yaml
 ```
 
 
@@ -244,7 +244,7 @@ python3 -m paddle.distributed.launch \
 
 ```bash
 python3 tools/eval.py \
-    -c ppcls/configs/ImageNet/PPHGNet/PPHGNet_small.yaml \
+    -c ppcl/configs/ImageNet/PPHGNet/PPHGNet_small.yaml \
     -o Global.pretrained_model=output/PPHGNet_small/best_model
 ```
 
@@ -301,7 +301,7 @@ Paddle Inference 是飞桨的原生推理库， 作用于服务器端和云端�
 
 ```bash
 python3 tools/export_model.py \
-    -c ppcls/configs/ImageNet/PPHGNet/PPHGNet_small.yaml \
+    -c ppcl/configs/ImageNet/PPHGNet/PPHGNet_small.yaml \
     -o Global.pretrained_model=output/PPHGNet_small/best_model \
     -o Global.save_inference_dir=deploy/models/PPHGNet_small_infer
 ```

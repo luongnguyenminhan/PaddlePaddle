@@ -104,7 +104,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
     tools/train.py \
-        -c ./ppcls/configs/practical_models/PPHGNet_tiny_calling_halfbody.yaml \
+        -c ./ppcl/configs/practical_models/PPHGNet_tiny_calling_halfbody.yaml \
         -o Arch.pretrained=True
 ```
 其中 `Arch.pretrained` 为 `True`表示使用预训练权重帮助训练。
@@ -116,7 +116,7 @@ python3 -m paddle.distributed.launch \
 
 ```bash
 python3 tools/eval.py \
-    -c ./ppcls/configs/practical_models/PPHGNet_tiny_calling_halfbody.yaml \
+    -c ./ppcl/configs/practical_models/PPHGNet_tiny_calling_halfbody.yaml \
     -o Global.pretrained_model=output/PPHGNet_tiny/best_model
 ```
 
@@ -129,7 +129,7 @@ python3 tools/eval.py \
 
 ```bash
 python3 tools/infer.py \
-    -c ./ppcls/configs/practical_models/PPHGNet_tiny_calling_halfbody.yaml \
+    -c ./ppcl/configs/practical_models/PPHGNet_tiny_calling_halfbody.yaml \
     -o Global.pretrained_model=output/PPHGNet_tiny/best_model
     -o Infer.infer_imgs={your test image}
 ```
@@ -144,7 +144,7 @@ Paddle Inference 是飞桨的原生推理库，作用于服务器端和云端，
 ### 3.1 模型导出
 ```bash
 python3 tools/export_model.py \
-    -c ./ppcls/configs/practical_models/PPHGNet_tiny_calling_halfbody.yaml \
+    -c ./ppcl/configs/practical_models/PPHGNet_tiny_calling_halfbody.yaml \
     -o Global.pretrained_model=output/PPHGNet_tiny/best_model \
     -o Global.save_inference_dir=deploy/models//PPHGNet_tiny_calling_halfbody/
 ```

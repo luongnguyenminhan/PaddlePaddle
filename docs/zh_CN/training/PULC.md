@@ -113,7 +113,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
     tools/train.py \
-        -c ./ppcls/configs/PULC/person_exists/PPLCNet_x1_0_search.yaml
+        -c ./ppcl/configs/PULC/person_exists/PPLCNet_x1_0_search.yaml
 ```
 
 为了方便性能对比，我们也提供了大模型 SwinTransformer_tiny 和轻量模型 MobileNetV3_small_x0_35 的配置文件，您可以使用命令训练：
@@ -125,7 +125,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
     tools/train.py \
-        -c ./ppcls/configs/PULC/person_exists/SwinTransformer_tiny_patch4_window7_224.yaml
+        -c ./ppcl/configs/PULC/person_exists/SwinTransformer_tiny_patch4_window7_224.yaml
 ```
 
 MobileNetV3_small_x0_35：
@@ -135,7 +135,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
     tools/train.py \
-        -c ./ppcls/configs/PULC/person_exists/MobileNetV3_small_x0_35.yaml
+        -c ./ppcl/configs/PULC/person_exists/MobileNetV3_small_x0_35.yaml
 ```
 
 训练得到的模型精度对比如下表。
@@ -212,10 +212,10 @@ SSLD 是百度自研的半监督蒸馏算法，在 ImageNet 数据集上，模�
 
 #### 4.1 基于默认配置搜索
 
-配置文件 [search.yaml](../../../ppcls/configs/PULC/person_exists/search.yaml) 定义了有人/无人场景超参搜索的配置，使用如下命令即可完成超参数的搜索。
+配置文件 [search.yaml](../../../ppcl/configs/PULC/person_exists/search.yaml) 定义了有人/无人场景超参搜索的配置，使用如下命令即可完成超参数的搜索。
 
 ```bash
-python3 tools/search_strategy.py -c ppcls/configs/PULC/person_exists/search.yaml
+python3 tools/search_strategy.py -c ppcl/configs/PULC/person_exists/search.yaml
 ```
 
 **备注**：关于搜索部分，我们也在不断优化，敬请期待。

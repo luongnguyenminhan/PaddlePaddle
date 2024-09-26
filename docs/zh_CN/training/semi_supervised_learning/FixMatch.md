@@ -41,11 +41,11 @@
 
 | **label** | **配置文件地址**                                                     | **模型下载链接**                                                                                                                     |
 | --------------- | -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| **40**    | [配置文件](../../../../ppcls/configs/ssl/FixMatch/FixMatch_cifar10_40.yaml)   | [模型地址](https://paddle-imagenet-models-name.bj.bcebos.com/dygraph/semi_superwised_learning/FixMatch_WideResNet_cifar10_label40.pdparams)   |
-| **250**   | [配置文件](../../../../ppcls/configs/ssl/FixMatch/FixMatch_cifar10_250.yaml)  | [模型地址](https://paddle-imagenet-models-name.bj.bcebos.com/dygraph/semi_superwised_learning/FixMatch_WideResNet_cifar10_label250.pdparams)  |
-| **4000**  | [配置文件](../../../../ppcls/configs/ssl/FixMatch/FixMatch_cifar10_4000.yaml) | [模型地址](https://paddle-imagenet-models-name.bj.bcebos.com/dygraph/semi_superwised_learning/FixMatch_WideResNet_cifar10_label4000.pdparams) |
+| **40**    | [配置文件](../../../../ppcl/configs/ssl/FixMatch/FixMatch_cifar10_40.yaml)   | [模型地址](https://paddle-imagenet-models-name.bj.bcebos.com/dygraph/semi_superwised_learning/FixMatch_WideResNet_cifar10_label40.pdparams)   |
+| **250**   | [配置文件](../../../../ppcl/configs/ssl/FixMatch/FixMatch_cifar10_250.yaml)  | [模型地址](https://paddle-imagenet-models-name.bj.bcebos.com/dygraph/semi_superwised_learning/FixMatch_WideResNet_cifar10_label250.pdparams)  |
+| **4000**  | [配置文件](../../../../ppcl/configs/ssl/FixMatch/FixMatch_cifar10_4000.yaml) | [模型地址](https://paddle-imagenet-models-name.bj.bcebos.com/dygraph/semi_superwised_learning/FixMatch_WideResNet_cifar10_label4000.pdparams) |
 
-上表中的配置是基于单GPU训练的，使用4GPU训练40 label可参考[配置文件](../../../../ppcls/configs/ssl/FixMatch/FixMatch_cifar10_40_4gpu.yaml)，使用这两个配置文件训练得到的模型精度接近。
+上表中的配置是基于单GPU训练的，使用4GPU训练40 label可参考[配置文件](../../../../ppcl/configs/ssl/FixMatch/FixMatch_cifar10_40_4gpu.yaml)，使用这两个配置文件训练得到的模型精度接近。
 
 **接下来主要以** `FixMatch/FixMatch_cifar10_40.yaml`配置和训练好的模型文件为例，展示在cifar10数据集上进行训练、测试、推理的过程。
 
@@ -60,7 +60,7 @@ ${cmd} -o DataLoader.Train.dataset.data_file=${data_file} -o DataLoader.UnLabelT
 **其中：**`${cmd}`为以下的命令，`${data_file}`是下载数据的路径。如4.1中单卡命令就改为：
 
 ```shell
-python tools/train.py -c ppcls/configs/ssl/FixMatch/FixMatch_cifar10_40.yaml -o DataLoader.Train.dataset.data_file=cifar-10-python.tar.gz -o DataLoader.UnLabelTrain.dataset.data_file=cifar-10-python.tar.gz -o DataLoader.Eval.dataset.data_file=cifar-10-python.tar.gz
+python tools/train.py -c ppcl/configs/ssl/FixMatch/FixMatch_cifar10_40.yaml -o DataLoader.Train.dataset.data_file=cifar-10-python.tar.gz -o DataLoader.UnLabelTrain.dataset.data_file=cifar-10-python.tar.gz -o DataLoader.Eval.dataset.data_file=cifar-10-python.tar.gz
 ```
 
 ## 4. 模型训练

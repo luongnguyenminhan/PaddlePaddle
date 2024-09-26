@@ -154,7 +154,7 @@ Paddle Inference 是飞桨的原生推理库， 作用于服务器端和云端�
 
 ```bash
 python3 tools/export_model.py \
-    -c ./ppcls/configs/PULC/image_orientation/PPLCNet_x1_0.yaml \
+    -c ./ppcl/configs/PULC/image_orientation/PPLCNet_x1_0.yaml \
     -o Global.pretrained_model=output/DistillationModel/best_model_student \
     -o Global.save_inference_dir=deploy/models/PPLCNet_x1_0_image_orientation_infer
 ```

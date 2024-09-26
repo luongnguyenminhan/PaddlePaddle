@@ -39,7 +39,7 @@ The above model weights is trained by ResNet50_vd model on ImageNet1k dataset an
 
 ```shell
 python tools/export_model.py
-    -c ./ppcls/configs/ImageNet/ResNet/ResNet50_vd.yaml \
+    -c ./ppcl/configs/ImageNet/ResNet/ResNet50_vd.yaml \
     -o Global.pretrained_model=./cls_pretrain/ResNet50_vd_pretrained \
     -o Global.save_inference_dir=./deploy/models/class_ResNet50_vd_ImageNet_infer
 ```
@@ -70,7 +70,7 @@ The above model weights file is trained by ResNet50_vd on AliProduct dataset, an
 
 ```shell
 python3 tools/export_model.py \
-    -c ./ppcls/configs/Products/ResNet50_vd_Aliproduct.yaml \
+    -c ./ppcl/configs/Products/ResNet50_vd_Aliproduct.yaml \
     -o Global.pretrained_model=./product_pretrain/product_ResNet50_vd_Aliproduct_v1.0_pretrained \
     -o Global.save_inference_dir=./deploy/models/product_ResNet50_vd_aliproduct_v1.0_infer
 ```

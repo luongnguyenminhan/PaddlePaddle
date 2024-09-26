@@ -29,7 +29,7 @@
 
 ```shell
 python tools/export_model.py \
-    -c ./ppcls/configs/ImageNet/MobileNetV1/MobileNetV1.yaml \
+    -c ./ppcl/configs/ImageNet/MobileNetV1/MobileNetV1.yaml \
     -o Arch.pretrained=./pretrained/MobileNetV1_pretrained/ \
     -o Global.save_inference_dir=./inference/MobileNetV1/
 ```

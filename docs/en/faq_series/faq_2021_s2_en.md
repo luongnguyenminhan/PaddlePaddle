@@ -196,8 +196,8 @@ PaddleClas saves/updates the following three types of models during training.
 
 **A**：
 
-- For `Mixup`, please refer to [Mixup](../../../ppcls/configs/ImageNet/DataAugment/ResNet50_ Mixup.yaml#L63-L65); and`Cuxmix`, please refer to [Cuxmix](../../../ppcls/configs/ImageNet/DataAugment/ResNet50_Cutmix.yaml#L63-L65).
-- The training accuracy (Acc) metric cannot be calculated when using `Mixup` or `Cutmix` for training, so you need to remove the `Metric.Train.TopkAcc` field in the configuration file, please refer to [Metric.Train.TopkAcc](../../../ppcls/configs/ImageNet/DataAugment/ResNet50_Cutmix.yaml#L125-L128).
+- For `Mixup`, please refer to [Mixup](../../../ppcls/configs/ImageNet/DataAugment/ResNet50_ Mixup.yaml#L63-L65); and`Cuxmix`, please refer to [Cuxmix](../../../ppcl/configs/ImageNet/DataAugment/ResNet50_Cutmix.yaml#L63-L65).
+- The training accuracy (Acc) metric cannot be calculated when using `Mixup` or `Cutmix` for training, so you need to remove the `Metric.Train.TopkAcc` field in the configuration file, please refer to [Metric.Train.TopkAcc](../../../ppcl/configs/ImageNet/DataAugment/ResNet50_Cutmix.yaml#L125-L128).
 
 #### Q2.1.9: What are the fields `Global.pretrain_model` and `Global.checkpoints` used for in the training configuration file yaml?
 

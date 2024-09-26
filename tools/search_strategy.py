@@ -9,7 +9,7 @@ sys.path.append(os.path.abspath(os.path.join(__dir__, '../')))
 import subprocess
 import numpy as np
 
-from ppcls.utils import config
+from ppcl.utils import config
 
 
 def get_result(log_dir):

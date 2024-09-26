@@ -117,7 +117,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
     tools/train.py \
-        -c ./ppcls/configs/PULC/person_exists/PPLCNet_x1_0_search.yaml
+        -c ./ppcl/configs/PULC/person_exists/PPLCNet_x1_0_search.yaml
 ```
 
 For performance comparison, we also provide configuration files for the large model SwinTransformer_tiny and the lightweight model MobileNetV3_small_x0_35, which you can train with the command:
@@ -129,7 +129,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
     tools/train.py \
-        -c ./ppcls/configs/PULC/person_exists/SwinTransformer_tiny_patch4_window7_224.yaml
+        -c ./ppcl/configs/PULC/person_exists/SwinTransformer_tiny_patch4_window7_224.yaml
 ```
 
 MobileNetV3_small_x0_35：
@@ -139,7 +139,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
     tools/train.py \
-        -c ./ppcls/configs/PULC/person_exists/MobileNetV3_small_x0_35.yaml
+        -c ./ppcl/configs/PULC/person_exists/MobileNetV3_small_x0_35.yaml
 ```
 
 
@@ -216,10 +216,10 @@ In the above training process, we adjusted parameters such as learning rate, dat
 
 #### 4.1 Search based on default configuration
 
-The configuration file [search.yaml](../../../ppcls/configs/PULC/person_exists/search.yaml) defines the configuration of hyperparameters searching in person exists or not scenarios. Use the following commands to complete hyperparameters searching.
+The configuration file [search.yaml](../../../ppcl/configs/PULC/person_exists/search.yaml) defines the configuration of hyperparameters searching in person exists or not scenarios. Use the following commands to complete hyperparameters searching.
 
 ```bash
-python3 tools/search_strategy.py -c ppcls/configs/PULC/person_exists/search.yaml
+python3 tools/search_strategy.py -c ppcl/configs/PULC/person_exists/search.yaml
 ```
 
 **Note**：Regarding the search part, we are also constantly improving, so stay tuned.

@@ -38,7 +38,7 @@ PaddleClas 支持使用 DALI 对图像预处理进行加速，由于 DALI 仅支
 # 设置用于训练的 GPU 卡号
 export CUDA_VISIBLE_DEVICES="0"
 
-python ppcls/train.py -c ppcls/configs/ImageNet/ResNet/ResNet50.yaml -o Global.use_dali=True
+python ppcl/train.py -c ppcl/configs/ImageNet/ResNet/ResNet50.yaml -o Global.use_dali=True
 ```
 
 也可以使用多卡训练：
@@ -52,8 +52,8 @@ export FLAGS_fraction_of_gpu_memory_to_use=0.80
 
 python -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
-    ppcls/train.py \
-        -c ./ppcls/configs/ImageNet/ResNet/ResNet50.yaml \
+    ppcl/train.py \
+        -c ./ppcl/configs/ImageNet/ResNet/ResNet50.yaml \
         -o Global.use_dali=True
 ```
 
@@ -68,8 +68,8 @@ export FLAGS_fraction_of_gpu_memory_to_use=0.8
 
 python -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
-    ppcls/train.py \
-    -c ./ppcls/configs/ImageNet/ResNet/ResNet50_fp16_dygraph.yaml
+    ppcl/train.py \
+    -c ./ppcl/configs/ImageNet/ResNet/ResNet50_fp16_dygraph.yaml
 ```
 
 ## 5. 新增 DALI 算子

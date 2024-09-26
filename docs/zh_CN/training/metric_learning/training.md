@@ -149,14 +149,14 @@
 ```shell
 # 单卡 GPU
 python3.7 tools/train.py \
--c ./ppcls/configs/quick_start/MobileNetV1_retrieval.yaml \
+-c ./ppcl/configs/quick_start/MobileNetV1_retrieval.yaml \
 -o Arch.Backbone.pretrained=True \
 -o Global.device=gpu
 
 # 多卡 GPU
 export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3.7 -m paddle.distributed.launch tools/train.py \
--c ./ppcls/configs/quick_start/MobileNetV1_retrieval.yaml \
+-c ./ppcl/configs/quick_start/MobileNetV1_retrieval.yaml \
 -o Arch.Backbone.pretrained=True \
 -o Global.device=gpu
 ```
@@ -177,7 +177,7 @@ python3.7 -m paddle.distributed.launch tools/train.py \
 
 此处配置文件的 Backbone 是 MobileNetV1，如果想使用其他 Backbone，可以重写参数 `Arch.Backbone.name`，比如命令中增加 `-o Arch.Backbone.name={其他 Backbone 的名字}`。此外，由于不同模型 `Neck` 部分的输入维度不同，更换 Backbone 后可能需要改写 `Neck` 的输入大小，改写方式类似替换 Backbone 的名字。
 
-在训练 Loss 部分，此处使用了 [CELoss](../../../../ppcls/loss/celoss.py) 和 [TripletLossV2](../../../../ppcls/loss/triplet.py)，配置文件如下：
+在训练 Loss 部分，此处使用了 [CELoss](../../../../ppcl/loss/celoss.py) 和 [TripletLossV2](../../../../ppcl/loss/triplet.py)，配置文件如下：
 
 ```yaml
 Loss:
@@ -189,7 +189,7 @@ Loss:
         margin: 0.5
 ```
 
-最终的总 Loss 是所有 Loss 的加权和，其中 weight 定义了特定 Loss 在最终总 Loss 的权重。如果想替换其他 Loss，也可以在配置文件中更改 Loss 字段，目前支持的 Loss 请参考 [Loss](../../../../ppcls/loss/__init__.py)。
+最终的总 Loss 是所有 Loss 的加权和，其中 weight 定义了特定 Loss 在最终总 Loss 的权重。如果想替换其他 Loss，也可以在配置文件中更改 Loss 字段，目前支持的 Loss 请参考 [Loss](../../../../ppcl/loss/__init__.py)。
 
 <a name="2.2.2"></a>
 
@@ -200,14 +200,14 @@ Loss:
 ```shell
 # 单卡恢复训练
 python33.7 tools/train.py \
--c ./ppcls/configs/quick_start/MobileNetV1_retrieval.yaml \
+-c ./ppcl/configs/quick_start/MobileNetV1_retrieval.yaml \
 -o Global.checkpoints="./output/RecModel/epoch_5" \
 -o Global.device=gpu
 
 # 多卡恢复训练
 export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3.7 -m paddle.distributed.launch tools/train.py \
--c ./ppcls/configs/quick_start/MobileNetV1_retrieval.yaml \
+-c ./ppcl/configs/quick_start/MobileNetV1_retrieval.yaml \
 -o Global.checkpoints="./output/RecModel/epoch_5" \
 -o Global.device=gpu
 ```
@@ -243,13 +243,13 @@ python3.7 -m paddle.distributed.launch tools/train.py \
 ```bash
 # 单卡评估
 python3.7 tools/eval.py \
--c ./ppcls/configs/quick_start/MobileNetV1_retrieval.yaml \
+-c ./ppcl/configs/quick_start/MobileNetV1_retrieval.yaml \
 -o Global.pretrained_model=./output/RecModel/best_model
 
 # 多卡评估
 export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3.7 -m paddle.distributed.launch tools/eval.py \
--c ./ppcls/configs/quick_start/MobileNetV1_retrieval.yaml \
+-c ./ppcl/configs/quick_start/MobileNetV1_retrieval.yaml \
 -o Global.pretrained_model=./output/RecModel/best_model
 ```
 
@@ -257,7 +257,7 @@ python3.7 -m paddle.distributed.launch tools/eval.py \
 
 可配置的部分评估参数说明如下：
 * `Global.pretrained_model`：待评估的模型的预训练模型文件路径，不同于 `Global.Backbone.pretrained`，此处的预训练模型是整个模型的权重，而 `Global.Backbone.pretrained` 只是 Backbone 部分的权重。当需要做模型评估时，需要加载整个模型的权重。
-* `Metric.Eval`：待评估的指标，默认评估 `recall@1`、`recall@5`、`mAP`。当你不准备评测某一项指标时，可以将对应的试标从配置文件中删除；当你想增加某一项评测指标时，也可以参考 [Metric](../../../../ppcls/metric/metrics.py) 部分在配置文件 `Metric.Eval` 中添加相关的指标。
+* `Metric.Eval`：待评估的指标，默认评估 `recall@1`、`recall@5`、`mAP`。当你不准备评测某一项指标时，可以将对应的试标从配置文件中删除；当你想增加某一项评测指标时，也可以参考 [Metric](../../../../ppcl/metric/metrics.py) 部分在配置文件 `Metric.Eval` 中添加相关的指标。
 
 **注意：**
 
@@ -273,7 +273,7 @@ python3.7 -m paddle.distributed.launch tools/eval.py \
 
 ```bash
 python3.7 tools/export_model.py \
--c ./ppcls/configs/quick_start/MobileNetV1_retrieval.yaml \
+-c ./ppcl/configs/quick_start/MobileNetV1_retrieval.yaml \
 -o Global.pretrained_model=output/RecModel/best_model \
 -o Global.save_inference_dir=./inference
 ```

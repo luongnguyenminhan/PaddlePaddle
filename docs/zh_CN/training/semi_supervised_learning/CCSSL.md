@@ -43,8 +43,8 @@ cifar数据集上，paddle版本的配置文件及训练好的模型如下表所
 
 |数据集|配置文件地址|模型下载链接|
 |:----:|:----:|:----:|
-|cifar10| [配置文件](../../../../ppcls/configs/ssl/CCSSL/FixMatchCCSSL_cifar10_4000_4gpu.yaml)|[模型地址](https://paddle-imagenet-models-name.bj.bcebos.com/dygraph/semi_superwised_learning/FixMatchCCSSL_WideResNet_cifar10_label4000.pdparams)|
-|cifar100|[配置文件](../../../../ppcls/configs/ssl/CCSSL/FixMatchCCSSL_cifar100_10000_4gpu.yaml)|[模型地址](https://paddle-imagenet-models-name.bj.bcebos.com/dygraph/semi_superwised_learning/FixMatchCCSSL_WideResNet_cifar100_label10000.pdparams)|
+|cifar10| [配置文件](../../../../ppcl/configs/ssl/CCSSL/FixMatchCCSSL_cifar10_4000_4gpu.yaml)|[模型地址](https://paddle-imagenet-models-name.bj.bcebos.com/dygraph/semi_superwised_learning/FixMatchCCSSL_WideResNet_cifar10_label4000.pdparams)|
+|cifar100|[配置文件](../../../../ppcl/configs/ssl/CCSSL/FixMatchCCSSL_cifar100_10000_4gpu.yaml)|[模型地址](https://paddle-imagenet-models-name.bj.bcebos.com/dygraph/semi_superwised_learning/FixMatchCCSSL_WideResNet_cifar100_label10000.pdparams)|
 |||
 
 上表中的配置是基于4卡GPU训练的。

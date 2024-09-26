@@ -215,7 +215,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
     tools/train.py \
-        -c ./ppcls/configs/PULC/car_exists/PPLCNet_x1_0.yaml
+        -c ./ppcl/configs/PULC/car_exists/PPLCNet_x1_0.yaml
 ```
 
 The best metric of validation data is between `0.95` and `0.96`. There would be fluctuations because the data size is small.
@@ -233,7 +233,7 @@ After training, you can use the following commands to evaluate the model.
 
 ```bash
 python3 tools/eval.py \
-    -c ./ppcls/configs/PULC/car_exists/PPLCNet_x1_0.yaml \
+    -c ./ppcl/configs/PULC/car_exists/PPLCNet_x1_0.yaml \
     -o Global.pretrained_model="output/PPLCNet_x1_0/best_model"
 ```
 
@@ -287,7 +287,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
     tools/train.py \
-        -c ./ppcls/configs/PULC/car_exists/PPLCNet_x1_0.yaml \
+        -c ./ppcl/configs/PULC/car_exists/PPLCNet_x1_0.yaml \
         -o Arch.name=ResNet101_vd
 ```
 
@@ -304,7 +304,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
     tools/train.py \
-        -c ./ppcls/configs/PULC/car_exists/PPLCNet_x1_0_distillation.yaml \
+        -c ./ppcl/configs/PULC/car_exists/PPLCNet_x1_0_distillation.yaml \
         -o Arch.models.0.Teacher.pretrained=output/ResNet101_vd/best_model
 ```
 
@@ -338,7 +338,7 @@ The command about exporting Paddle Inference Model is as follow:
 
 ```bash
 python3 tools/export_model.py \
-    -c ./ppcls/configs/PULC/car_exists/PPLCNet_x1_0.yaml \
+    -c ./ppcl/configs/PULC/car_exists/PPLCNet_x1_0.yaml \
     -o Global.pretrained_model=output/DistillationModel/best_model_student \
     -o Global.save_inference_dir=deploy/models/PPLCNet_x1_0_car_exists_infer
 ```

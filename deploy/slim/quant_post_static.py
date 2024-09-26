@@ -27,9 +27,9 @@ __dir__ = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.abspath(os.path.join(__dir__, '../../')))
 from paddleslim.dygraph.quant import QAT
 
-from ppcls.data import build_dataloader
-from ppcls.utils import config as conf
-from ppcls.utils.logger import init_logger
+from ppcl.data import build_dataloader
+from ppcl.utils import config as conf
+from ppcl.utils.logger import init_logger
 
 
 def main():

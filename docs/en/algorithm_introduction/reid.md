@@ -130,7 +130,7 @@ Download the [Market-1501-v15.09.15.zip](https://pan.baidu.com/s/1ntIi2Op?_at_=1
 
     Single card training:
     ```shell
-    python3.7 tools/train.py -c ./ppcls/configs/reid/strong_baseline/softmax_triplet_with_center.yaml
+    python3.7 tools/train.py -c ./ppcl/configs/reid/strong_baseline/softmax_triplet_with_center.yaml
     ```
 
     Doka training:
@@ -149,7 +149,7 @@ Download the [Market-1501-v15.09.15.zip](https://pan.baidu.com/s/1ntIi2Op?_at_=1
     ```shell
     export CUDA_VISIBLE_DEVICES=0,1,2,3
     python3.7 -m paddle.distributed.launch --gpus="0,1,2,3" tools/train.py \
-    -c ./ppcls/configs/reid/strong_baseline/softmax_triplet_with_center.yaml
+    -c ./ppcl/configs/reid/strong_baseline/softmax_triplet_with_center.yaml
     ```
     Note: Single card training takes about 1 hour.
 
@@ -167,7 +167,7 @@ Prepare the `*.pdparams` model parameter file for evaluation. You can use the tr
 
   ```shell
   python3.7 tools/eval.py \
-  -c ./ppcls/configs/reid/strong_baseline/softmax_triplet_with_center.yaml \
+  -c ./ppcl/configs/reid/strong_baseline/softmax_triplet_with_center.yaml \
   -o Global.pretrained_model="./output/RecModel/latest"
   ```
 
@@ -182,7 +182,7 @@ Prepare the `*.pdparams` model parameter file for evaluation. You can use the tr
   cd..
   # Evaluate
   python3.7 tools/eval.py \
-  -c ppcls/configs/reid/strong_baseline/softmax_triplet_with_center.yaml \
+  -c ppcl/configs/reid/strong_baseline/softmax_triplet_with_center.yaml \
   -o Global.pretrained_model="pretrained_models/softmax_triplet_with_center_pretrained"
   ```
   Note: The address filled after `pretrained_model` does not need to be suffixed with `.pdparams`, it will be added automatically when the program is running.
@@ -213,7 +213,7 @@ Prepare the `*.pdparams` model parameter file for evaluation. You can use the tr
   This can be enabled by adding `-o Global.re_ranking=True` to the evaluation command as shown below.
   ```bash
   python3.7 tools/eval.py \
-  -c ppcls/configs/reid/strong_baseline/softmax_triplet_with_center.yaml \
+  -c ppcl/configs/reid/strong_baseline/softmax_triplet_with_center.yaml \
   -o Global.pretrained_model="pretrained_models/softmax_triplet_with_center_pretrained" \
   -o Global.re_ranking=True
   ```
@@ -252,7 +252,7 @@ You can convert the model file saved during training into an inference model and
   - Convert the model file saved during the training process to an inference model, also take `latest.pdparams` as an example, execute the following command to convert
     ```shell
     python3.7 tools/export_model.py \
-    -c ppcls/configs/reid/strong_baseline/softmax_triplet_with_center.yaml \
+    -c ppcl/configs/reid/strong_baseline/softmax_triplet_with_center.yaml \
     -o Global.pretrained_model="output/RecModel/latest" \
     -o Global.save_inference_dir="./deploy/softmax_triplet_with_center_infer"
     ```

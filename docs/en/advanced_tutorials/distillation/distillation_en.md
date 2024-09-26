@@ -214,7 +214,7 @@ python -m paddle.distributed.launch \
     --selected_gpus="0,1,2,3" \
     --log_dir=mv3_large_x1_0_distill_mv3_small_x1_0 \
     tools/train.py \
-        -c ./ppcls/configs/ImageNet/Distillation/mv3_large_x1_0_distill_mv3_small_x1_0.yaml
+        -c ./ppcl/configs/ImageNet/Distillation/mv3_large_x1_0_distill_mv3_small_x1_0.yaml
 ```
 
 ### Note

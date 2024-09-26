@@ -30,7 +30,7 @@ PostProcess:
   main_indicator: MultiLabelThreshOutput
   MultiLabelThreshOutput:
     threshold: 0.5
-    class_id_map_file: "../ppcls/utils/NUS-WIDE-SCENE_label_list.txt"
+    class_id_map_file: "../ppcl/utils/NUS-WIDE-SCENE_label_list.txt"
     delimiter: " "
   SavePreLabel:
     save_dir: ./pre_label/

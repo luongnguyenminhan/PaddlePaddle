@@ -67,7 +67,7 @@
     单卡训练：
 
     ```shell
-    python3.7 tools/train.py -c ./ppcls/configs/reid/MetaBIN_ResNet50_cross_domain.yaml
+    python3.7 tools/train.py -c ./ppcl/configs/reid/MetaBIN_ResNet50_cross_domain.yaml
     ```
 
     注：单卡训练大约需要4个小时。
@@ -86,7 +86,7 @@
 
   ```shell
   python3.7 tools/eval.py \
-  -c ./ppcls/configs/reid/MetaBIN_ResNet50_cross_domain.yaml \
+  -c ./ppcl/configs/reid/MetaBIN_ResNet50_cross_domain.yaml \
   -o Global.pretrained_model="./output/RecModel/latest"
   ```
 
@@ -101,7 +101,7 @@
   cd ..
   # 评估
   python3.7 tools/eval.py \
-  -c ./ppcls/configs/reid/MetaBIN_ResNet50_cross_domain.yaml \
+  -c ./ppcl/configs/reid/MetaBIN_ResNet50_cross_domain.yaml \
   -o Global.pretrained_model="pretrained_models/metabin_resnet50_pretrained"
   ```
 
@@ -143,7 +143,7 @@
 
     ```shell
     python3.7 tools/export_model.py \
-    -c ./ppcls/configs/reid/MetaBIN_ResNet50_cross_domain.yaml \
+    -c ./ppcl/configs/reid/MetaBIN_ResNet50_cross_domain.yaml \
     -o Global.pretrained_model="output/RecModel/latest" \
     -o Global.save_inference_dir="./deploy/metabin_resnet50_infer"
     ```

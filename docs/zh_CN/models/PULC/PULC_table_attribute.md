@@ -203,7 +203,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
     tools/train.py \
-        -c ./ppcls/configs/PULC/table_attribute/PPLCNet_x1_0.yaml
+        -c ./ppcl/configs/PULC/table_attribute/PPLCNet_x1_0.yaml
 ```
 
 验证集的最佳指标在 `83.7%` 左右（数据集较小，一般有1%左右的波动）。
@@ -217,7 +217,7 @@ python3 -m paddle.distributed.launch \
 
 ```bash
 python3 tools/eval.py \
-    -c ./ppcls/configs/PULC/table_attribute/PPLCNet_x1_0.yaml \
+    -c ./ppcl/configs/PULC/table_attribute/PPLCNet_x1_0.yaml \
     -o Global.pretrained_model="output/PPLCNet_x1_0/best_model"
 ```
 
@@ -231,7 +231,7 @@ python3 tools/eval.py \
 
 ```bash
 python3 tools/infer.py \
-    -c ./ppcls/configs/PULC/table_attribute/PPLCNet_x1_0.yaml \
+    -c ./ppcl/configs/PULC/table_attribute/PPLCNet_x1_0.yaml \
     -o Global.pretrained_model=output/PPLCNet_x1_0/best_model
 ```
 
@@ -268,7 +268,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
     tools/train.py \
-        -c ./ppcls/configs/PULC/table_attribute/PPLCNet_x1_0.yaml \
+        -c ./ppcl/configs/PULC/table_attribute/PPLCNet_x1_0.yaml \
         -o Arch.name=ResNet50_vd
 ```
 
@@ -285,7 +285,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
     tools/train.py \
-        -c ./ppcls/configs/PULC/table_attribute/PPLCNet_x1_0_distillation.yaml \
+        -c ./ppcl/configs/PULC/table_attribute/PPLCNet_x1_0_distillation.yaml \
         -o Arch.models.0.Teacher.pretrained=output/ResNet50_vd/best_model
 ```
 
@@ -319,7 +319,7 @@ Paddle Inference 是飞桨的原生推理库， 作用于服务器端和云端�
 
 ```bash
 python3 tools/export_model.py \
-    -c ./ppcls/configs/PULC/table_attribute/PPLCNet_x1_0.yaml \
+    -c ./ppcl/configs/PULC/table_attribute/PPLCNet_x1_0.yaml \
     -o Global.pretrained_model=output/DistillationModel/best_model_student \
     -o Global.save_inference_dir=deploy/models/PPLCNet_x1_0_table_attribute_infer
 ```

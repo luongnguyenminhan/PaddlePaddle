@@ -158,8 +158,8 @@ DML论文中，在蒸馏的过程中，不依赖于教师模型，两个结构�
 
 | 策略 | 骨干网络 | 配置文件 | Top-1 acc | 下载链接 |
 | --- | --- | --- | --- | --- |
-| baseline | PPLCNet_x2_5 | [PPLCNet_x2_5.yaml](../../../../ppcls/configs/ImageNet/PPLCNet/PPLCNet_x2_5.yaml) | 74.93% | - |
-| DML | PPLCNet_x2_5 | [PPLCNet_x2_5_dml.yaml](../../../../ppcls/configs/ImageNet/Distillation/PPLCNet_x2_5_dml.yaml) | 76.68%(**+1.75%**) | - |
+| baseline | PPLCNet_x2_5 | [PPLCNet_x2_5.yaml](../../../../ppcl/configs/ImageNet/PPLCNet/PPLCNet_x2_5.yaml) | 74.93% | - |
+| DML | PPLCNet_x2_5 | [PPLCNet_x2_5_dml.yaml](../../../../ppcl/configs/ImageNet/Distillation/PPLCNet_x2_5_dml.yaml) | 76.68%(**+1.75%**) | - |
 
 
 * 注：完整的PPLCNet_x2_5模型训练了360epoch，这里为了方便对比，baseline和DML均训练了100epoch，因此指标比官网最终开源出来的模型精度（76.60%）低一些。
@@ -217,8 +217,8 @@ UDML 是百度飞桨视觉团队提出的无需依赖教师模型的知识蒸馏
 
 | 策略 | 骨干网络 | 配置文件 | Top-1 acc | 下载链接 |
 | --- | --- | --- | --- | --- |
-| baseline | PPLCNet_x2_5 | [PPLCNet_x2_5.yaml](../../../../ppcls/configs/ImageNet/PPLCNet/PPLCNet_x2_5.yaml) | 74.93% | - |
-| UDML | PPLCNet_x2_5 | [PPLCNet_x2_5_dml.yaml](../../../../ppcls/configs/ImageNet/Distillation/PPLCNet_x2_5_udml.yaml) | 76.74%(**+1.81%**) | - |
+| baseline | PPLCNet_x2_5 | [PPLCNet_x2_5.yaml](../../../../ppcl/configs/ImageNet/PPLCNet/PPLCNet_x2_5.yaml) | 74.93% | - |
+| UDML | PPLCNet_x2_5 | [PPLCNet_x2_5_dml.yaml](../../../../ppcl/configs/ImageNet/Distillation/PPLCNet_x2_5_udml.yaml) | 76.74%(**+1.81%**) | - |
 
 
 ##### 1.2.3.2 UDML 配置
@@ -293,8 +293,8 @@ AFD提出在蒸馏的过程中，利用基于注意力的元网络学习特征�
 
 | 策略 | 骨干网络 | 配置文件 | Top-1 acc | 下载链接 |
 | --- | --- | --- | --- | --- |
-| baseline | ResNet18 | [ResNet18.yaml](../../../../ppcls/configs/ImageNet/ResNet/ResNet18.yaml) | 70.8% | - |
-| AFD | ResNet18 | [resnet34_distill_resnet18_afd.yaml](../../../../ppcls/configs/ImageNet/Distillation/resnet34_distill_resnet18_afd.yaml) | 71.68%(**+0.88%**) | - |
+| baseline | ResNet18 | [ResNet18.yaml](../../../../ppcl/configs/ImageNet/ResNet/ResNet18.yaml) | 70.8% | - |
+| AFD | ResNet18 | [resnet34_distill_resnet18_afd.yaml](../../../../ppcl/configs/ImageNet/Distillation/resnet34_distill_resnet18_afd.yaml) | 71.68%(**+0.88%**) | - |
 
 注意：这里为了与论文的训练配置保持对齐，设置训练的迭代轮数为100epoch，因此baseline精度低于PaddleClas中开源出的模型精度（71.0%）
 
@@ -404,8 +404,8 @@ DKD将蒸馏中常用的 KD Loss 进行了解耦成为Target Class Knowledge Dis
 
 | 策略 | 骨干网络 | 配置文件 | Top-1 acc | 下载链接 |
 | --- | --- | --- | --- | --- |
-| baseline | ResNet18 | [ResNet18.yaml](../../../../ppcls/configs/ImageNet/ResNet/ResNet18.yaml) | 70.8% | - |
-| DKD | ResNet18 | [resnet34_distill_resnet18_dkd.yaml](../../../../ppcls/configs/ImageNet/Distillation/resnet34_distill_resnet18_dkd.yaml) | 72.59%(**+1.79%**) | - |
+| baseline | ResNet18 | [ResNet18.yaml](../../../../ppcl/configs/ImageNet/ResNet/ResNet18.yaml) | 70.8% | - |
+| DKD | ResNet18 | [resnet34_distill_resnet18_dkd.yaml](../../../../ppcl/configs/ImageNet/Distillation/resnet34_distill_resnet18_dkd.yaml) | 72.59%(**+1.79%**) | - |
 
 
 ##### 1.2.5.2 DKD 配置
@@ -472,8 +472,8 @@ Loss:
 
 | 策略 | 骨干网络 | 配置文件 | Top-1 acc | 下载链接 |
 | --- | --- | --- | --- | --- |
-| baseline | ResNet18 | [ResNet18.yaml](../../../../ppcls/configs/ImageNet/ResNet/ResNet18.yaml) | 70.8% | - |
-| DIST | ResNet18 | [resnet34_distill_resnet18_dist.yaml](../../../../ppcls/configs/ImageNet/Distillation/resnet34_distill_resnet18_dist.yaml) | 71.99%(**+1.19%**) | - |
+| baseline | ResNet18 | [ResNet18.yaml](../../../../ppcl/configs/ImageNet/ResNet/ResNet18.yaml) | 70.8% | - |
+| DIST | ResNet18 | [resnet34_distill_resnet18_dist.yaml](../../../../ppcl/configs/ImageNet/Distillation/resnet34_distill_resnet18_dist.yaml) | 71.99%(**+1.19%**) | - |
 
 
 ##### 1.2.6.2 DIST 配置
@@ -538,8 +538,8 @@ Loss:
 
 | 策略 | 骨干网络 | 配置文件 | Top-1 acc | 下载链接 |
 | --- | --- | --- | --- | --- |
-| baseline | ResNet18 | [ResNet18.yaml](../../../../ppcls/configs/ImageNet/ResNet/ResNet18.yaml) | 70.8% | - |
-| MGD | ResNet18 | [resnet34_distill_resnet18_mgd.yaml](../../../../ppcls/configs/ImageNet/Distillation/resnet34_distill_resnet18_mgd.yaml) | 71.86%(**+1.06%**) | - |
+| baseline | ResNet18 | [ResNet18.yaml](../../../../ppcl/configs/ImageNet/ResNet/ResNet18.yaml) | 70.8% | - |
+| MGD | ResNet18 | [resnet34_distill_resnet18_mgd.yaml](../../../../ppcl/configs/ImageNet/Distillation/resnet34_distill_resnet18_mgd.yaml) | 71.86%(**+1.06%**) | - |
 
 
 ##### 1.2.7.2 MGD 配置
@@ -610,8 +610,8 @@ WSL (Weighted Soft Labels) 损失函数根据教师模型与学生模型关于�
 
 | 策略 | 骨干网络 | 配置文件 | Top-1 acc | 下载链接 |
 | --- | --- | --- | --- | --- |
-| baseline | ResNet18 | [ResNet18.yaml](../../../../ppcls/configs/ImageNet/ResNet/ResNet18.yaml) | 70.8% | - |
-| WSL | ResNet18 | [resnet34_distill_resnet18_wsl.yaml](../../../../ppcls/configs/ImageNet/Distillation/resnet34_distill_resnet18_wsl.yaml) | 72.23%(**+1.43%**) | - |
+| baseline | ResNet18 | [ResNet18.yaml](../../../../ppcl/configs/ImageNet/ResNet/ResNet18.yaml) | 70.8% | - |
+| WSL | ResNet18 | [resnet34_distill_resnet18_wsl.yaml](../../../../ppcl/configs/ImageNet/Distillation/resnet34_distill_resnet18_wsl.yaml) | 72.23%(**+1.43%**) | - |
 
 
 ##### 1.2.8.2 WSL 配置
@@ -677,8 +677,8 @@ Loss:
 
 | 策略 | 骨干网络 | 配置文件 | Top-1 acc | 下载链接 |
 | --- | --- | --- | --- | --- |
-| baseline | ResNet18 | [ResNet18.yaml](../../../../ppcls/configs/ImageNet/ResNet/ResNet18.yaml) | 70.8% | - |
-| SKD | ResNet18 | [resnet34_distill_resnet18_skd.yaml](../../../../ppcls/configs/ImageNet/Distillation/resnet34_distill_resnet18_skd.yaml) | 72.84%(**+2.04%**) | - |
+| baseline | ResNet18 | [ResNet18.yaml](../../../../ppcl/configs/ImageNet/ResNet/ResNet18.yaml) | 70.8% | - |
+| SKD | ResNet18 | [resnet34_distill_resnet18_skd.yaml](../../../../ppcl/configs/ImageNet/Distillation/resnet34_distill_resnet18_skd.yaml) | 72.84%(**+2.04%**) | - |
 
 
 ##### 1.2.9.2 SKD 配置
@@ -743,8 +743,8 @@ PEFD使用多个projector对学生特征图进行投影并ensemble，来拟合�
 
 | 策略 | 骨干网络 | 配置文件 | Top-1 acc | 下载链接 |
 | --- | --- | --- | --- | --- |
-| baseline | ResNet18 | [ResNet18.yaml](../../../../ppcls/configs/ImageNet/ResNet/ResNet18.yaml) | 70.8% | - |
-| PEFD | ResNet18 | [resnet34_distill_resnet18_pefd.yaml](../../../../ppcls/configs/ImageNet/Distillation/resnet34_distill_resnet18_pefd.yaml) | 72.23%(**+1.43%**) | - |
+| baseline | ResNet18 | [ResNet18.yaml](../../../../ppcl/configs/ImageNet/ResNet/ResNet18.yaml) | 70.8% | - |
+| PEFD | ResNet18 | [resnet34_distill_resnet18_pefd.yaml](../../../../ppcl/configs/ImageNet/Distillation/resnet34_distill_resnet18_pefd.yaml) | 72.23%(**+1.43%**) | - |
 
 
 ##### 1.2.10.2 PEFD 配置
@@ -854,7 +854,7 @@ cat train_list.txt train_list_unlabel.txt > train_list_all.txt
 ### 2.3 模型训练
 
 
-以SSLD知识蒸馏算法为例，介绍知识蒸馏算法的模型训练、评估、预测等过程。配置文件为 [PPLCNet_x2_5_ssld.yaml](../../../../ppcls/configs/ImageNet/Distillation/PPLCNet_x2_5_ssld.yaml) ，使用下面的命令可以完成模型训练。
+以SSLD知识蒸馏算法为例，介绍知识蒸馏算法的模型训练、评估、预测等过程。配置文件为 [PPLCNet_x2_5_ssld.yaml](../../../../ppcl/configs/ImageNet/Distillation/PPLCNet_x2_5_ssld.yaml) ，使用下面的命令可以完成模型训练。
 
 
 ```shell
@@ -862,7 +862,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
     tools/train.py \
-        -c ppcls/configs/ImageNet/Distillation/PPLCNet_x2_5_ssld.yaml
+        -c ppcl/configs/ImageNet/Distillation/PPLCNet_x2_5_ssld.yaml
 ```
 
 <a name="2.4"></a>
@@ -873,7 +873,7 @@ python3 -m paddle.distributed.launch \
 
 ```bash
 python3 tools/eval.py \
-    -c ppcls/configs/ImageNet/Distillation/PPLCNet_x2_5_ssld.yaml \
+    -c ppcl/configs/ImageNet/Distillation/PPLCNet_x2_5_ssld.yaml \
     -o Global.pretrained_model=output/DistillationModel/best_model
 ```
 
@@ -916,7 +916,7 @@ Paddle Inference 是飞桨的原生推理库， 作用于服务器端和云端�
 
 ```shell
 python3 tools/export_model.py \
-    -c ppcls/configs/ImageNet/Distillation/PPLCNet_x2_5_ssld.yaml \
+    -c ppcl/configs/ImageNet/Distillation/PPLCNet_x2_5_ssld.yaml \
     -o Global.pretrained_model=./output/DistillationModel/best_model \
     -o Arch.infer_model_name=Student
 ```

@@ -17,8 +17,8 @@ import pickle
 import cv2
 import faiss
 import numpy as np
-from paddleclas.deploy.python.predict_rec import RecPredictor
-from paddleclas.deploy.utils import config, logger
+from deploy.python.predict_rec import RecPredictor
+from deploy.utils import config, logger
 from tqdm import tqdm
 
 

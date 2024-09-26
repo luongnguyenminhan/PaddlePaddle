@@ -103,7 +103,7 @@ cd ../../
 
 ```shell
 # windows在cmd中进入PaddleClas根目录，执行此命令
-python tools/train.py -c ./ppcls/configs/quick_start/new_user/ShuffleNetV2_x0_25.yaml
+python tools/train.py -c ./ppcl/configs/quick_start/new_user/ShuffleNetV2_x0_25.yaml
 ```
 
 - `-c` 参数是指定训练的配置文件路径，训练的具体超参数可查看`yaml`文件
@@ -115,7 +115,7 @@ python tools/train.py -c ./ppcls/configs/quick_start/new_user/ShuffleNetV2_x0_25
 ####  4.1.2 使用预训练模型
 
 ```shell
-python tools/train.py -c ./ppcls/configs/quick_start/new_user/ShuffleNetV2_x0_25.yaml  -o Arch.pretrained=True
+python tools/train.py -c ./ppcl/configs/quick_start/new_user/ShuffleNetV2_x0_25.yaml  -o Arch.pretrained=True
 ```
 
 - `-o` 参数可以选择为 `True` 或 `False`，也可以是预训练模型存放路径，当选择为 `True` 时，预训练权重会自动下载到本地。注意：若为预训练模型路径，则不要加上：`.pdparams`
@@ -146,7 +146,7 @@ python tools/train.py -c ./ppcls/configs/quick_start/new_user/ShuffleNetV2_x0_25
 ####  4.2.1. 不使用预训练模型
 
 ```shell
-python tools/train.py -c ./ppcls/configs/quick_start/ResNet50_vd.yaml
+python tools/train.py -c ./ppcl/configs/quick_start/ResNet50_vd.yaml
 ```
 
 训练完成后，验证集的`Top1 Acc`曲线如下所示，最高准确率为0.2735。训练精度曲线下图所示
@@ -160,7 +160,7 @@ python tools/train.py -c ./ppcls/configs/quick_start/ResNet50_vd.yaml
 基于 ImageNet1k 分类预训练模型进行微调，训练脚本如下所示
 
 ```shell
-python tools/train.py -c ./ppcls/configs/quick_start/ResNet50_vd.yaml -o Arch.pretrained=True
+python tools/train.py -c ./ppcl/configs/quick_start/ResNet50_vd.yaml -o Arch.pretrained=True
 ```
 
 **注**：此训练脚本使用 GPU，如使用 CPU 可按照上文中[4.1 使用CPU进行模型训练](#4.1)所示，进行修改。
@@ -177,7 +177,7 @@ python tools/train.py -c ./ppcls/configs/quick_start/ResNet50_vd.yaml -o Arch.pr
 
 ```shell
 cd $path_to_PaddleClas
-python tools/infer.py -c ./ppcls/configs/quick_start/ResNet50_vd.yaml -o Infer.infer_imgs=dataset/flowers102/jpg/image_00001.jpg -o Global.pretrained_model=output/ResNet50_vd/best_model
+python tools/infer.py -c ./ppcl/configs/quick_start/ResNet50_vd.yaml -o Infer.infer_imgs=dataset/flowers102/jpg/image_00001.jpg -o Global.pretrained_model=output/ResNet50_vd/best_model
 ```
 
 `-i` 输入为单张图像路径，运行成功后，示例结果如下：
@@ -188,7 +188,7 @@ python tools/infer.py -c ./ppcls/configs/quick_start/ResNet50_vd.yaml -o Infer.i
 
 ```shell
 cd $path_to_PaddleClas
-python tools/infer.py -c ./ppcls/configs/quick_start/new_user/ShuffleNetV2_x0_25.yaml -o Infer.infer_imgs=dataset/flowers102/jpg/image_00001.jpg -o Global.pretrained_model=output/ShuffleNetV2_x0_25/best_model
+python tools/infer.py -c ./ppcl/configs/quick_start/new_user/ShuffleNetV2_x0_25.yaml -o Infer.infer_imgs=dataset/flowers102/jpg/image_00001.jpg -o Global.pretrained_model=output/ShuffleNetV2_x0_25/best_model
 ```
 
 `-i` 参数也可以为待测图像文件所在目录（`dataset/flowers102/jpg/`），运行成功后，部分示例结果如下：

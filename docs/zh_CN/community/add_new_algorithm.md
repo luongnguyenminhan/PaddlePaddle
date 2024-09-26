@@ -21,10 +21,10 @@
 
 ### 1.1 数据加载和处理
 
-数据加载和处理由不同的模块(module)组成，其完成了图片的读取、数据增强和label的制作。这一部分在[ppcls/data](../../../ppcls/data)下。 各个文件及文件夹作用说明如下:
+数据加载和处理由不同的模块(module)组成，其完成了图片的读取、数据增强和label的制作。这一部分在[ppcls/data](../../../ppcl/data)下。 各个文件及文件夹作用说明如下:
 
 ```bash
-ppcls/data/
+ppcl/data/
 ├── dataloader #  数据读取、采样模块
 │   ├── xxx_dataset.py # 数据读取模块
 │   ├── xxx_sampler.py # 数据采样模块
@@ -49,7 +49,7 @@ ppcls/data/
 
 PaddleClas 内置了大量图像操作相关模块，对于没有内置的模块可通过如下步骤添加:
 
-1. 如果只涉及单个图像的操作，在 [ppcls/data/preprocess/ops](../../../ppcls/data/preprocess/ops) 文件夹下新建文件，如果涉及整个batch的图像操作，需要在 [ppcls/data/preprocess/batch_ops](../../../ppcls/data/preprocess/batch_ops) 文件夹下新建文件，如my_module.py。
+1. 如果只涉及单个图像的操作，在 [ppcls/data/preprocess/ops](../../../ppcl/data/preprocess/ops) 文件夹下新建文件，如果涉及整个batch的图像操作，需要在 [ppcls/data/preprocess/batch_ops](../../../ppcl/data/preprocess/batch_ops) 文件夹下新建文件，如my_module.py。
 2. 在 my_module.py 文件内添加相关代码，示例代码如下:
 
 ```python
@@ -63,7 +63,7 @@ class MyModule:
         return img
 ```
 
-3. 在 [ppcls/data/preprocess/\_\_init\_\_.py](../../../ppcls/data/preprocess/__init__.py) 文件内导入添加的模块。
+3. 在 [ppcls/data/preprocess/\_\_init\_\_.py](../../../ppcl/data/preprocess/__init__.py) 文件内导入添加的模块。
 
 数据处理的所有处理步骤由不同的模块顺序执行而成，在config文件中按照列表的形式组合并执行。如:
 
@@ -82,10 +82,10 @@ transforms:
 
 ### 1.2 网络
 
-网络部分完成了网络的组网操作，，这一部分在[ppcls/arch/](../../../ppcls/arch/)下。 数据将按照顺序(transforms->backbone->neck->head)依次通过这四个部分。其中，非特征模型的neck和head为空。
+网络部分完成了网络的组网操作，，这一部分在[ppcls/arch/](../../../ppcl/arch/)下。 数据将按照顺序(transforms->backbone->neck->head)依次通过这四个部分。其中，非特征模型的neck和head为空。
 
 ```bash
-ppcls/arch/
+ppcl/arch/
 ├── backbone
 │   ├── base # PaddleClas精选模型继承的基类，负责对网络结构的自定义后处理修改
 │   │   └── theseus_layer.py
@@ -112,7 +112,7 @@ ppcls/arch/
 
 PaddleClas内置了大量的常见的backbone、识别模型的neck、head模块，对于没有内置的模块可通过如下步骤添加，所有模块添加步骤相似，以backbone为例:
 
-1. 在 [ppcls/arch/backbone/model_zoo/](../../../ppcls/arch/backbone/model_zoo/) 文件夹下新建文件，如my_backbone.py。
+1. 在 [ppcls/arch/backbone/model_zoo/](../../../ppcl/arch/backbone/model_zoo/) 文件夹下新建文件，如my_backbone.py。
 2. 在 my_backbone.py 文件内添加相关代码，示例代码如下:
 
 ```python
@@ -134,7 +134,7 @@ class MyBackbone(nn.Layer):
         return y
 ```
 
-3. 在 [ppcls/arch/backbone/\_\_init\_\_.py](../../../ppcls/arch/backbone/__init__.py)文件内导入添加的模块。
+3. 在 [ppcls/arch/backbone/\_\_init\_\_.py](../../../ppcl/arch/backbone/__init__.py)文件内导入添加的模块。
 
 在完成网络的模块添加之后，只需要配置文件中进行配置即可使用，如:
 
@@ -149,10 +149,10 @@ Arch:
 
 ### 1.3 后处理
 
-后处理实现对模型结果的输出处理。这一部分在[ppcls/data/postprocess/](../../../ppcls/data/postprocess/)下。
+后处理实现对模型结果的输出处理。这一部分在[ppcls/data/postprocess/](../../../ppcl/data/postprocess/)下。
 PaddleClas内置了topk、threshoutput、attr_rec等后处理模块，对于没有内置的组件可通过如下步骤添加:
 
-1. 在 [ppcls/data/postprocess/](../../../ppcls/data/postprocess/) 文件夹下新建文件，如 my_postprocess.py。
+1. 在 [ppcls/data/postprocess/](../../../ppcl/data/postprocess/) 文件夹下新建文件，如 my_postprocess.py。
 2. 在 my_postprocess.py 文件内添加相关代码，示例代码如下:
 
 ```python
@@ -184,7 +184,7 @@ class MyPostProcess:
         pass
 ```
 
-3. 在 [ppcls/data/postprocess/\_\_init\_\_.py](../../../ppcls/data/postprocess/__init__.py)文件内导入添加的模块。
+3. 在 [ppcls/data/postprocess/\_\_init\_\_.py](../../../ppcl/data/postprocess/__init__.py)文件内导入添加的模块。
 
 在后处理模块添加之后，只需要配置文件中进行配置即可使用，如:
 
@@ -202,10 +202,10 @@ Infer:
 
 ### 1.4 损失函数
 
-损失函数用于计算网络输出和label之间的距离。这一部分在[ppcls/loss/](../../../ppcls/loss/)下。
+损失函数用于计算网络输出和label之间的距离。这一部分在[ppcls/loss/](../../../ppcl/loss/)下。
 PaddleClas内置了CE Loss、BCELoss、TripletLoss等十多种损失函数，对于没有内置的模块可通过如下步骤添加:
 
-1. 在 [ppcls/loss/](../../../ppcls/loss/) 文件夹下新建文件，如 my_loss.py。
+1. 在 [ppcls/loss/](../../../ppcl/loss/) 文件夹下新建文件，如 my_loss.py。
 2. 在 my_loss.py 文件内添加相关代码，示例代码如下:
 
 ```python
@@ -228,7 +228,7 @@ class MyLoss(nn.Layer):
         return {'your loss name': loss}
 ```
 
-3. 在 [ppcls/loss/\__init\__.py](../../../ppcls/loss/__init__.py)文件内导入添加的模块。
+3. 在 [ppcls/loss/\__init\__.py](../../../ppcl/loss/__init__.py)文件内导入添加的模块。
 
 在损失函数添加之后，只需要配置文件中进行配置即可使用，如:
 
@@ -245,9 +245,9 @@ Loss:
 
 ### 1.5 指标评估
 
-指标评估用于计算网络在当前batch上的性能。这一部分在[ppcls/metric/](../../../ppcls/metric/)下。 PaddleClas内置了图像单标签分类、图像多标签分类、图像识别等算法相关的指标评估模块，对于没有内置的模块可通过如下步骤添加:
+指标评估用于计算网络在当前batch上的性能。这一部分在[ppcls/metric/](../../../ppcl/metric/)下。 PaddleClas内置了图像单标签分类、图像多标签分类、图像识别等算法相关的指标评估模块，对于没有内置的模块可通过如下步骤添加:
 
-1. 在 [ppcls/metric/](../../../ppcls/metric/) 文件夹下新建文件，如my_metric.py。
+1. 在 [ppcls/metric/](../../../ppcl/metric/) 文件夹下新建文件，如my_metric.py。
 2. 在 my_metric.py 文件内添加相关代码，示例代码如下:
 
 ```python
@@ -268,7 +268,7 @@ class MyMetric(nn.Layer):
 
 ```
 
-3. 在 [ppcls/metric/\_\_init\_\_.py](../../../ppcls/metric/__init__.py)文件内导入添加的模块。
+3. 在 [ppcls/metric/\_\_init\_\_.py](../../../ppcl/metric/__init__.py)文件内导入添加的模块。
 
 在指标评估模块添加之后，只需要配置文件中进行配置即可使用，如:
 
@@ -291,7 +291,7 @@ Metric:
 
 对于没有内置的模块可通过如下步骤添加，以`optimizer`为例:
 
-1. 在 [ppcls/optimizer/optimizer.py](../../../ppcls/optimizer/optimizer.py) 文件内创建自己的优化器，示例代码如下:
+1. 在 [ppcls/optimizer/optimizer.py](../../../ppcl/optimizer/optimizer.py) 文件内创建自己的优化器，示例代码如下:
 
 ```python
 from paddle import optimizer as optim

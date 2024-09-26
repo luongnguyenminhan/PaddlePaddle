@@ -102,7 +102,7 @@ Since the CPU is used for model training, the calculation speed is slow, so here
 
 ```shell
 # If you are using the windows operating system, please enter the root directory of PaddleClas in cmd and execute this command:
-python tools/train.py -c ./ppcls/configs/quick_start/new_user/ShuffleNetV2_x0_25.yaml
+python tools/train.py -c ./ppcl/configs/quick_start/new_user/ShuffleNetV2_x0_25.yaml
 ```
 
 - The `-c` parameter is to specify the path of the configuration file for training, and the specific hyperparameters for training can be viewed in the `yaml` file
@@ -113,7 +113,7 @@ python tools/train.py -c ./ppcls/configs/quick_start/new_user/ShuffleNetV2_x0_25
 #### 4.1.2 Use pre-trained models for training
 
 ```shell
-python tools/train.py -c ./ppcls/configs/quick_start/new_user/ShuffleNetV2_x0_25.yaml  -o Arch.pretrained=True
+python tools/train.py -c ./ppcl/configs/quick_start/new_user/ShuffleNetV2_x0_25.yaml  -o Arch.pretrained=True
 ```
 
 - The `-o` parameter can be set to `True` or `False`, or it can be the storage path of the pre-training model. When `True` is selected, the pre-training weights will be automatically downloaded to the local. Note: If it is a pre-training model path, do not add: `.pdparams`
@@ -143,7 +143,7 @@ First, you must set the environment variables and use the 0th GPU for training:
 #### 4.2.1 Training without using pre-trained models
 
 ```shell
-python tools/train.py -c ./ppcls/configs/quick_start/ResNet50_vd.yaml
+python tools/train.py -c ./ppcl/configs/quick_start/ResNet50_vd.yaml
 ```
 
 After the training is completed, the `Top1 Acc` curve of the validation set is shown below, and the highest accuracy rate is 0.2735.
@@ -156,7 +156,7 @@ After the training is completed, the `Top1 Acc` curve of the validation set is s
 Based on ImageNet1k classification pre-trained model for fine-tuning, the training script is as follows:
 
 ```shell
-python tools/train.py -c ./ppcls/configs/quick_start/ResNet50_vd.yaml -o Arch.pretrained=True
+python tools/train.py -c ./ppcl/configs/quick_start/ResNet50_vd.yaml -o Arch.pretrained=True
 ```
 
 **Note**: This training script uses GPU. If you use CPU, you can modify it as shown in [4.1 Use CPU for model training] (#4.1) above.
@@ -172,7 +172,7 @@ After the training is completed, the trained model can be used to predict the im
 
 ```shell
 cd $path_to_PaddleClas
-python tools/infer.py -c ./ppcls/configs/quick_start/ResNet50_vd.yaml -o Infer.infer_imgs=dataset/flowers102/jpg/image_00001.jpg -o Global.pretrained_model=output/ResNet50_vd/best_model
+python tools/infer.py -c ./ppcl/configs/quick_start/ResNet50_vd.yaml -o Infer.infer_imgs=dataset/flowers102/jpg/image_00001.jpg -o Global.pretrained_model=output/ResNet50_vd/best_model
 ```
 
 `-i` indicates the path of a single image. After running successfully, the sample results are as follows:
@@ -184,7 +184,7 @@ Of course, you can also use the trained ShuffleNetV2_x0_25 model for prediction,
 
 ```shell
 cd $path_to_PaddleClas
-python tools/infer.py -c ./ppcls/configs/quick_start/new_user/ShuffleNetV2_x0_25.yaml -o Infer.infer_imgs=dataset/flowers102/jpg/image_00001.jpg -o Global.pretrained_model=output/ShuffleNetV2_x0_25/best_model
+python tools/infer.py -c ./ppcl/configs/quick_start/new_user/ShuffleNetV2_x0_25.yaml -o Infer.infer_imgs=dataset/flowers102/jpg/image_00001.jpg -o Global.pretrained_model=output/ShuffleNetV2_x0_25/best_model
 ```
 
 The `-i` parameter can also be the directory of the image file to be tested (`dataset/flowers102/jpg/`). After running successfully, some sample results are as follows:

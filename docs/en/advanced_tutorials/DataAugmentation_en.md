@@ -291,7 +291,7 @@ python3 -m paddle.distributed.launch \
     --selected_gpus="0,1,2,3" \
     --log_dir=ResNet50_Cutout \
     tools/train.py \
-        -c ./ppcls/configs/ImageNet/DataAugment/ResNet50_Cutout.yaml
+        -c ./ppcl/configs/ImageNet/DataAugment/ResNet50_Cutout.yaml
 ```
 
 Run `train.sh`:

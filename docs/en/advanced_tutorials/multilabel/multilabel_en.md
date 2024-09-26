@@ -32,7 +32,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
     tools/train.py \
-        -c ./ppcls/configs/quick_start/professional/MobileNetV1_multilabel.yaml
+        -c ./ppcl/configs/quick_start/professional/MobileNetV1_multilabel.yaml
 ```
 
 After training for 10 epochs, the best accuracy over the validation set should be around 0.95.
@@ -41,7 +41,7 @@ After training for 10 epochs, the best accuracy over the validation set should b
 
 ```bash
 python tools/eval.py \
-    -c ./ppcls/configs/quick_start/professional/MobileNetV1_multilabel.yaml \
+    -c ./ppcl/configs/quick_start/professional/MobileNetV1_multilabel.yaml \
     -o Arch.pretrained="./output/MobileNetV1/best_model"
 ```
 
@@ -49,7 +49,7 @@ python tools/eval.py \
 
 ```bash
 python3 tools/infer.py
-    -c ./ppcls/configs/quick_start/professional/MobileNetV1_multilabel.yaml \
+    -c ./ppcl/configs/quick_start/professional/MobileNetV1_multilabel.yaml \
     -o Arch.pretrained="./output/MobileNetV1/best_model"
 ```
 
@@ -64,7 +64,7 @@ You will get multiple output such as the following:
 
 ```bash
 python3 tools/export_model.py \
-    -c ./ppcls/configs/quick_start/professional/MobileNetV1_multilabel.yaml \
+    -c ./ppcl/configs/quick_start/professional/MobileNetV1_multilabel.yaml \
     -o Arch.pretrained="./output/MobileNetV1/best_model"
 ```
 

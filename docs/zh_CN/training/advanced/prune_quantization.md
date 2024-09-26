@@ -89,7 +89,7 @@ cd PaddleClas
 以 CPU 为例，若使用 GPU，则将命令中改成 `cpu` 改成 `gpu`
 
 ```bash
-python3.7 tools/train.py -c ppcls/configs/slim/ResNet50_vd_quantization.yaml -o Global.device=cpu
+python3.7 tools/train.py -c ppcl/configs/slim/ResNet50_vd_quantization.yaml -o Global.device=cpu
 ```
 
 其中 `yaml` 文件解析详见[参考文档](../config_description/basic.md)。为了保证精度，`yaml` 文件中已经使用 `pretrained model`.
@@ -102,7 +102,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3.7 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
       tools/train.py \
-      -c ppcls/configs/slim/ResNet50_vd_quantization.yaml
+      -c ppcl/configs/slim/ResNet50_vd_quantization.yaml
 ```
 
 <a name="2.1.2"></a>
@@ -115,7 +115,7 @@ python3.7 -m paddle.distributed.launch \
 生成 `inference model` 后，离线量化运行方式如下
 
 ```bash
-python3.7 deploy/slim/quant_post_static.py -c ppcls/configs/ImageNet/ResNet/ResNet50_vd.yaml -o Global.save_inference_dir=./deploy/models/class_ResNet50_vd_ImageNet_infer
+python3.7 deploy/slim/quant_post_static.py -c ppcl/configs/ImageNet/ResNet/ResNet50_vd.yaml -o Global.save_inference_dir=./deploy/models/class_ResNet50_vd_ImageNet_infer
 ```
 
 `Global.save_inference_dir` 是 `inference model` 存放的目录。
@@ -132,7 +132,7 @@ python3.7 deploy/slim/quant_post_static.py -c ppcls/configs/ImageNet/ResNet/ResN
 以 CPU 为例，若使用 GPU，则将命令中改成 `cpu` 改成 `gpu`
 
 ```bash
-python3.7 tools/train.py -c ppcls/configs/slim/ResNet50_vd_prune.yaml -o Global.device=cpu
+python3.7 tools/train.py -c ppcl/configs/slim/ResNet50_vd_prune.yaml -o Global.device=cpu
 ```
 
 - 单机单卡/单机多卡/多机多卡启动
@@ -142,7 +142,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3.7 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
       tools/train.py \
-      -c ppcls/configs/slim/ResNet50_vd_prune.yaml
+      -c ppcl/configs/slim/ResNet50_vd_prune.yaml
 ```
 
 <a name="3"></a>
@@ -152,7 +152,7 @@ python3.7 -m paddle.distributed.launch \
 
 ```bash
 python3.7 tools/export_model.py \
-    -c ppcls/configs/slim/ResNet50_vd_prune.yaml \
+    -c ppcl/configs/slim/ResNet50_vd_prune.yaml \
     -o Global.pretrained_model=./output/ResNet50_vd/best_model \
     -o Global.save_inference_dir=./inference
 ```

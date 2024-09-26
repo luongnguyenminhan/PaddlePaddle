@@ -131,7 +131,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
 python -m paddle.distributed.launch \
     --gpus="0,1,2,3,4,5,6,7" \
     tools/train.py \
-        -c ppcls/configs/ImageNet/PPHGNetV2/PPHGNetV2_B4.yaml \
+        -c ppcl/configs/ImageNet/PPHGNetV2/PPHGNetV2_B4.yaml \
         -o Global.output_dir=./output/PPHGNetV2_B4 \
         -o Arch.pretrained=False
 ```
@@ -140,7 +140,7 @@ python -m paddle.distributed.launch \
 **备注：**
 
 * 当前精度最佳的模型会保存在 `output/PPHGNetV2_B4/best_model.pdparams`;
-* 此处只是展示了如何从头训练 ImageNet数据，该配置并未使用激进的训练策略或者蒸馏训练策略，所以训练得到的精度较 [1.3](#1.3) 小节要低。如果希望得到 [1.3](#1.3) 小节中的精度，可以查看[SSLD 训练](../../training/advanced/knowledge_distillation.md)，配置好相关的数据，加载 [stage-1 配置](../../../../ppcls/configs/ImageNet/PPHGNetV2/PPHGNetV2_B4_ssld_stage1.yaml)、[stage-2 配置](../../../../PPHGNetV2_B4_ssld_stage2.yaml)训练即可。
+* 此处只是展示了如何从头训练 ImageNet数据，该配置并未使用激进的训练策略或者蒸馏训练策略，所以训练得到的精度较 [1.3](#1.3) 小节要低。如果希望得到 [1.3](#1.3) 小节中的精度，可以查看[SSLD 训练](../../training/advanced/knowledge_distillation.md)，配置好相关的数据，加载 [stage-1 配置](../../../../ppcl/configs/ImageNet/PPHGNetV2/PPHGNetV2_B4_ssld_stage1.yaml)、[stage-2 配置](../../../../PPHGNetV2_B4_ssld_stage2.yaml)训练即可。
 
 <a name="2.3.2"></a>
 
@@ -153,7 +153,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
 python -m paddle.distributed.launch \
     --gpus="0,1,2,3,4,5,6,7" \
     tools/train.py \
-        -c ppcls/configs/ImageNet/PPHGNetV2/PPHGNetV2_B4.yaml \
+        -c ppcl/configs/ImageNet/PPHGNetV2/PPHGNetV2_B4.yaml \
         -o Global.epochs=30 \
         -o Global.output_dir=./output/PPHGNetV2_B4 \
         -o Optimizer.lr.learning_rate=0.05
@@ -172,7 +172,7 @@ python -m paddle.distributed.launch \
 
 ```shell
 python tools/eval.py \
-    -c ppcls/configs/ImageNet/PPHGNetV2/PPHGNetV2_B4.yaml \
+    -c ppcl/configs/ImageNet/PPHGNetV2/PPHGNetV2_B4.yaml \
     -o Global.pretrained_model=output/PPHGNetV2_B4/best_model
 ```
 
@@ -186,7 +186,7 @@ python tools/eval.py \
 
 ```shell
 python tools/infer.py \
-    -c ppcls/configs/ImageNet/PPHGNetV2/PPHGNetV2_B4.yaml \
+    -c ppcl/configs/ImageNet/PPHGNetV2/PPHGNetV2_B4.yaml \
     -o Global.pretrained_model=output/PPHGNetV2_B4/best_model
 ```
 
@@ -223,7 +223,7 @@ Paddle Inference 是飞桨的原生推理库， 作用于服务器端和云端�
 
 ```shell
 python3 tools/export_model.py \
-    -c ppcls/configs/ImageNet/PPHGNetV2/PPHGNetV2_B4.yaml \
+    -c ppcl/configs/ImageNet/PPHGNetV2/PPHGNetV2_B4.yaml \
     -o Global.pretrained_model=output/PPHGNetV2_B4/best_model \
     -o Global.save_inference_dir=deploy/models/PPHGNetV2_B4_infer
 ```

@@ -61,7 +61,7 @@
 
     单卡训练：
     ```shell
-    python3.7 tools/train.py -c ./ppcls/configs/metric_learning/xbm_resnet50.yaml
+    python3.7 tools/train.py -c ./ppcl/configs/metric_learning/xbm_resnet50.yaml
     ```
     注：单卡训练大约需要4个小时。
 
@@ -79,7 +79,7 @@
 
   ```shell
   python3.7 tools/eval.py \
-  -c ./ppcls/configs/metric_learning/xbm_resnet50.yaml \
+  -c ./ppcl/configs/metric_learning/xbm_resnet50.yaml \
   -o Global.pretrained_model="./output/RecModel/latest"
   ```
 
@@ -94,7 +94,7 @@
   cd ..
   # 评估
   python3.7 tools/eval.py \
-  -c ./ppcls/configs/metric_learning/xbm_resnet50.yaml \
+  -c ./ppcl/configs/metric_learning/xbm_resnet50.yaml \
   -o Global.pretrained_model="pretrained_models/xbm_resnet50_pretrained"
   ```
   注：`pretrained_model` 后填入的地址不需要加 `.pdparams` 后缀，在程序运行时会自动补上。
@@ -135,7 +135,7 @@
   - 将训练过程中保存的模型文件转换成 inference 模型，同样以 `latest.pdparams` 为例，执行以下命令进行转换
     ```shell
     python3.7 tools/export_model.py \
-    -c ./ppcls/configs/metric_learning/xbm_resnet50.yaml \
+    -c ./ppcl/configs/metric_learning/xbm_resnet50.yaml \
     -o Global.pretrained_model="output/RecModel/latest" \
     -o Global.save_inference_dir="./deploy/xbm_resnet50_infer"
     ```

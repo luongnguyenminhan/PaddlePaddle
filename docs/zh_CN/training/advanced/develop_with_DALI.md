@@ -81,7 +81,7 @@ DALI 可以选择将数据预处理放到GPU上进行，因此绝大部分算子
 4. （可选）如果开发的是 External Source 类的 sampler 算子，可参照已有的 `ExternalSource_RandomIdentity` 代码进行开发，并在添加对应调用逻辑。实际上 External Source 类可视作对原有的Dataset和Sampler代码进行合并。
 
 ### 4.2 RandomFlip
-以 PaddleClas 已有的 [RandFlipImage](../../../../ppcls/data/preprocess/ops/operators.py#L499) 算子为例，我们希望在使用DALI训练时，将其转换为对应的 DALI 算子，且同样具备 **按指定的 `prob` 概率进行 指定的水平 or 垂直翻转**
+以 PaddleClas 已有的 [RandFlipImage](../../../../ppcl/data/preprocess/ops/operators.py#L499) 算子为例，我们希望在使用DALI训练时，将其转换为对应的 DALI 算子，且同样具备 **按指定的 `prob` 概率进行 指定的水平 or 垂直翻转**
 
 #### 4.2.1 继承DALI已有类
 DALI 已经提供了简单的翻转算子 [`nvidia.dali.ops.Flip`](https://docs.nvidia.com/deeplearning/dali/user-guide/docs/supported_ops_legacy.html#nvidia.dali.ops.Flip)，其通过 `horizontal` 与 `vertical` 参数来分别控制是否对图像进行水平、垂直翻转。但是其缺少随机性，无法直接按照一定概率进行翻转或不翻转，因此我们需要继承这个翻转类，并重载其 `__init__` 方法和 `__call__` 方法。继承代码如下所示：
@@ -138,7 +138,7 @@ class RandFlipImage(ops.Flip):
 ```
 
 ### 4.3 RandomRotation
-以 PaddleClas 已有的 [RandomRotation](../../../../ppcls/data/preprocess/ops/operators.py#L684) 算子为例，我们希望在使用DALI训练时，将其转换为对应的 DALI 算子，且同样具备 **按指定的参数与角度进行随机旋转**
+以 PaddleClas 已有的 [RandomRotation](../../../../ppcl/data/preprocess/ops/operators.py#L684) 算子为例，我们希望在使用DALI训练时，将其转换为对应的 DALI 算子，且同样具备 **按指定的参数与角度进行随机旋转**
 
 #### 4.3.1 继承DALI已有类
 DALI 已经提供了简单的翻转算子 [`nvidia.dali.ops.Rotate`](https://docs.nvidia.com/deeplearning/dali/user-guide/docs/supported_ops_legacy.html#nvidia.dali.ops.Rotate)，其通过 `angle`、`fill_value`、`interp_type` 等参数控制旋转的角度、填充值以及插值方式。但是其缺少一定的随机性，此我们需要继承这个旋转类，并重载其 `__init__` 方法和 `__call__` 方法。继承代码如下所示：
@@ -206,4 +206,4 @@ class RandomRotation(ops.Rotate):
   **A**：由于DALI底层实现是NVIDIA官方编写的代码，而operators.py中调用的是cv2、Pillow库，可能存在无法避免的细微差异，如同样的插值方法，实现存在不同。因此只能尽量从执行逻辑、参数、随机数分布上进行等价转换，而无法做到完全一致。如果出现较大diff，可以检查转换来的DALI算子代码执行逻辑、参数、随机数分布是否存在问题，也可以将读取结果可视化检查。另外需要注意的是如果使用DALI的数据预处理接口进行训练，那么为了获得最佳的精度，也应该用DALI的数据预处理接口进行测试，否则可能会造成精度下降。
 
 - **Q**：如果模型使用比较复杂的Sampler如PKsampler该如何改写呢？
-  **A**：从开发成本考虑，目前比较推荐的方法([#issue 4407](https://github.com/NVIDIA/DALI/issues/4407#issuecomment-1298132180))是使用DALI官方提供的 [`External Source Operator`](https://docs.nvidia.com/deeplearning/dali/user-guide/docs/examples/general/data_loading/external_input.html) 完成自定义Sampler的编写，实际上 [dali.py](../../../../ppcls/data/dataloader/dali.py) 也提供了基于 `External Source Operator` 的 `PKSampler` 的实现 `ExternalSource_RandomIdentity`。
+  **A**：从开发成本考虑，目前比较推荐的方法([#issue 4407](https://github.com/NVIDIA/DALI/issues/4407#issuecomment-1298132180))是使用DALI官方提供的 [`External Source Operator`](https://docs.nvidia.com/deeplearning/dali/user-guide/docs/examples/general/data_loading/external_input.html) 完成自定义Sampler的编写，实际上 [dali.py](../../../../ppcl/data/dataloader/dali.py) 也提供了基于 `External Source Operator` 的 `PKSampler` 的实现 `ExternalSource_RandomIdentity`。

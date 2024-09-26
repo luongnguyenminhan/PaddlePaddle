@@ -130,7 +130,7 @@
 
     单卡训练：
     ```shell
-    python3.7 tools/train.py -c ./ppcls/configs/reid/strong_baseline/softmax_triplet_with_center.yaml
+    python3.7 tools/train.py -c ./ppcl/configs/reid/strong_baseline/softmax_triplet_with_center.yaml
     ```
 
     多卡训练：
@@ -149,7 +149,7 @@
     ```shell
     export CUDA_VISIBLE_DEVICES=0,1,2,3
     python3.7 -m paddle.distributed.launch --gpus="0,1,2,3" tools/train.py \
-    -c ./ppcls/configs/reid/strong_baseline/softmax_triplet_with_center.yaml
+    -c ./ppcl/configs/reid/strong_baseline/softmax_triplet_with_center.yaml
     ```
     注：单卡训练大约需要1个小时。
 
@@ -167,7 +167,7 @@
 
   ```shell
   python3.7 tools/eval.py \
-  -c ./ppcls/configs/reid/strong_baseline/softmax_triplet_with_center.yaml \
+  -c ./ppcl/configs/reid/strong_baseline/softmax_triplet_with_center.yaml \
   -o Global.pretrained_model="./output/RecModel/latest"
   ```
 
@@ -182,7 +182,7 @@
   cd ..
   # 评估
   python3.7 tools/eval.py \
-  -c ppcls/configs/reid/strong_baseline/softmax_triplet_with_center.yaml \
+  -c ppcl/configs/reid/strong_baseline/softmax_triplet_with_center.yaml \
   -o Global.pretrained_model="pretrained_models/softmax_triplet_with_center_pretrained"
   ```
   注：`pretrained_model` 后填入的地址不需要加 `.pdparams` 后缀，在程序运行时会自动补上。
@@ -213,7 +213,7 @@
   如下所示，在评估命令中加上 `-o Global.re_ranking=True` 即可开启该功能。
   ```bash
   python3.7 tools/eval.py \
-  -c ppcls/configs/reid/strong_baseline/softmax_triplet_with_center.yaml \
+  -c ppcl/configs/reid/strong_baseline/softmax_triplet_with_center.yaml \
   -o Global.pretrained_model="pretrained_models/softmax_triplet_with_center_pretrained" \
   -o Global.re_ranking=True
   ```
@@ -251,7 +251,7 @@
   - 将训练过程中保存的模型文件转换成 inference 模型，同样以 `latest.pdparams` 为例，执行以下命令进行转换
     ```shell
     python3.7 tools/export_model.py \
-    -c ppcls/configs/reid/strong_baseline/softmax_triplet_with_center.yaml \
+    -c ppcl/configs/reid/strong_baseline/softmax_triplet_with_center.yaml \
     -o Global.pretrained_model="output/RecModel/latest" \
     -o Global.save_inference_dir="./deploy/softmax_triplet_with_center_infer"
     ```

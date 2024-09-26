@@ -19,11 +19,11 @@ import cv2
 import faiss
 import pickle
 
-from paddleclas.deploy.utils import logger, config
-from paddleclas.deploy.utils.get_image_list import get_image_list
-from paddleclas.deploy.utils.draw_bbox import draw_bbox_results
-from paddleclas.deploy.python.predict_rec import RecPredictor
-from paddleclas.deploy.python.predict_det import DetPredictor
+from deploy.utils import logger, config
+from deploy.utils.get_image_list import get_image_list
+from deploy.utils.draw_bbox import draw_bbox_results
+from deploy.python.predict_rec import RecPredictor
+from deploy.python.predict_det import DetPredictor
 
 
 class SystemPredictor(object):

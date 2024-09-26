@@ -16,7 +16,7 @@ python3 -m paddle.distributed.launch \
     --log_dir=./log/ \
     --gpus "0,1,2,3" \
     tools/train.py \
-    -c ./ppcls/configs/ImageNet/ResNet/ResNet50.yaml
+    -c ./ppcl/configs/ImageNet/ResNet/ResNet50.yaml
 ```
 
 ### 2.2 多机训练
@@ -30,7 +30,7 @@ python3 -m paddle.distributed.launch \
     --ips="${ip_list}" \
     --gpus="0,1,2,3" \
     tools/train.py \
-    -c ./ppcls/configs/ImageNet/ResNet/ResNet50.yaml
+    -c ./ppcl/configs/ImageNet/ResNet/ResNet50.yaml
 ```
 
 **注：**

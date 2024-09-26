@@ -5,11 +5,11 @@ import numpy as np
 import faiss
 import pickle
 
-from paddleclas.deploy.utils import logger, config
-from paddleclas.deploy.utils.get_image_list import get_image_and_label_list
-from paddleclas.deploy.python.build_gallery import GalleryBuilder
-from paddleclas.deploy.python.predict_rec import RecPredictor
-from paddleclas.deploy.python.predict_det import DetPredictor
+from deploy.utils import logger, config
+from deploy.utils.get_image_list import get_image_and_label_list
+from deploy.python.build_gallery import GalleryBuilder
+from deploy.python.predict_rec import RecPredictor
+from deploy.python.predict_det import DetPredictor
 
 
 class SystemPredictor(object):

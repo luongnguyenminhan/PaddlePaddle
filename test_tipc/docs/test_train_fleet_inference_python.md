@@ -94,7 +94,7 @@ bash test_tipc/test_train_inference_python.sh  test_tipc/configs/PPLCNet/PPLCNet
 输出结果保存在`test_tipc/output/PPLCNet_x1_0/results_python.log`，内容如下，以`Run successfully`开头表示测试命令正常，否则为测试失败。
 
 ```bash
-Run successfully with command - python3.7 -m paddle.distributed.launch --ips=192.168.0.1,192.168.0.2 --gpus=0,1 tools/train.py -c ppcls/configs/ImageNet/PPLCNet/PPLCNet_x1_0.yaml -o Global.seed=1234 -o DataL
+Run successfully with command - python3.7 -m paddle.distributed.launch --ips=192.168.0.1,192.168.0.2 --gpus=0,1 tools/train.py -c ppcl/configs/ImageNet/PPLCNet/PPLCNet_x1_0.yaml -o Global.seed=1234 -o DataL
 oader.Train.sampler.shuffle=False -o DataLoader.Train.loader.num_workers=0 -o DataLoader.Train.loader.use_shared_memory=False -o Global.device=gpu -o Global.output_dir=./test_tipc/output/PPLCNet_x1_0/norm_train_gpus_0,
 1_autocast_null_nodes_2   -o Global.epochs=2   -o DataLoader.Train.sampler.batch_size=8  !
 ...

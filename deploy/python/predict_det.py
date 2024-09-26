@@ -22,11 +22,11 @@ import numpy as np
 import cv2
 import paddle
 
-from paddleclas.deploy.utils import logger, config
-from paddleclas.deploy.utils.predictor import Predictor
-from paddleclas.deploy.utils.get_image_list import get_image_list
-from paddleclas.deploy.python.preprocess import create_operators
-from paddleclas.deploy.python.det_preprocess import det_preprocess
+from deploy.utils import logger, config
+from deploy.utils.predictor import Predictor
+from deploy.utils.get_image_list import get_image_list
+from deploy.python.preprocess import create_operators
+from deploy.python.det_preprocess import det_preprocess
 
 
 class DetPredictor(Predictor):

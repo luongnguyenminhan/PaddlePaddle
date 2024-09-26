@@ -132,7 +132,7 @@ print(next(result))
 [{'attributes': ['Male', 'Age18-60', 'Back', 'Glasses: False', 'Hat: False', 'HoldObjectsInFront: False', 'Backpack', 'Upper: LongSleeve UpperPlaid', 'Lower:  Trousers', 'No boots'], 'output': [0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1], 'filename': 'pulc_demo_imgs/person_attribute/090004.jpg'}]
 ```
 
-**备注**：其中 `output` 的值索引为0表示是否佩戴帽子，索引值为1表示是否佩戴眼镜，索引值2-7表示上衣风格，索引值8-13表示下装风格，索引值14表示是否穿靴子，索引值15-17表示背的包的类型，索引值18表示正面是否持物，索引值19-21表示年龄，索引值22表示性别，索引值23-25表示朝向。详情可以查看[代码](../../../../ppcls/data/postprocess/attr_rec.py#L84)。具体地，属性包含以下类型：
+**备注**：其中 `output` 的值索引为0表示是否佩戴帽子，索引值为1表示是否佩戴眼镜，索引值2-7表示上衣风格，索引值8-13表示下装风格，索引值14表示是否穿靴子，索引值15-17表示背的包的类型，索引值18表示正面是否持物，索引值19-21表示年龄，索引值22表示性别，索引值23-25表示朝向。详情可以查看[代码](../../../../ppcl/data/postprocess/attr_rec.py#L84)。具体地，属性包含以下类型：
 
 ```
 - 性别：男、女
@@ -241,7 +241,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
     tools/train.py \
-        -c ./ppcls/configs/PULC/person_attribute/PPLCNet_x1_0.yaml
+        -c ./ppcl/configs/PULC/person_attribute/PPLCNet_x1_0.yaml
 ```
 
 验证集的最佳指标在 `77.71%` 左右（数据集较小，一般有0.3%左右的波动）。
@@ -255,7 +255,7 @@ python3 -m paddle.distributed.launch \
 
 ```bash
 python3 tools/eval.py \
-    -c ./ppcls/configs/PULC/person_attribute/PPLCNet_x1_0.yaml \
+    -c ./ppcl/configs/PULC/person_attribute/PPLCNet_x1_0.yaml \
     -o Global.pretrained_model="output/PPLCNet_x1_0/best_model"
 ```
 
@@ -269,7 +269,7 @@ python3 tools/eval.py \
 
 ```bash
 python3 tools/infer.py \
-    -c ./ppcls/configs/PULC/person_attribute/PPLCNet_x1_0.yaml \
+    -c ./ppcl/configs/PULC/person_attribute/PPLCNet_x1_0.yaml \
     -o Global.pretrained_model=output/PPLCNet_x1_0/best_model
 ```
 
@@ -306,7 +306,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
     tools/train.py \
-        -c ./ppcls/configs/PULC/person_attribute/PPLCNet_x1_0.yaml \
+        -c ./ppcl/configs/PULC/person_attribute/PPLCNet_x1_0.yaml \
         -o Arch.name=ResNet101_vd
 ```
 
@@ -323,7 +323,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
     tools/train.py \
-        -c ./ppcls/configs/PULC/person_attribute/PPLCNet_x1_0_Distillation.yaml \
+        -c ./ppcl/configs/PULC/person_attribute/PPLCNet_x1_0_Distillation.yaml \
         -o Arch.models.0.Teacher.pretrained=output/ResNet101_vd/best_model
 ```
 
@@ -358,7 +358,7 @@ Paddle Inference 是飞桨的原生推理库， 作用于服务器端和云端�
 
 ```bash
 python3 tools/export_model.py \
-    -c ./ppcls/configs/PULC/person_attribute/PPLCNet_x1_0.yaml \
+    -c ./ppcl/configs/PULC/person_attribute/PPLCNet_x1_0.yaml \
     -o Global.pretrained_model=output/DistillationModel/best_model_student \
     -o Global.save_inference_dir=deploy/models/PPLCNet_x1_0_person_attribute_infer
 ```

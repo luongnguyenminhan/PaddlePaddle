@@ -38,10 +38,10 @@ cd /home/Projects
 
 ```shell
 # 对于 GPU 用户
-sudo nvidia-docker run --name ppcls -v $PWD:/paddle --shm-size=8G --network=host -it registry.baidubce.com/paddlepaddle/paddle:2.3.0-gpu-cuda10.2-cudnn7 /bin/bash
+sudo nvidia-docker run --name ppcl -v $PWD:/paddle --shm-size=8G --network=host -it registry.baidubce.com/paddlepaddle/paddle:2.3.0-gpu-cuda10.2-cudnn7 /bin/bash
 
 # 对于 CPU 用户
-sudo docker run --name ppcls -v $PWD:/paddle --shm-size=8G --network=host -it paddlepaddle/paddle:2.3.0-gpu-cuda10.2-cudnn7 /bin/bash
+sudo docker run --name ppcl -v $PWD:/paddle --shm-size=8G --network=host -it paddlepaddle/paddle:2.3.0-gpu-cuda10.2-cudnn7 /bin/bash
 ```
 
 **注意**：
@@ -54,7 +54,7 @@ sudo docker run --name ppcls -v $PWD:/paddle --shm-size=8G --network=host -it pa
     * 如需再次进入容器，可使用下述命令：
 
     ```shell
-    sudo Docker exec -it ppcls /bin/bash
+    sudo Docker exec -it ppcl /bin/bash
     ```
 <a name='1.1.2'></a>
 #### 1.1.2 在现有环境中安装paddle

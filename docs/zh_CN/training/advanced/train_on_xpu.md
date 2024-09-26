@@ -25,8 +25,8 @@
 * 命令：
 
 ```shell
-python3.7 ppcls/static/train.py \
-    -c ppcls/configs/quick_start/kunlun/ResNet50_vd_finetune_kunlun.yaml \
+python3.7 ppcl/static/train.py \
+    -c ppcl/configs/quick_start/kunlun/ResNet50_vd_finetune_kunlun.yaml \
     -o use_gpu=False \
     -o use_xpu=True \
     -o is_distributed=False
@@ -40,8 +40,8 @@ python3.7 ppcls/static/train.py \
 * 命令：
 
 ```shell
-python3.7 ppcls/static/train.py \
-    -c ppcls/configs/quick_start/MobileNetV3_large_x1_0.yaml \
+python3.7 ppcl/static/train.py \
+    -c ppcl/configs/quick_start/MobileNetV3_large_x1_0.yaml \
     -o use_gpu=False \
     -o use_xpu=True \
     -o is_distributed=False
@@ -53,8 +53,8 @@ python3.7 ppcls/static/train.py \
 * 命令：
 
 ```shell
-python3.7 ppcls/static/train.py \
-    -c ppcls/configs/quick_start/kunlun/HRNet_W18_C_finetune_kunlun.yaml \
+python3.7 ppcl/static/train.py \
+    -c ppcl/configs/quick_start/kunlun/HRNet_W18_C_finetune_kunlun.yaml \
     -o is_distributed=False \
     -o use_xpu=True \
     -o use_gpu=False
@@ -66,15 +66,15 @@ python3.7 ppcls/static/train.py \
 * 命令：
 
 ```shell
-python3.7 ppcls/static/train.py \
-    -c ppcls/configs/quick_start/kunlun/VGG16_finetune_kunlun.yaml \
+python3.7 ppcl/static/train.py \
+    -c ppcl/configs/quick_start/kunlun/VGG16_finetune_kunlun.yaml \
     -o use_gpu=False \
     -o use_xpu=True \
     -o is_distributed=False
 ```
 ```shell
-python3.7 ppcls/static/train.py \
-    -c ppcls/configs/quick_start/kunlun/VGG19_finetune_kunlun.yaml \
+python3.7 ppcl/static/train.py \
+    -c ppcl/configs/quick_start/kunlun/VGG19_finetune_kunlun.yaml \
     -o use_gpu=False \
     -o use_xpu=True \
     -o is_distributed=False

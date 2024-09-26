@@ -53,10 +53,10 @@ The following commands will create a docker container named ppcls and map the cu
 
 ```shell
 # For GPU users
-sudo nvidia-docker run --name ppcls -v $PWD:/paddle --shm-size=8G --network=host -it registry.baidubce.com/paddlepaddle/paddle:2.4.2-gpu-cuda10.2-cudnn7.6-trt7.0 /bin/bash
+sudo nvidia-docker run --name ppcl -v $PWD:/paddle --shm-size=8G --network=host -it registry.baidubce.com/paddlepaddle/paddle:2.4.2-gpu-cuda10.2-cudnn7.6-trt7.0 /bin/bash
 
 # For CPU users
-sudo docker run --name ppcls -v $PWD:/paddle --shm-size=8G --network=host -it registry.baidubce.com/paddlepaddle/paddle:2.4.2 /bin/bash
+sudo docker run --name ppcl -v $PWD:/paddle --shm-size=8G --network=host -it registry.baidubce.com/paddlepaddle/paddle:2.4.2 /bin/bash
 ```
 
 **Notices**:
@@ -68,7 +68,7 @@ sudo docker run --name ppcls -v $PWD:/paddle --shm-size=8G --network=host -it re
     * After entering the docker container, you can exit the current container by pressing `Ctrl + P + Q` without closing the container;
     * To re-enter the container, use the following command:
     ```shell
-    sudo docker exec -it ppcls /bin/bash
+    sudo docker exec -it ppcl /bin/bash
     ```
 
 <a name="1.1.2"></a>

@@ -211,7 +211,7 @@ adb shell chmod +x /data/local/tmp/arm_cpu//clas_system
 adb push inference_lite_lib.android.armv8.clang.c++_static.with_extra.with_cv/cxx/lib/libpaddle_light_api_shared.so /data/local/tmp/arm_cpu/
 adb push MobileNetV3_large_x1_0.nb /data/local/tmp/arm_cpu/
 adb push config.txt /data/local/tmp/arm_cpu/
-adb push ../../ppcls/utils/imagenet1k_label_list.txt /data/local/tmp/arm_cpu/
+adb push ../../ppcl/utils/imagenet1k_label_list.txt /data/local/tmp/arm_cpu/
 adb push imgs/tabby_cat.jpg /data/local/tmp/arm_cpu/
 ```
 

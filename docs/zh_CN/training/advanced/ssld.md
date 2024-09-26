@@ -137,9 +137,9 @@ SSLD 蒸馏方案的一大特色就是无需使用图像的真值标签，因此
 
 ```shell
 # 单机单卡训练
-python3 tools/train.py -c ppcls/configs/ImageNet/ResNet/ResNet50_vd.yaml -o Arch.pretrained=True -o Arch.use_ssld=True
+python3 tools/train.py -c ppcl/configs/ImageNet/ResNet/ResNet50_vd.yaml -o Arch.pretrained=True -o Arch.use_ssld=True
 # 单机多卡训练
-python3 -m paddle.distributed.launch --gpus="0,1,2,3" tools/train.py -c ppcls/configs/ImageNet/ResNet/ResNet50_vd.yaml -o Arch.pretrained=True -o Arch.use_ssld=True
+python3 -m paddle.distributed.launch --gpus="0,1,2,3" tools/train.py -c ppcl/configs/ImageNet/ResNet/ResNet50_vd.yaml -o Arch.pretrained=True -o Arch.use_ssld=True
 ```
 
 <a name="3.2"></a>

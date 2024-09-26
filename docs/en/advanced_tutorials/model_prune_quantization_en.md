@@ -119,7 +119,7 @@ Normally, offline quantization may lose more accuracy.
 After generating the `inference model`, the offline quantization is run as follows:
 
 ```shell
-python3.7 deploy/slim/quant_post_static.py -c ppcls/configs/ImageNet/ResNet/ResNet50_vd.yaml -o Global.save_inference_dir=./deploy/models/class_ResNet50_vd_ImageNet_infer
+python3.7 deploy/slim/quant_post_static.py -c ppcl/configs/ImageNet/ResNet/ResNet50_vd.yaml -o Global.save_inference_dir=./deploy/models/class_ResNet50_vd_ImageNet_infer
 ```
 
 The `inference model` is stored in`Global.save_inference_dir`.
@@ -137,7 +137,7 @@ Trying the following command：
 Take CPU for example, if you use GPU, change the `cpu` to `gpu`.
 
 ```shell
-python3.7 tools/train.py -c ppcls/configs/slim/ResNet50_vd_prune.yaml -o Global.device=cpu
+python3.7 tools/train.py -c ppcl/configs/slim/ResNet50_vd_prune.yaml -o Global.device=cpu
 ```
 
 - Launch in single-machine single-card/ single-machine multi-card/ multi machine multi-card mode
@@ -147,7 +147,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3.7 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
       tools/train.py \
-      -c ppcls/configs/slim/ResNet50_vd_prune.yaml
+      -c ppcl/configs/slim/ResNet50_vd_prune.yaml
 ```
 
 <a name="3"></a>

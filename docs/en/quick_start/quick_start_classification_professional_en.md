@@ -69,7 +69,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
     tools/train.py \
-        -c ./ppcls/configs/quick_start/professional/ResNet50_vd_CIFAR100.yaml \
+        -c ./ppcl/configs/quick_start/professional/ResNet50_vd_CIFAR100.yaml \
         -o Global.output_dir="output_CIFAR"
 ```
 
@@ -82,7 +82,7 @@ export CUDA_VISIBLE_DEVICES=0
 python3 -m paddle.distributed.launch \
     --gpus="0" \
     tools/train.py \
-        -c ./ppcls/configs/quick_start/professional/ResNet50_vd_CIFAR100.yaml \
+        -c ./ppcl/configs/quick_start/professional/ResNet50_vd_CIFAR100.yaml \
         -o Global.output_dir="output_CIFAR" \
         -o Optimizer.lr.learning_rate=0.01
 ```
@@ -105,7 +105,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
     tools/train.py \
-        -c ./ppcls/configs/quick_start/professional/ResNet50_vd_CIFAR100.yaml \
+        -c ./ppcl/configs/quick_start/professional/ResNet50_vd_CIFAR100.yaml \
         -o Global.output_dir="output_CIFAR" \
         -o Arch.pretrained=True
 ```
@@ -119,7 +119,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
     tools/train.py \
-        -c ./ppcls/configs/quick_start/professional/ResNet50_vd_CIFAR100.yaml \
+        -c ./ppcl/configs/quick_start/professional/ResNet50_vd_CIFAR100.yaml \
         -o Global.output_dir="output_CIFAR" \
         -o Arch.pretrained=True \
         -o Arch.use_ssld=True
@@ -134,7 +134,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
     tools/train.py \
-        -c ./ppcls/configs/quick_start/professional/MobileNetV3_large_x1_0_CIFAR100_finetune.yaml \
+        -c ./ppcl/configs/quick_start/professional/MobileNetV3_large_x1_0_CIFAR100_finetune.yaml \
         -o Global.output_dir="output_CIFAR" \
         -o Arch.pretrained=True
 ```
@@ -159,7 +159,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
     tools/train.py \
-        -c ./ppcls/configs/quick_start/professional/ResNet50_vd_mixup_CIFAR100_finetune.yaml \
+        -c ./ppcl/configs/quick_start/professional/ResNet50_vd_mixup_CIFAR100_finetune.yaml \
         -o Global.output_dir="output_CIFAR"
 
 ```
@@ -228,7 +228,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 python3 -m paddle.distributed.launch \
     --gpus="0,1,2,3" \
     tools/train.py \
-        -c ./ppcls/configs/quick_start/professional/R50_vd_distill_MV3_large_x1_0_CIFAR100.yaml \
+        -c ./ppcl/configs/quick_start/professional/R50_vd_distill_MV3_large_x1_0_CIFAR100.yaml \
         -o Global.output_dir="output_CIFAR"
 
 ```
@@ -257,7 +257,7 @@ After training the model, you can use the following commands to evaluate the acc
 
 ```bash
 python3 tools/eval.py \
-    -c ./ppcls/configs/quick_start/professional/ResNet50_vd_CIFAR100.yaml \
+    -c ./ppcl/configs/quick_start/professional/ResNet50_vd_CIFAR100.yaml \
     -o Global.pretrained_model="output_CIFAR/ResNet50_vd/best_model"
 ```
 
@@ -283,7 +283,7 @@ First, export the trained model to inference model:
 
 ```bash
 python3 tools/export_model.py \
-    -c ./ppcls/configs/quick_start/professional/ResNet50_vd_CIFAR100.yaml \
+    -c ./ppcl/configs/quick_start/professional/ResNet50_vd_CIFAR100.yaml \
     -o Global.pretrained_model=output_CIFAR/ResNet50_vd/best_model
 ```
 
