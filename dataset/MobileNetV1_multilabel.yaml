@@ -82,7 +82,7 @@ DataLoader:
     dataset: 
       name: MultiLabelDataset
       image_root: ./dataset/jpg/
-      cls_label_path: ./dataset/test_list.txt
+      cls_label_path: ./dataset/train_list.txt
       transform_ops:
         - DecodeImage:
             to_rgb: True
