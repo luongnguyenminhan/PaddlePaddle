@@ -31,17 +31,16 @@ Loss:
 
 
 Optimizer:
-  name: AdamW
-  one_dim_param_no_weight_decay: True
-  weight_decay: 0.0001 # 1e-4
+  name: Momentum
+  momentum: 0.9
   lr:
-    name: OneCycleLR
-    max_learning_rate: 0.0001 # 1e-4
-    divide_factor: 25.0
-    end_learning_rate: 0.0000000001 # 1e-10
-    phase_pct: 0.2
-    anneal_strategy: cos
-    three_phase: False
+    name: Cosine
+    learning_rate: 0.00375
+    warmup_epoch: 5
+    last_epoch: -1
+  regularizer:
+    name: 'L2'
+    coeff: 0.000001
 
 # data loader for train and eval
 DataLoader:
@@ -66,7 +65,7 @@ DataLoader:
 
     sampler:
       name: DistributedBatchSampler
-      batch_size: 64
+      batch_size: 16
       drop_last: True
       shuffle: True
     loader:
@@ -93,7 +92,7 @@ DataLoader:
             order: ''
     sampler:
       name: DistributedBatchSampler
-      batch_size: 256
+      batch_size: 32
       drop_last: False
       shuffle: False
     loader:
@@ -102,7 +101,7 @@ DataLoader:
 
 Infer:
   infer_imgs: dataset/jpg/05096900790-2020-1-7.jpg
-  batch_size: 10
+  batch_size: 8
   transforms:
     - DecodeImage:
         to_rgb: True
