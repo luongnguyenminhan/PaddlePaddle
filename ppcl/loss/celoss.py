@@ -61,6 +61,7 @@ class CELoss(nn.Layer):
                 soft_label = True
             else:
                 soft_label = False
+            print(f'Logits shape: {x.shape}, Labels shape: {label.shape}')
             loss = F.cross_entropy(
                 x,
                 label=label,

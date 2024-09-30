@@ -82,7 +82,7 @@ DataLoader:
     dataset: 
       name: MultiLabelDataset
       image_root: ./dataset/jpg/
-      cls_label_path: ./dataset/train_list.txt
+      cls_label_path: ./dataset/test_list.txt
       transform_ops:
         - DecodeImage:
             to_rgb: True
@@ -98,7 +98,7 @@ DataLoader:
             order: ''
     sampler:
       name: DistributedBatchSampler
-      batch_size: 192
+      batch_size: 512
       drop_last: False
       shuffle: False
     loader:
