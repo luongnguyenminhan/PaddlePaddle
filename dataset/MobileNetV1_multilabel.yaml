@@ -7,26 +7,32 @@ Global:
   save_interval: 1
   eval_during_train: True
   eval_interval: 1
-  epochs: 10
+  start_eval_epoch: 10
+  epochs: 20
   print_batch_step: 10
   use_visualdl: False
   # used for static mode and model export
   image_shape: [3, 224, 224]
   save_inference_dir: ./inference
-  use_multilabel: True
+  # training model under @to_static
+  to_static: False
+  use_dali: False
+
 # model architecture
 Arch:
-  name: MobileNetV1
+  name: MobileNetV3_small_x0_35
   class_num: 3
-  pretrained: False
+  pretrained: True
+  use_sync_bn: True
 
 # loss function config for traing/eval process
 Loss:
   Train:
-    - MultiLabelLoss:
+    - CELoss:
         weight: 1.0
+        epsilon: 0.1
   Eval:
-    - MultiLabelLoss:
+    - CELoss:
         weight: 1.0
 
 
@@ -35,10 +41,11 @@ Optimizer:
   momentum: 0.9
   lr:
     name: Cosine
-    learning_rate: 0.001
+    learning_rate: 0.05
+    warmup_epoch: 5
   regularizer:
     name: 'L2'
-    coeff: 0.000001
+    coeff: 0.00001
 
 
 # data loader for train and eval
@@ -64,11 +71,11 @@ DataLoader:
 
     sampler:
       name: DistributedBatchSampler
-      batch_size: 16
-      drop_last: True
+      batch_size: 512
+      drop_last: False
       shuffle: True
     loader:
-      num_workers: 4
+      num_workers: 8
       use_shared_memory: True
 
   Eval:
@@ -91,7 +98,7 @@ DataLoader:
             order: ''
     sampler:
       name: DistributedBatchSampler
-      batch_size: 32
+      batch_size: 64
       drop_last: False
       shuffle: False
     loader:
