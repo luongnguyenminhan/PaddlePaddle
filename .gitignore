@@ -15,6 +15,7 @@ nohup.out
 .idea
 inference/
 test.py
+jpg/
 pulc_demo_imgs/
 *.mat
 *.tgz
