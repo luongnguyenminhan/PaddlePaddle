@@ -98,7 +98,7 @@ DataLoader:
             order: ''
     sampler:
       name: DistributedBatchSampler
-      batch_size: 64
+      batch_size: 192
       drop_last: False
       shuffle: False
     loader:
