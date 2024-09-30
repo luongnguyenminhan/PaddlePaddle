@@ -28,15 +28,16 @@ class MultiLabelDataset(CommonDataset):
     def _load_anno(self, label_ratio=False):
         assert os.path.exists(self._cls_path)
         assert os.path.exists(self._img_root)
+        print("Loading annotations from: ", self._cls_path)
+        print("Loading images from: ", self._img_root)
         self.label_ratio = label_ratio
         self.images = []
         self.labels = []
         with open(self._cls_path) as fd:
             lines = fd.readlines()
             for l in lines:
-                l = l.strip().split("\t")
+                l = l.strip().split(" ")
                 self.images.append(os.path.join(self._img_root, l[0]))
-
                 labels = l[1].split(',')
                 labels = [np.int64(i) for i in labels]
 

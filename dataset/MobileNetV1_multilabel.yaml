@@ -17,7 +17,7 @@ Global:
 # model architecture
 Arch:
   name: MobileNetV1
-  class_num: 33
+  class_num: 3
   pretrained: True
 
 # loss function config for traing/eval process
@@ -47,7 +47,7 @@ DataLoader:
     dataset:
       name: MultiLabelDataset
       image_root: ./dataset/jpg/
-      cls_label_path: ./dataset/label.txt
+      cls_label_path: ./dataset/train_list.txt
       transform_ops:
         - DecodeImage:
             to_rgb: True
@@ -75,7 +75,7 @@ DataLoader:
     dataset: 
       name: MultiLabelDataset
       image_root: ./dataset/jpg/
-      cls_label_path: ./dataset/label.txt
+      cls_label_path: ./dataset/test_list.txt
       transform_ops:
         - DecodeImage:
             to_rgb: True
