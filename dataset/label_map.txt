@@ -1,0 +1,3 @@
+0 meter_clock_present
+1 meter_clock_visible
+2 water_usage_reading_visible

@@ -15,42 +15,43 @@ from __future__ import division
 from __future__ import print_function
 
 import os
-import shutil
 import platform
-import paddle
-import paddle.distributed as dist
-from visualdl import LogWriter
-from paddle import nn
-import numpy as np
 import random
 
-from ppcl.utils.misc import AverageMeter
-from ppcl.utils import logger
-from ppcl.utils.logger import init_logger
-from ppcl.utils.config import print_config, dump_infer_config
-from ppcl.data import build_dataloader
-from ppcl.arch import build_model, RecModel, DistillationModel, TheseusLayer
+import numpy as np
+import paddle
+import paddle.distributed as dist
+from paddle import nn
+from visualdl import LogWriter
+
 from ppcl.arch import apply_to_static
+from ppcl.arch import build_model, RecModel, DistillationModel, TheseusLayer
+from ppcl.arch.gears.identity_head import IdentityHead
+from ppcl.data import build_dataloader
+from ppcl.data import create_operators
+from ppcl.data.postprocess import build_postprocess
+from ppcl.data.utils.get_image_list import get_image_list
+from ppcl.engine import evaluation
+from ppcl.engine import train as train_method
+from ppcl.engine.train.utils import type_name
 from ppcl.loss import build_loss
 from ppcl.metric import build_metrics
 from ppcl.optimizer import build_optimizer
-from ppcl.utils.amp import AutoCast, build_scaler
-from ppcl.utils.ema import ExponentialMovingAverage
-from ppcl.utils.save_load import load_dygraph_pretrain
-from ppcl.utils.save_load import init_model
+from ppcl.utils import logger
 from ppcl.utils import save_load, save_predict_result
-
-from ppcl.data.utils.get_image_list import get_image_list
-from ppcl.data.postprocess import build_postprocess
-from ppcl.data import create_operators
-from ppcl.engine import train as train_method
-from ppcl.engine.train.utils import type_name
-from ppcl.engine import evaluation
-from ppcl.arch.gears.identity_head import IdentityHead
+from ppcl.utils.amp import AutoCast, build_scaler
+from ppcl.utils.config import print_config, dump_infer_config
+from ppcl.utils.ema import ExponentialMovingAverage
+from ppcl.utils.logger import init_logger
+from ppcl.utils.misc import AverageMeter
+from ppcl.utils.save_load import init_model
+from ppcl.utils.save_load import load_dygraph_pretrain
 
 
 class Engine(object):
     def __init__(self, config, mode="train"):
+        self.amp_level = None
+        self.output_info = None
         assert mode in ["train", "eval", "infer", "export"]
         self.mode = mode
         self.config = config
@@ -94,7 +95,7 @@ class Engine(object):
         # for visualdl
         self.vdl_writer = None
         if self.config['Global'][
-                'use_visualdl'] and mode == "train" and dist.get_rank() == 0:
+            'use_visualdl'] and mode == "train" and dist.get_rank() == 0:
             vdl_writer_path = self.output_dir
             if not os.path.exists(vdl_writer_path):
                 os.makedirs(vdl_writer_path)
@@ -119,7 +120,6 @@ class Engine(object):
             else:
                 msg = "The Global.class_num will be deprecated. Please use Arch.class_num instead. The Global.class_num has been ignored."
             logger.warning(msg)
-        #TODO(gaotingquan): support rec
         class_num = config["Arch"].get("class_num", None)
         self.config["DataLoader"].update({"class_num": class_num})
         self.config["DataLoader"].update({
@@ -139,7 +139,7 @@ class Engine(object):
 
             self.iter_per_epoch = len(
                 self.train_dataloader) - 1 if platform.system(
-                ) == "Windows" else len(self.train_dataloader)
+            ) == "Windows" else len(self.train_dataloader)
             if self.config["Global"].get("iter_per_epoch", None):
                 # set max iteration per epoch mannualy, when training by iteration(s), such as XBM, FixMatch.
                 self.iter_per_epoch = self.config["Global"].get(
@@ -193,7 +193,7 @@ class Engine(object):
 
         # build metric
         if self.mode == 'train' and "Metric" in self.config and "Train" in self.config[
-                "Metric"] and self.config["Metric"]["Train"]:
+            "Metric"] and self.config["Metric"]["Train"]:
             metric_config = self.config["Metric"]["Train"]
             if hasattr(self.train_dataloader, "collate_fn"
                        ) and self.train_dataloader.collate_fn is not None:
@@ -285,11 +285,12 @@ class Engine(object):
         # build postprocess for infer
         if self.mode == 'infer':
             self.preprocess_func = create_operators(self.config["Infer"][
-                "transforms"])
+                                                        "transforms"])
             self.postprocess_func = build_postprocess(self.config["Infer"][
-                "PostProcess"])
+                                                          "PostProcess"])
 
     def train(self):
+        global best_metric_ema
         assert self.mode == "train"
         print_batch_step = self.config['Global']['print_batch_step']
         save_interval = self.config["Global"]["save_interval"]
@@ -321,7 +322,7 @@ class Engine(object):
                 best_metric.update(metric_info)
             if hasattr(self.train_dataloader.batch_sampler, "set_epoch"):
                 self.train_dataloader.batch_sampler.set_epoch(best_metric[
-                    "epoch"])
+                                                                  "epoch"])
 
         for epoch_id in range(best_metric["epoch"] + 1,
                               self.config["Global"]["epochs"] + 1):
@@ -341,8 +342,8 @@ class Engine(object):
             start_eval_epoch = self.config["Global"].get("start_eval_epoch",
                                                          0) - 1
             if self.config["Global"][
-                    "eval_during_train"] and epoch_id % self.config["Global"][
-                        "eval_interval"] == 0 and epoch_id > start_eval_epoch:
+                "eval_during_train"] and epoch_id % self.config["Global"][
+                "eval_interval"] == 0 and epoch_id > start_eval_epoch:
                 acc = self.eval(epoch_id)
 
                 # step lr (by epoch) according to given metric, such as acc
