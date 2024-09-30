@@ -29,6 +29,7 @@ class Identity(nn.Layer):
 class TheseusLayer(nn.Layer):
     def __init__(self, *args, **kwargs):
         super().__init__()
+        self.hook_remove_helper = None
         self.res_dict = {}
         self.res_name = self.full_name()
         self.pruner = None
@@ -72,7 +73,7 @@ class TheseusLayer(nn.Layer):
                     logger.warning(msg)
                     return_stages = [
                         val for val in return_stages
-                        if val >= 0 and val < len(stages_pattern)
+                        if 0 <= val < len(stages_pattern)
                     ]
                 return_patterns = [stages_pattern[i] for i in return_stages]
 
@@ -115,7 +116,7 @@ class TheseusLayer(nn.Layer):
                 logger.warning(msg)
                 return_stages = [
                     val for val in return_stages
-                    if val >= 0 and val < len(stages_pattern)
+                    if 0 <= val < len(stages_pattern)
                 ]
             return_patterns = [stages_pattern[i] for i in return_stages]
 
