@@ -31,11 +31,11 @@ Arch:
     name: PPLCNet_x2_5_Tanh
     pretrained: True
     use_ssld: True
-    class_num: 512
+    class_num: 3
   Head:
     name: FC
     embedding_size: 512
-    class_num: 185341
+    class_num: 3
 
 # loss function config for traing/eval process
 Loss:

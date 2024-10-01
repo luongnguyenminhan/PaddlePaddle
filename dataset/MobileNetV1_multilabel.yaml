@@ -3,7 +3,7 @@ Global:
   checkpoints:   # where to save the model checkpoints
   pretrained_model: null  # no pretrained model
   output_dir: ./output/  # output directory for checkpoints and logs
-  device: gpu  # change to 'gpu' if using GPU
+  device: cpu  # change to 'gpu' if using GPU
   save_interval: 5  # save checkpoints every epoch
   eval_during_train: True  # evaluate during training
   eval_interval: 1  # evaluate after every epoch
@@ -109,8 +109,8 @@ DataLoader:
 
 # inference configuration for testing the model
 Infer:
-  infer_imgs: dataset/jpg/05096900790-2020-1-7.jpg
-  batch_size: 8  # batch size for inference
+  infer_imgs: dataset/infer_jpg/ # path to test image
+  batch_size: 1  # batch size for inference
   transforms:
     - DecodeImage:
         to_rgb: True

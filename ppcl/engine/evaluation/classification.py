@@ -104,7 +104,15 @@ def classification_eval(engine, epoch_id=0):
             labels = batch[1]
             preds = out
 
+
+        labels = labels.reshape(preds.shape)
+
         # calc loss
+        if engine.eval_loss_func is not None:
+            with engine.auto_cast(is_eval=True):
+                loss_dict = engine.eval_loss_func(preds, labels)
+        # Check if labels can be reshaped to match preds
+
         if engine.eval_loss_func is not None:
             with engine.auto_cast(is_eval=True):
                 loss_dict = engine.eval_loss_func(preds, labels)
