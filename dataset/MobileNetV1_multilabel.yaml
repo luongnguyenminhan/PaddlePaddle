@@ -73,7 +73,7 @@ DataLoader:
 
     sampler:
       name: DistributedBatchSampler  # sampling method
-      batch_size: 64  # batch size
+      batch_size: 256  # batch size
       drop_last: False
       shuffle: True
     loader:
@@ -100,7 +100,7 @@ DataLoader:
             order: ''
     sampler:
       name: DistributedBatchSampler
-      batch_size: 64
+      batch_size: 256
       drop_last: False
       shuffle: False
     loader:
