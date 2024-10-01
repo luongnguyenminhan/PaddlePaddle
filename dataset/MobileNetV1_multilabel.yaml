@@ -1,85 +1,87 @@
-# global configs
+# global configuration
 Global:
-  checkpoints: null
-  pretrained_model: null
-  output_dir: ./output/
-  device: gpu
-  save_interval: 1
-  eval_during_train: True
-  eval_interval: 1
-  start_eval_epoch: 10
-  epochs: 20
-  print_batch_step: 10
-  use_visualdl: False
-  # used for static mode and model export
-  image_shape: [3, 224, 224]
-  save_inference_dir: ./inference
-  # training model under @to_static
-  to_static: False
-  use_dali: False
+  checkpoints:   # where to save the model checkpoints
+  pretrained_model: null  # no pretrained model
+  output_dir: ./output/  # output directory for checkpoints and logs
+  device: gpu  # change to 'gpu' if using GPU
+  save_interval: 5  # save checkpoints every epoch
+  eval_during_train: True  # evaluate during training
+  eval_interval: 1  # evaluate after every epoch
+  start_eval_epoch: 0  # start evaluation from the first epoch
+  epochs: 20  # total number of epochs to train
+  print_batch_step: 5  # print logs every 2 batches
+  use_visualdl: True  # use VisualDL for visualization
+  image_shape: [3, 224, 224]  # change image shape for training
+  save_inference_dir: ./inference  # save final model for inference
+  to_static: True  # convert to static graph for inference optimization
+  use_dali: False  # using DALI for data loading
 
-# model architecture
+# model architecture for multi-label classification
 Arch:
-  name: MobileNetV3_small_x0_35
-  class_num: 3
-  pretrained: True
-  use_sync_bn: True
+  name: MobileNetV3_small_x0_35  # backbone architecture
+  class_num: 3  # number of classes (multi-label)
+  pretrained: True  # use pretrained weights for better performance
+  use_sync_bn: True  # synchronize batch norm across GPUs
 
-# loss function config for traing/eval process
+# loss function, use cross-entropy loss for multi-label classification
 Loss:
   Train:
-    - CELoss:
-        weight: 1.0
-        epsilon: 0.1
+    - MultiLabelAsymmetricLoss:
+        gamma_pos: 1
+        gamma_neg: 4
+        clip: 0.05
+        weight: 1.0  # Added weight parameter
   Eval:
-    - CELoss:
-        weight: 1.0
+    - MultiLabelAsymmetricLoss:
+        gamma_pos: 1
+        gamma_neg: 4
+        clip: 0.05
+        weight: 1.0  # Added weight parameter
 
 
+# optimizer configuration
 Optimizer:
-  name: Momentum
+  name: Momentum  # momentum optimizer for stable convergence
   momentum: 0.9
   lr:
     name: Cosine
-    learning_rate: 0.05
-    warmup_epoch: 5
+    learning_rate: 0.001  # initial learning rate
   regularizer:
-    name: 'L2'
+    name: 'L2'  # L2 weight decay for regularization
     coeff: 0.00001
 
-
-# data loader for train and eval
+# data loader configuration for training and evaluation
 DataLoader:
   Train:
     dataset:
-      name: MultiLabelDataset
-      image_root: ./dataset/jpg/
-      cls_label_path: ./dataset/train_list.txt
+      name: MultiLabelDataset  # multi-label dataset class
+      image_root: ./dataset/jpg/  # image directory
+      cls_label_path: ./dataset/train_list.txt  # path to training labels
       transform_ops:
-        - DecodeImage:
+        - DecodeImage:  # decode the image file
             to_rgb: True
             channel_first: False
-        - RandCropImage:
+        - RandCropImage:  # random crop the image
             size: 224
-        - RandFlipImage:
+        - RandFlipImage:  # random horizontal flip
             flip_code: 1
-        - NormalizeImage:
+        - NormalizeImage:  # normalize the image
             scale: 1.0/255.0
             mean: [0.485, 0.456, 0.406]
             std: [0.229, 0.224, 0.225]
             order: ''
 
     sampler:
-      name: DistributedBatchSampler
-      batch_size: 512
+      name: DistributedBatchSampler  # sampling method
+      batch_size: 64  # batch size
       drop_last: False
       shuffle: True
     loader:
-      num_workers: 8
-      use_shared_memory: True
+      num_workers: 8  # number of data loading threads
+      use_shared_memory: True  # use shared memory for faster loading
 
   Eval:
-    dataset: 
+    dataset:
       name: MultiLabelDataset
       image_root: ./dataset/jpg/
       cls_label_path: ./dataset/test_list.txt
@@ -88,9 +90,9 @@ DataLoader:
             to_rgb: True
             channel_first: False
         - ResizeImage:
-            resize_short: 256
+            resize_short: 256  # resize the shorter side to 256
         - CropImage:
-            size: 224
+            size: 224  # center crop
         - NormalizeImage:
             scale: 1.0/255.0
             mean: [0.485, 0.456, 0.406]
@@ -98,16 +100,17 @@ DataLoader:
             order: ''
     sampler:
       name: DistributedBatchSampler
-      batch_size: 512
+      batch_size: 64
       drop_last: False
       shuffle: False
     loader:
       num_workers: 4
       use_shared_memory: True
 
+# inference configuration for testing the model
 Infer:
   infer_imgs: dataset/jpg/05096900790-2020-1-7.jpg
-  batch_size: 8
+  batch_size: 8  # batch size for inference
   transforms:
     - DecodeImage:
         to_rgb: True
@@ -121,17 +124,18 @@ Infer:
         mean: [0.485, 0.456, 0.406]
         std: [0.229, 0.224, 0.225]
         order: ''
-    - ToCHWImage:
+    - ToCHWImage:  # convert to CHW format (channel, height, width)
   PostProcess:
-    name: MultiLabelThreshOutput
-    threshold: 0.5
+    name: MultiLabelThreshOutput  # output processing for multi-label
+    threshold: 0.5  # threshold for multi-label output
     class_id_map_file: "dataset/label_map.txt"
     delimiter: " "
 
+# evaluation metrics
 Metric:
   Train:
-    - AccuracyScore:
-    - HammingDistance:
+    - AccuracyScore:  # accuracy for multi-label
+    - HammingDistance:  # measure similarity
   Eval:
     - AccuracyScore:
     - HammingDistance:
