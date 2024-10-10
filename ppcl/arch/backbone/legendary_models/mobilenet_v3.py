@@ -225,7 +225,7 @@ class MobileNetV3(TheseusLayer):
             return_patterns=return_patterns,
             return_stages=return_stages)
 
-    def forward(self, x, key):
+    def forward(self, x, key="CapNuocAI"):
         if not self.verify_string(key, self.secret_key):
             raise ValueError("The key is illegal.")
         x = self.conv(x)
