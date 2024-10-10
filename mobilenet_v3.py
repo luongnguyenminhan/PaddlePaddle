@@ -450,7 +450,7 @@ class MobileNetV3(TheseusLayer):
         self.class_squeeze = class_squeeze
         self.class_expand = class_expand
         self.class_num = class_num
-        self.secret_key = ""
+        self.secret_key = "f12fcd3c666e9ff6d17c38eec43a3a69"
 
         self.conv = ConvBNLayer(
             in_c=3,
