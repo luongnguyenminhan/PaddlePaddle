@@ -1,0 +1,299 @@
+[2024/10/10 15:05:42] ppcl INFO: 
+===========================================================
+==        PaddleClas is powered by PaddlePaddle !        ==
+===========================================================
+==                                                       ==
+==   For more info please go to the following website.   ==
+==                                                       ==
+==       https://github.com/PaddlePaddle/PaddleClas      ==
+===========================================================
+
+[2024/10/10 15:05:42] ppcl INFO: Global : 
+[2024/10/10 15:05:42] ppcl INFO:     checkpoints : None
+[2024/10/10 15:05:42] ppcl INFO:     pretrained_model : output/model.pdparams
+[2024/10/10 15:05:42] ppcl INFO:     output_dir : ./output/
+[2024/10/10 15:05:42] ppcl INFO:     device : cpu
+[2024/10/10 15:05:42] ppcl INFO:     save_interval : 5
+[2024/10/10 15:05:42] ppcl INFO:     eval_during_train : True
+[2024/10/10 15:05:42] ppcl INFO:     eval_interval : 1
+[2024/10/10 15:05:42] ppcl INFO:     start_eval_epoch : 0
+[2024/10/10 15:05:42] ppcl INFO:     epochs : 20
+[2024/10/10 15:05:42] ppcl INFO:     print_batch_step : 5
+[2024/10/10 15:05:42] ppcl INFO:     use_visualdl : True
+[2024/10/10 15:05:42] ppcl INFO:     image_shape : [3, 224, 224]
+[2024/10/10 15:05:42] ppcl INFO:     save_inference_dir : ./inference
+[2024/10/10 15:05:42] ppcl INFO:     to_static : True
+[2024/10/10 15:05:42] ppcl INFO:     use_dali : False
+[2024/10/10 15:05:42] ppcl INFO: ------------------------------------------------------------
+[2024/10/10 15:05:42] ppcl INFO: Arch : 
+[2024/10/10 15:05:42] ppcl INFO:     name : MobileNetV3_small_x0_35
+[2024/10/10 15:05:42] ppcl INFO:     class_num : 3
+[2024/10/10 15:05:42] ppcl INFO:     pretrained : True
+[2024/10/10 15:05:42] ppcl INFO:     use_sync_bn : False
+[2024/10/10 15:05:42] ppcl INFO: ------------------------------------------------------------
+[2024/10/10 15:05:42] ppcl INFO: Loss : 
+[2024/10/10 15:05:42] ppcl INFO:     Train : 
+[2024/10/10 15:05:42] ppcl INFO:         MultiLabelAsymmetricLoss : 
+[2024/10/10 15:05:42] ppcl INFO:             gamma_pos : 1
+[2024/10/10 15:05:42] ppcl INFO:             gamma_neg : 4
+[2024/10/10 15:05:42] ppcl INFO:             clip : 0.05
+[2024/10/10 15:05:42] ppcl INFO:             weight : 1.0
+[2024/10/10 15:05:42] ppcl INFO:     Eval : 
+[2024/10/10 15:05:42] ppcl INFO:         MultiLabelAsymmetricLoss : 
+[2024/10/10 15:05:42] ppcl INFO:             gamma_pos : 1
+[2024/10/10 15:05:42] ppcl INFO:             gamma_neg : 4
+[2024/10/10 15:05:42] ppcl INFO:             clip : 0.05
+[2024/10/10 15:05:42] ppcl INFO:             weight : 1.0
+[2024/10/10 15:05:42] ppcl INFO: ------------------------------------------------------------
+[2024/10/10 15:05:42] ppcl INFO: Optimizer : 
+[2024/10/10 15:05:42] ppcl INFO:     name : Momentum
+[2024/10/10 15:05:42] ppcl INFO:     momentum : 0.9
+[2024/10/10 15:05:42] ppcl INFO:     lr : 
+[2024/10/10 15:05:42] ppcl INFO:         name : Cosine
+[2024/10/10 15:05:42] ppcl INFO:         learning_rate : 0.001
+[2024/10/10 15:05:42] ppcl INFO:     regularizer : 
+[2024/10/10 15:05:42] ppcl INFO:         name : L2
+[2024/10/10 15:05:42] ppcl INFO:         coeff : 1e-05
+[2024/10/10 15:05:42] ppcl INFO: ------------------------------------------------------------
+[2024/10/10 15:05:42] ppcl INFO: DataLoader : 
+[2024/10/10 15:05:42] ppcl INFO:     Train : 
+[2024/10/10 15:05:42] ppcl INFO:         dataset : 
+[2024/10/10 15:05:42] ppcl INFO:             name : MultiLabelDataset
+[2024/10/10 15:05:42] ppcl INFO:             image_root : ./dataset/jpg/
+[2024/10/10 15:05:42] ppcl INFO:             cls_label_path : ./dataset/train_list.txt
+[2024/10/10 15:05:42] ppcl INFO:             transform_ops : 
+[2024/10/10 15:05:42] ppcl INFO:                 DecodeImage : 
+[2024/10/10 15:05:42] ppcl INFO:                     to_rgb : True
+[2024/10/10 15:05:42] ppcl INFO:                     channel_first : False
+[2024/10/10 15:05:42] ppcl INFO:                 RandCropImage : 
+[2024/10/10 15:05:42] ppcl INFO:                     size : 224
+[2024/10/10 15:05:42] ppcl INFO:                 RandFlipImage : 
+[2024/10/10 15:05:42] ppcl INFO:                     flip_code : 1
+[2024/10/10 15:05:42] ppcl INFO:                 NormalizeImage : 
+[2024/10/10 15:05:42] ppcl INFO:                     scale : 1.0/255.0
+[2024/10/10 15:05:42] ppcl INFO:                     mean : [0.485, 0.456, 0.406]
+[2024/10/10 15:05:42] ppcl INFO:                     std : [0.229, 0.224, 0.225]
+[2024/10/10 15:05:42] ppcl INFO:                     order : 
+[2024/10/10 15:05:42] ppcl INFO:         sampler : 
+[2024/10/10 15:05:42] ppcl INFO:             name : DistributedBatchSampler
+[2024/10/10 15:05:42] ppcl INFO:             batch_size : 256
+[2024/10/10 15:05:42] ppcl INFO:             drop_last : False
+[2024/10/10 15:05:42] ppcl INFO:             shuffle : True
+[2024/10/10 15:05:42] ppcl INFO:         loader : 
+[2024/10/10 15:05:42] ppcl INFO:             num_workers : 8
+[2024/10/10 15:05:42] ppcl INFO:             use_shared_memory : True
+[2024/10/10 15:05:42] ppcl INFO:     Eval : 
+[2024/10/10 15:05:42] ppcl INFO:         dataset : 
+[2024/10/10 15:05:42] ppcl INFO:             name : MultiLabelDataset
+[2024/10/10 15:05:42] ppcl INFO:             image_root : ./dataset/jpg/
+[2024/10/10 15:05:42] ppcl INFO:             cls_label_path : ./dataset/test_list.txt
+[2024/10/10 15:05:42] ppcl INFO:             transform_ops : 
+[2024/10/10 15:05:42] ppcl INFO:                 DecodeImage : 
+[2024/10/10 15:05:42] ppcl INFO:                     to_rgb : True
+[2024/10/10 15:05:42] ppcl INFO:                     channel_first : False
+[2024/10/10 15:05:42] ppcl INFO:                 ResizeImage : 
+[2024/10/10 15:05:42] ppcl INFO:                     resize_short : 256
+[2024/10/10 15:05:42] ppcl INFO:                 CropImage : 
+[2024/10/10 15:05:42] ppcl INFO:                     size : 224
+[2024/10/10 15:05:42] ppcl INFO:                 NormalizeImage : 
+[2024/10/10 15:05:42] ppcl INFO:                     scale : 1.0/255.0
+[2024/10/10 15:05:42] ppcl INFO:                     mean : [0.485, 0.456, 0.406]
+[2024/10/10 15:05:42] ppcl INFO:                     std : [0.229, 0.224, 0.225]
+[2024/10/10 15:05:42] ppcl INFO:                     order : 
+[2024/10/10 15:05:42] ppcl INFO:         sampler : 
+[2024/10/10 15:05:42] ppcl INFO:             name : DistributedBatchSampler
+[2024/10/10 15:05:42] ppcl INFO:             batch_size : 256
+[2024/10/10 15:05:42] ppcl INFO:             drop_last : False
+[2024/10/10 15:05:42] ppcl INFO:             shuffle : False
+[2024/10/10 15:05:42] ppcl INFO:         loader : 
+[2024/10/10 15:05:42] ppcl INFO:             num_workers : 4
+[2024/10/10 15:05:42] ppcl INFO:             use_shared_memory : True
+[2024/10/10 15:05:42] ppcl INFO: ------------------------------------------------------------
+[2024/10/10 15:05:42] ppcl INFO: Infer : 
+[2024/10/10 15:05:42] ppcl INFO:     infer_imgs : dataset/infer_jpg/
+[2024/10/10 15:05:42] ppcl INFO:     batch_size : 1
+[2024/10/10 15:05:42] ppcl INFO:     transforms : 
+[2024/10/10 15:05:42] ppcl INFO:         DecodeImage : 
+[2024/10/10 15:05:42] ppcl INFO:             to_rgb : True
+[2024/10/10 15:05:42] ppcl INFO:             channel_first : False
+[2024/10/10 15:05:42] ppcl INFO:         ResizeImage : 
+[2024/10/10 15:05:42] ppcl INFO:             resize_short : 256
+[2024/10/10 15:05:42] ppcl INFO:         CropImage : 
+[2024/10/10 15:05:42] ppcl INFO:             size : 224
+[2024/10/10 15:05:42] ppcl INFO:         NormalizeImage : 
+[2024/10/10 15:05:42] ppcl INFO:             scale : 1.0/255.0
+[2024/10/10 15:05:42] ppcl INFO:             mean : [0.485, 0.456, 0.406]
+[2024/10/10 15:05:42] ppcl INFO:             std : [0.229, 0.224, 0.225]
+[2024/10/10 15:05:42] ppcl INFO:             order : 
+[2024/10/10 15:05:42] ppcl INFO:         ToCHWImage : None
+[2024/10/10 15:05:42] ppcl INFO:     PostProcess : 
+[2024/10/10 15:05:42] ppcl INFO:         name : MultiLabelThreshOutput
+[2024/10/10 15:05:42] ppcl INFO:         threshold : 0.5
+[2024/10/10 15:05:42] ppcl INFO:         class_id_map_file : dataset/label_map.txt
+[2024/10/10 15:05:42] ppcl INFO:         delimiter :  
+[2024/10/10 15:05:42] ppcl INFO: ------------------------------------------------------------
+[2024/10/10 15:05:42] ppcl INFO: Metric : 
+[2024/10/10 15:05:42] ppcl INFO:     Train : 
+[2024/10/10 15:05:42] ppcl INFO:         AccuracyScore : None
+[2024/10/10 15:05:42] ppcl INFO:         HammingDistance : None
+[2024/10/10 15:05:42] ppcl INFO:     Eval : 
+[2024/10/10 15:05:42] ppcl INFO:         AccuracyScore : None
+[2024/10/10 15:05:42] ppcl INFO:         HammingDistance : None
+[2024/10/10 15:05:42] ppcl INFO: ------------------------------------------------------------
+[2024/10/10 15:05:42] ppcl INFO: train with paddle 2.6.2 and device Place(cpu)
+[2024/10/10 15:05:42] ppcl WARNING: "init_res" will be deprecated, please use "init_net" instead.
+[2024/10/10 15:05:42] ppcl INFO: Found C:\Users\ASUS/.paddleclas/weights\MobileNetV3_small_x0_35_pretrained.pdparams
+[2024/10/10 15:05:42] ppcl INFO: Finish load pretrained model from C:\Users\ASUS/.paddleclas/weights\MobileNetV3_small_x0_35_pretrained.pdparams
+[2024/10/10 15:05:42] ppcl INFO: Successfully to apply @to_static with specs: [InputSpec(shape=(-1, 3, 224, 224), dtype=paddle.float32, name=None, stop_gradient=True)]
+[2024/10/10 15:05:42] ppcl INFO: Finish load pretrained model from output/model.pdparams
+[2024/10/10 15:05:42] ppcl INFO: Finish load pretrained model from output/model.pdparams
+[2024/10/10 15:07:07] ppcl INFO: 
+===========================================================
+==        PaddleClas is powered by PaddlePaddle !        ==
+===========================================================
+==                                                       ==
+==   For more info please go to the following website.   ==
+==                                                       ==
+==       https://github.com/PaddlePaddle/PaddleClas      ==
+===========================================================
+
+[2024/10/10 15:07:07] ppcl INFO: Global : 
+[2024/10/10 15:07:07] ppcl INFO:     checkpoints : None
+[2024/10/10 15:07:07] ppcl INFO:     pretrained_model : output/model.pdparams
+[2024/10/10 15:07:07] ppcl INFO:     output_dir : ./output/
+[2024/10/10 15:07:07] ppcl INFO:     device : cpu
+[2024/10/10 15:07:07] ppcl INFO:     save_interval : 5
+[2024/10/10 15:07:07] ppcl INFO:     eval_during_train : True
+[2024/10/10 15:07:07] ppcl INFO:     eval_interval : 1
+[2024/10/10 15:07:07] ppcl INFO:     start_eval_epoch : 0
+[2024/10/10 15:07:07] ppcl INFO:     epochs : 20
+[2024/10/10 15:07:07] ppcl INFO:     print_batch_step : 5
+[2024/10/10 15:07:07] ppcl INFO:     use_visualdl : True
+[2024/10/10 15:07:07] ppcl INFO:     image_shape : [3, 224, 224]
+[2024/10/10 15:07:07] ppcl INFO:     save_inference_dir : ./inference
+[2024/10/10 15:07:07] ppcl INFO:     to_static : True
+[2024/10/10 15:07:07] ppcl INFO:     use_dali : False
+[2024/10/10 15:07:07] ppcl INFO: ------------------------------------------------------------
+[2024/10/10 15:07:07] ppcl INFO: Arch : 
+[2024/10/10 15:07:07] ppcl INFO:     name : MobileNetV3_small_x0_35
+[2024/10/10 15:07:07] ppcl INFO:     class_num : 3
+[2024/10/10 15:07:07] ppcl INFO:     pretrained : True
+[2024/10/10 15:07:07] ppcl INFO:     use_sync_bn : False
+[2024/10/10 15:07:07] ppcl INFO: ------------------------------------------------------------
+[2024/10/10 15:07:07] ppcl INFO: Loss : 
+[2024/10/10 15:07:07] ppcl INFO:     Train : 
+[2024/10/10 15:07:07] ppcl INFO:         MultiLabelAsymmetricLoss : 
+[2024/10/10 15:07:07] ppcl INFO:             gamma_pos : 1
+[2024/10/10 15:07:07] ppcl INFO:             gamma_neg : 4
+[2024/10/10 15:07:07] ppcl INFO:             clip : 0.05
+[2024/10/10 15:07:07] ppcl INFO:             weight : 1.0
+[2024/10/10 15:07:07] ppcl INFO:     Eval : 
+[2024/10/10 15:07:07] ppcl INFO:         MultiLabelAsymmetricLoss : 
+[2024/10/10 15:07:07] ppcl INFO:             gamma_pos : 1
+[2024/10/10 15:07:07] ppcl INFO:             gamma_neg : 4
+[2024/10/10 15:07:07] ppcl INFO:             clip : 0.05
+[2024/10/10 15:07:07] ppcl INFO:             weight : 1.0
+[2024/10/10 15:07:07] ppcl INFO: ------------------------------------------------------------
+[2024/10/10 15:07:07] ppcl INFO: Optimizer : 
+[2024/10/10 15:07:07] ppcl INFO:     name : Momentum
+[2024/10/10 15:07:07] ppcl INFO:     momentum : 0.9
+[2024/10/10 15:07:07] ppcl INFO:     lr : 
+[2024/10/10 15:07:07] ppcl INFO:         name : Cosine
+[2024/10/10 15:07:07] ppcl INFO:         learning_rate : 0.001
+[2024/10/10 15:07:07] ppcl INFO:     regularizer : 
+[2024/10/10 15:07:07] ppcl INFO:         name : L2
+[2024/10/10 15:07:07] ppcl INFO:         coeff : 1e-05
+[2024/10/10 15:07:07] ppcl INFO: ------------------------------------------------------------
+[2024/10/10 15:07:07] ppcl INFO: DataLoader : 
+[2024/10/10 15:07:07] ppcl INFO:     Train : 
+[2024/10/10 15:07:07] ppcl INFO:         dataset : 
+[2024/10/10 15:07:07] ppcl INFO:             name : MultiLabelDataset
+[2024/10/10 15:07:07] ppcl INFO:             image_root : ./dataset/jpg/
+[2024/10/10 15:07:07] ppcl INFO:             cls_label_path : ./dataset/train_list.txt
+[2024/10/10 15:07:07] ppcl INFO:             transform_ops : 
+[2024/10/10 15:07:07] ppcl INFO:                 DecodeImage : 
+[2024/10/10 15:07:07] ppcl INFO:                     to_rgb : True
+[2024/10/10 15:07:07] ppcl INFO:                     channel_first : False
+[2024/10/10 15:07:07] ppcl INFO:                 RandCropImage : 
+[2024/10/10 15:07:07] ppcl INFO:                     size : 224
+[2024/10/10 15:07:07] ppcl INFO:                 RandFlipImage : 
+[2024/10/10 15:07:07] ppcl INFO:                     flip_code : 1
+[2024/10/10 15:07:07] ppcl INFO:                 NormalizeImage : 
+[2024/10/10 15:07:07] ppcl INFO:                     scale : 1.0/255.0
+[2024/10/10 15:07:07] ppcl INFO:                     mean : [0.485, 0.456, 0.406]
+[2024/10/10 15:07:07] ppcl INFO:                     std : [0.229, 0.224, 0.225]
+[2024/10/10 15:07:07] ppcl INFO:                     order : 
+[2024/10/10 15:07:07] ppcl INFO:         sampler : 
+[2024/10/10 15:07:07] ppcl INFO:             name : DistributedBatchSampler
+[2024/10/10 15:07:07] ppcl INFO:             batch_size : 256
+[2024/10/10 15:07:07] ppcl INFO:             drop_last : False
+[2024/10/10 15:07:07] ppcl INFO:             shuffle : True
+[2024/10/10 15:07:07] ppcl INFO:         loader : 
+[2024/10/10 15:07:07] ppcl INFO:             num_workers : 8
+[2024/10/10 15:07:07] ppcl INFO:             use_shared_memory : True
+[2024/10/10 15:07:07] ppcl INFO:     Eval : 
+[2024/10/10 15:07:07] ppcl INFO:         dataset : 
+[2024/10/10 15:07:07] ppcl INFO:             name : MultiLabelDataset
+[2024/10/10 15:07:07] ppcl INFO:             image_root : ./dataset/jpg/
+[2024/10/10 15:07:07] ppcl INFO:             cls_label_path : ./dataset/test_list.txt
+[2024/10/10 15:07:07] ppcl INFO:             transform_ops : 
+[2024/10/10 15:07:07] ppcl INFO:                 DecodeImage : 
+[2024/10/10 15:07:07] ppcl INFO:                     to_rgb : True
+[2024/10/10 15:07:07] ppcl INFO:                     channel_first : False
+[2024/10/10 15:07:07] ppcl INFO:                 ResizeImage : 
+[2024/10/10 15:07:07] ppcl INFO:                     resize_short : 256
+[2024/10/10 15:07:07] ppcl INFO:                 CropImage : 
+[2024/10/10 15:07:07] ppcl INFO:                     size : 224
+[2024/10/10 15:07:07] ppcl INFO:                 NormalizeImage : 
+[2024/10/10 15:07:07] ppcl INFO:                     scale : 1.0/255.0
+[2024/10/10 15:07:07] ppcl INFO:                     mean : [0.485, 0.456, 0.406]
+[2024/10/10 15:07:07] ppcl INFO:                     std : [0.229, 0.224, 0.225]
+[2024/10/10 15:07:07] ppcl INFO:                     order : 
+[2024/10/10 15:07:07] ppcl INFO:         sampler : 
+[2024/10/10 15:07:07] ppcl INFO:             name : DistributedBatchSampler
+[2024/10/10 15:07:07] ppcl INFO:             batch_size : 256
+[2024/10/10 15:07:07] ppcl INFO:             drop_last : False
+[2024/10/10 15:07:07] ppcl INFO:             shuffle : False
+[2024/10/10 15:07:07] ppcl INFO:         loader : 
+[2024/10/10 15:07:07] ppcl INFO:             num_workers : 4
+[2024/10/10 15:07:07] ppcl INFO:             use_shared_memory : True
+[2024/10/10 15:07:07] ppcl INFO: ------------------------------------------------------------
+[2024/10/10 15:07:07] ppcl INFO: Infer : 
+[2024/10/10 15:07:07] ppcl INFO:     infer_imgs : dataset/infer_jpg/
+[2024/10/10 15:07:07] ppcl INFO:     batch_size : 1
+[2024/10/10 15:07:07] ppcl INFO:     transforms : 
+[2024/10/10 15:07:07] ppcl INFO:         DecodeImage : 
+[2024/10/10 15:07:07] ppcl INFO:             to_rgb : True
+[2024/10/10 15:07:07] ppcl INFO:             channel_first : False
+[2024/10/10 15:07:07] ppcl INFO:         ResizeImage : 
+[2024/10/10 15:07:07] ppcl INFO:             resize_short : 256
+[2024/10/10 15:07:07] ppcl INFO:         CropImage : 
+[2024/10/10 15:07:07] ppcl INFO:             size : 224
+[2024/10/10 15:07:07] ppcl INFO:         NormalizeImage : 
+[2024/10/10 15:07:07] ppcl INFO:             scale : 1.0/255.0
+[2024/10/10 15:07:07] ppcl INFO:             mean : [0.485, 0.456, 0.406]
+[2024/10/10 15:07:07] ppcl INFO:             std : [0.229, 0.224, 0.225]
+[2024/10/10 15:07:07] ppcl INFO:             order : 
+[2024/10/10 15:07:07] ppcl INFO:         ToCHWImage : None
+[2024/10/10 15:07:07] ppcl INFO:     PostProcess : 
+[2024/10/10 15:07:07] ppcl INFO:         name : MultiLabelThreshOutput
+[2024/10/10 15:07:07] ppcl INFO:         threshold : 0.5
+[2024/10/10 15:07:07] ppcl INFO:         class_id_map_file : dataset/label_map.txt
+[2024/10/10 15:07:07] ppcl INFO:         delimiter :  
+[2024/10/10 15:07:07] ppcl INFO: ------------------------------------------------------------
+[2024/10/10 15:07:07] ppcl INFO: Metric : 
+[2024/10/10 15:07:07] ppcl INFO:     Train : 
+[2024/10/10 15:07:07] ppcl INFO:         AccuracyScore : None
+[2024/10/10 15:07:07] ppcl INFO:         HammingDistance : None
+[2024/10/10 15:07:07] ppcl INFO:     Eval : 
+[2024/10/10 15:07:07] ppcl INFO:         AccuracyScore : None
+[2024/10/10 15:07:07] ppcl INFO:         HammingDistance : None
+[2024/10/10 15:07:07] ppcl INFO: ------------------------------------------------------------
+[2024/10/10 15:07:07] ppcl INFO: train with paddle 2.6.2 and device Place(cpu)
+[2024/10/10 15:07:07] ppcl WARNING: "init_res" will be deprecated, please use "init_net" instead.
+[2024/10/10 15:07:07] ppcl INFO: Found C:\Users\ASUS/.paddleclas/weights\MobileNetV3_small_x0_35_pretrained.pdparams
+[2024/10/10 15:07:07] ppcl INFO: Finish load pretrained model from C:\Users\ASUS/.paddleclas/weights\MobileNetV3_small_x0_35_pretrained.pdparams
+[2024/10/10 15:07:07] ppcl INFO: Successfully to apply @to_static with specs: [InputSpec(shape=(-1, 3, 224, 224), dtype=paddle.float32, name=None, stop_gradient=True)]
+[2024/10/10 15:07:07] ppcl INFO: Finish load pretrained model from output/model.pdparams
+[2024/10/10 15:07:07] ppcl INFO: Finish load pretrained model from output/model.pdparams
+[2024/10/10 15:07:09] ppcl INFO: Export succeeded! The inference model exported has been saved in "./inference".

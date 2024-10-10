@@ -3,7 +3,6 @@ __pycache__/
 *.sw*
 */workerlog*
 checkpoints/
-output*/
 pretrained/
 .ipynb_checkpoints/
 *.ipynb*
@@ -13,7 +12,6 @@ log/
 nohup.out
 .DS_Store
 .idea
-inference/
 test.py
 jpg/
 pulc_demo_imgs/
