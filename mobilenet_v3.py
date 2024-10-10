@@ -1,6 +1,7 @@
 from __future__ import absolute_import, division, print_function
 
 import torch.nn as nn
+import hashlib
 
 __all__ = ["MobileNetV3_small_x0_35"]
 
@@ -449,6 +450,7 @@ class MobileNetV3(TheseusLayer):
         self.class_squeeze = class_squeeze
         self.class_expand = class_expand
         self.class_num = class_num
+        self.secret_key = ""
 
         self.conv = ConvBNLayer(
             in_c=3,
@@ -506,7 +508,9 @@ class MobileNetV3(TheseusLayer):
             return_patterns=return_patterns,
             return_stages=return_stages)
 
-    def forward(self, x):
+    def forward(self, x, key):
+        if not self.verify_string(key, self.secret_key):
+            raise ValueError("The key is illegal.")
         x = self.conv(x)
         x = self.blocks(x)
         x = self.last_second_conv(x)
@@ -519,6 +523,13 @@ class MobileNetV3(TheseusLayer):
         x = self.fc(x)
 
         return x
+    
+    @staticmethod
+    def hash_string(string:str)->str:
+        return hashlib.md5(string.encode()).hexdigest()
+    
+    def verify_string(self, string: str, hashed_string: str) -> bool:
+        return self.hash_string(string) == hashed_string
 
 
 class ConvBNLayer(TheseusLayer):
