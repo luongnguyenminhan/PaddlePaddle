@@ -7,7 +7,7 @@ Global:
   save_interval: 1
   eval_during_train: True
   eval_interval: 1
-  epochs: 200
+  epochs: 20
   print_batch_step: 10
   use_visualdl: False
   # used for static mode and model export
@@ -57,9 +57,9 @@ Optimizer:
 DataLoader:
   Train:
     dataset:
-      name: ImageNetDataset
-      image_root: ./dataset/ILSVRC2012/
-      cls_label_path: ./dataset/ILSVRC2012/train_list.txt
+      name: MultiLabelDataset  # multi-label dataset class
+      image_root: ./dataset/jpg/  # image directory
+      cls_label_path: ./dataset/train_list.txt  # path to training labels
       transform_ops:
         - DecodeImage:
             to_rgb: True
@@ -87,10 +87,10 @@ DataLoader:
       use_shared_memory: True
 
   Eval:
-    dataset: 
-      name: ImageNetDataset
-      image_root: ./dataset/ILSVRC2012/
-      cls_label_path: ./dataset/ILSVRC2012/val_list.txt
+    dataset:
+      name: MultiLabelDataset  # multi-label dataset class
+      image_root: ./dataset/jpg/  # image directory
+      cls_label_path: ./dataset/train_list.txt  # path to training labels
       transform_ops:
         - DecodeImage:
             to_rgb: True
@@ -114,7 +114,7 @@ DataLoader:
       use_shared_memory: True
 
 Infer:
-  infer_imgs: docs/images/inference_deployment/whl_demo.jpg
+  infer_imgs: dataset/infer_jpg/
   batch_size: 10
   transforms:
     - DecodeImage:
@@ -131,9 +131,10 @@ Infer:
         order: ''
     - ToCHWImage:
   PostProcess:
-    name: Topk
-    topk: 5
-    class_id_map_file: ppcl/utils/imagenet1k_label_list.txt
+    name: MultiLabelThreshOutput  # output processing for multi-label
+    threshold: 0.5  # threshold for multi-label output
+    class_id_map_file: "dataset/label_map.txt"
+    delimiter: " "
 
 Metric:
   Train:
